@@ -6,7 +6,7 @@ This task revolved using the ideas of Struct to manage data about restaurant con
 Milestone 1: The function creates one `Restaurant` object for testing.\
 Milestone 2: Add another function that intakes a `Restaurant` objects and outputs its details in a clean and user-friendly format. For testing: make sure to display at least four `Restaurant` objects.
 
-# Creator's Thoughts
+## Creator's Thoughts
 - Milestone 1
     - Creating the struct object wasn't hard, and it would have probably been easier to add a constructor to the struct instead of writing it as a separate function.
 - Milestone 2
