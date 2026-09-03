@@ -52,6 +52,7 @@ int main() {
         displayRestaurant(restaurantList[i]);
         cout << endl;
     }
+    return 0;
 }
 
 Restaurant createRestaurant() {
