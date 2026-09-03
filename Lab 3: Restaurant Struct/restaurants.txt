@@ -1,0 +1,75 @@
+The Golden Fork
+123 Main Street
+Italian
+18.50
+Mediterranean
+16.00
+French
+22.75
+American
+14.50
+Vegetarian
+15.25
+5
+1
+1
+Sunrise Diner
+456 Oak Avenue
+American
+12.00
+Mexican
+13.50
+Breakfast
+10.75
+Vegetarian
+11.25
+Southern
+14.00
+4
+1
+1
+Spice Garden
+789 Maple Drive
+Indian
+17.50
+Thai
+16.75
+Nepalese
+18.00
+Vegetarian
+15.50
+Asian Fusion
+19.25
+5
+1
+1
+Harbor House
+321 Seaside Boulevard
+Seafood
+24.00
+American
+19.50
+Mediterranean
+21.75
+Italian
+20.00
+Vegetarian
+17.25
+4
+0
+1
+Maple Leaf Cafe
+654 Pine Road
+Canadian
+15.00
+Bakery
+8.50
+Breakfast
+11.00
+Sandwiches
+12.75
+Vegetarian
+13.25
+4
+1
+0
