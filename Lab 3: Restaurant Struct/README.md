@@ -14,6 +14,6 @@ Milestone 2: Add another function that intakes a `Restaurant` objects and output
 
 ## Timeline
 * **Date Added:** 09-02-2026 at 11:50 PM
-* **Milestone 1:** TBD
+* **Milestone 1:** 09-03-2026 at 12:06 AM
 * **Milestone 2:** TBD
 * **Due Date:** 09-03-2026 at 10:00 PM
