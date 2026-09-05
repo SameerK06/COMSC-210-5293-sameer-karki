@@ -9,5 +9,6 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 1** | GitHub Repository | [Go to Lab 1](./Lab%201:%20Github%20Repository/README.md) |
 | **Lab 2** | GitHub Cloning | [Go to Lab 2](./Lab%202:%20Github%20Cloning/README.md) |
 | **Lab 3** | Restaurant Struct | [Go to Lab 3](./Lab%203:%20Restaurant%20Struct/README.md) |
+| **Lab 4** | Vector of Structs | [Go to Lab 4](./Lab%204:%20Vector%20of%20Structs/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
