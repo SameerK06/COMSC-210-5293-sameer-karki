@@ -3,10 +3,18 @@
 
 using namespace std;
 
+void displayArray(const string* arr, int size);
 string* reverseArray(string* arr, int size);
 
 int main() {
     return 0;
+}
+
+void displayArray(const string* arr, int size) {
+    for (int i=0; i<size; ++i) {
+        cout << *(arr+i) << " ";
+    }
+    cout << endl;
 }
 
 string* reverseArray(string* arr, int size) {
@@ -17,4 +25,6 @@ string* reverseArray(string* arr, int size) {
     }
     return arr;
 }
+
+
 
