@@ -15,4 +15,4 @@ This task focused on using dynamic memory allocation to create a string array an
 
 ## Timeline
 * **Date Added:** 09-12-2026 at 3:42 PM
-* **Due Date:** 09-12-2026 at 10:00 PM
+* **Due Date:** 09-13-2026 at 10:00 PM
