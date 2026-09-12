@@ -10,5 +10,6 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 2** | GitHub Cloning | [Go to Lab 2](./Lab%202:%20Github%20Cloning/README.md) |
 | **Lab 3** | Restaurant Struct | [Go to Lab 3](./Lab%203:%20Restaurant%20Struct/README.md) |
 | **Lab 4** | Vector of Structs | [Go to Lab 4](./Lab%204:%20Vector%20of%20Structs/README.md) |
+| **Lab 6** | Dynamic Arrays & Functions I | [Go to Lab 6](./Lab%206:%20Dynamic%20Arrays%20%26%20Functions%20I/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
