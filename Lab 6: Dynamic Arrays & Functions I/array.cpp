@@ -4,6 +4,7 @@ using namespace std;
 
 void enterArrayData(double* arr, int size);
 void outputArrayData(const double* arr, int size);
+double sumArray(const double* arr, int size);
 
 int main() {
     return 0;
@@ -23,4 +24,12 @@ void outputArrayData(const double* arr, int size) {
         cout << *(arr + i) << " "; 
     }
     cout << " ]" << endl;
+}
+
+double sumArray(const double* arr, int size) {
+    double sum = 0.0;
+    for (int i=0; i<size; ++i) {
+        sum += *(arr + i);
+    }
+    return sum;
 }
