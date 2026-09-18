@@ -27,7 +27,7 @@ int main() {
     cout << "First Element: " << tempArray.front() << endl;
     cout << "Last Element: " << tempArray.back() << endl;
     cout << "Data Pointer: " << tempArray.data() << endl;
-    cout << "Elements: \n";
+    cout << endl << "Elements: \n";
     for (int i=0; i<SIZE; i++) {
         if (i % 2 == 0) {
             cout << "Reading " << i+1 << ": " << tempArray.at(i) << "\n";
@@ -36,6 +36,18 @@ int main() {
         }
         
     }
-    cout << endl;
+    // Using pointer for array
+    cout << endl << "Elements using pointer: \n";
+    for (int i=0; i<SIZE; i++) {
+        cout << "Reading " << i+1 << ": " << *(tempArray.begin() + i) << "\n";
+    }
+    
+    // List first 5 and last 5 elements of the array
+    for (double* i = tempArray.begin(); i < tempArray.begin() + 5; i++) {
+        cout << "First 5 Elements: " << *i << endl;
+    }
+    for (double* i = tempArray.end() - 5; i < tempArray.end(); i++) {
+        cout << "Last 5 Elements: " << *i << endl;
+    }
     return 0;
 }
