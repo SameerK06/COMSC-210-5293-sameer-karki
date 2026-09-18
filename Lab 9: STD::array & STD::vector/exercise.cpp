@@ -19,5 +19,23 @@ int main() {
         inFile >> tempArray[i];
     }
     inFile.close();
+
+    cout << "Array Properties: " << endl;
+    cout << "Size: " << tempArray.size() << endl;
+    cout << "Max Size: " << tempArray.max_size() << endl;
+    cout << "Empty: " << (tempArray.empty() ? "Yes" : "No") << endl;
+    cout << "First Element: " << tempArray.front() << endl;
+    cout << "Last Element: " << tempArray.back() << endl;
+    cout << "Data Pointer: " << tempArray.data() << endl;
+    cout << "Elements: \n";
+    for (int i=0; i<SIZE; i++) {
+        if (i % 2 == 0) {
+            cout << "Reading " << i+1 << ": " << tempArray.at(i) << "\n";
+        } else {
+            cout << "Reading " << i+1 << ": " << tempArray[i] << "\n";
+        }
+        
+    }
+    cout << endl;
     return 0;
 }
