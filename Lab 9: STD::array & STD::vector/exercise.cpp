@@ -106,12 +106,12 @@ int main() {
     }
     // List first 5 and last 5 elements of the vector
     cout << endl << "First 5 Elements: \n [ ";
-    for (double* i = tempVector.begin(); i < tempVector.begin() + 5; i++) {
+    for (vector<double>::iterator i = tempVector.begin(); i < tempVector.begin() + 5; i++) {
         cout << *i << " ";
     }
     cout << "]" << endl;
     cout << endl << "Last 5 Elements: \n [ ";
-    for (double* i = tempVector.end() - 5; i < tempVector.end(); i++) {
+    for (vector<double>::iterator i = tempVector.end() - 5; i < tempVector.end(); i++) {
         cout << *i << " ";
     }
     cout << "]" << endl;
