@@ -8,6 +8,7 @@ const int SIZE = 30;
 const string FILENAME = "exercise.txt";
 
 int main() {
+    cout << "==================================\nARRAY\n==================================" << endl;
     array<double, SIZE> tempArray{};
     ifstream inFile(FILENAME);
     if (!inFile) {
@@ -43,11 +44,31 @@ int main() {
     }
     
     // List first 5 and last 5 elements of the array
+    cout << endl << "First 5 Elements: \n [ ";
     for (double* i = tempArray.begin(); i < tempArray.begin() + 5; i++) {
-        cout << "First 5 Elements: " << *i << endl;
+        cout << *i << " ";
     }
+    cout << "]" << endl;
+    cout << endl << "Last 5 Elements: \n [ ";
     for (double* i = tempArray.end() - 5; i < tempArray.end(); i++) {
-        cout << "Last 5 Elements: " << *i << endl;
+        cout << *i << " ";
     }
+    cout << "]" << endl;
+
+    // Testing swap function
+    array<double, SIZE> tempArray2{};
+    for (int i=0; i<SIZE; i++) {
+        tempArray2[i] = tempArray[i] + 1.0; // Just adding 1.0 to each element for testing
+    }
+    cout << endl << "Swapping arrays..." << endl;
+    tempArray.swap(tempArray2);
+    cout << "Elements of tempArray after swap: \n [ ";
+    for (double* i = tempArray.begin(); i < tempArray.end(); i++) {
+        cout << *i << " ";
+    }
+    cout << "]" << endl; 
+
+    cout << "==================================\nVECTOR\n==================================" << endl;
+
     return 0;
 }
