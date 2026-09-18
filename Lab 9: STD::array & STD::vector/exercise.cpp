@@ -69,7 +69,7 @@ int main() {
     }
     cout << "]" << endl; 
 
-    cout << "==================================\nVECTOR\n==================================" << endl;
+    cout << "\n==================================\nVECTOR\n==================================" << endl;
     vector<double> tempVector;
     tempVector.reserve(SIZE); // Reserving space due to 30 data limit that developer chose.
     inFile.open(FILENAME);
@@ -83,5 +83,26 @@ int main() {
     }
     inFile.close();
 
+    cout << "Vector Properties: " << endl;
+    cout << "Size: " << tempVector.size() << endl;
+    cout << "Max Size: " << tempVector.max_size() << endl;
+    cout << "Capacity: " << tempVector.capacity() << endl;
+    cout << "Empty: " << (tempVector.empty() ? "Yes" : "No") << endl;
+    cout << "First Element: " << tempVector.front() << endl;
+    cout << "Last Element: " << tempVector.back() << endl;
+    cout << "Data Pointer: " << tempVector.data() << endl;
+    cout << endl << "Elements: \n";
+    for (int i=0; i<tempVector.size(); i++) {
+        if (i % 2 == 0) {
+            cout << "Reading " << i+1 << ": " << tempVector.at(i) << "\n";
+        } else {
+            cout << "Reading " << i+1 << ": " << tempVector[i] << "\n";
+        }
+    }
+    // Using pointer for vector
+    cout << endl << "Elements using pointer: \n";
+    for (int i=0; i<tempVector.size(); i++) {
+        cout << "Reading " << i+1 << ": " << *(tempVector.begin() + i) << "\n";
+    }
     return 0;
 }
