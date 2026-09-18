@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <array>
+#include <vector>
 
 using namespace std;
 
@@ -69,7 +70,18 @@ int main() {
     cout << "]" << endl; 
 
     cout << "==================================\nVECTOR\n==================================" << endl;
+    vector<double> tempVector;
+    tempVector.reserve(SIZE); // Reserving space due to 30 data limit that developer chose.
+    inFile.open(FILENAME);
+    if (!inFile) {
+        cout << "Error opening file: " << FILENAME << endl;
+        return 1;
+    }
+    double value;
+    while (inFile >> value) {
+        tempVector.push_back(value);
+    }
+    inFile.close();
 
     return 0;
 }
- 
