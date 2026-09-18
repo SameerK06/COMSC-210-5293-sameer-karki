@@ -115,5 +115,19 @@ int main() {
         cout << *i << " ";
     }
     cout << "]" << endl;
+
+    // Testing swap function
+    vector<double> tempVector2;
+    tempVector2.reserve(SIZE);
+    for (int i = 0; i < tempVector.size(); i++) {
+        tempVector2.push_back(tempVector[i] + 1.0); // Just adding 1
+    }
+    cout << endl << "Swapping vectors..." << endl;
+    tempVector.swap(tempVector2);
+    cout << "Elements of tempVector after swap: \n [ ";
+    for (vector<double>::iterator i = tempVector.begin(); i < tempVector.end(); i++) {
+        cout << *i << " ";
+    }
+    cout << "]" << endl;
     return 0;
 }
