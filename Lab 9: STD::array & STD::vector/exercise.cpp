@@ -17,7 +17,7 @@ int main() {
         cout << "Error opening file: " << FILENAME << endl;
         return 1;
     }
-    for (int i=0; i<SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         inFile >> tempArray[i];
     }
     inFile.close();
@@ -30,7 +30,7 @@ int main() {
     cout << "Last Element: " << tempArray.back() << endl;
     cout << "Data Pointer: " << tempArray.data() << endl;
     cout << endl << "Elements: \n";
-    for (int i=0; i<SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         if (i % 2 == 0) {
             cout << "Reading " << i+1 << ": " << tempArray.at(i) << "\n";
         } else {
@@ -40,7 +40,7 @@ int main() {
     }
     // Using pointer for array
     cout << endl << "Elements using pointer: \n";
-    for (int i=0; i<SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         cout << "Reading " << i+1 << ": " << *(tempArray.begin() + i) << "\n";
     }
     
@@ -58,7 +58,7 @@ int main() {
 
     // Testing swap function
     array<double, SIZE> tempArray2{};
-    for (int i=0; i<SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         tempArray2[i] = tempArray[i] + 1.0; // Just adding 1.0 to each element for testing
     }
     cout << endl << "Swapping arrays..." << endl;
@@ -92,7 +92,7 @@ int main() {
     cout << "Last Element: " << tempVector.back() << endl;
     cout << "Data Pointer: " << tempVector.data() << endl;
     cout << endl << "Elements: \n";
-    for (int i=0; i<tempVector.size(); i++) {
+    for (int i = 0; i < tempVector.size(); i++) {
         if (i % 2 == 0) {
             cout << "Reading " << i+1 << ": " << tempVector.at(i) << "\n";
         } else {
@@ -101,8 +101,19 @@ int main() {
     }
     // Using pointer for vector
     cout << endl << "Elements using pointer: \n";
-    for (int i=0; i<tempVector.size(); i++) {
+    for (int i = 0; i < tempVector.size(); i++) {
         cout << "Reading " << i+1 << ": " << *(tempVector.begin() + i) << "\n";
     }
+    // List first 5 and last 5 elements of the vector
+    cout << endl << "First 5 Elements: \n [ ";
+    for (double* i = tempVector.begin(); i < tempVector.begin() + 5; i++) {
+        cout << *i << " ";
+    }
+    cout << "]" << endl;
+    cout << endl << "Last 5 Elements: \n [ ";
+    for (double* i = tempVector.end() - 5; i < tempVector.end(); i++) {
+        cout << *i << " ";
+    }
+    cout << "]" << endl;
     return 0;
 }
