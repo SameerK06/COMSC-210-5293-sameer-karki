@@ -87,8 +87,14 @@ int main() {
                 cout << "No courses in catalog. Please add a course first." << endl;
                 continue;
             }
+            displayCourseOptions(courseCatalog, numCourses);
             int index;
             string studentName;
+            cout << "Enter course index to enroll in (0 to " << numCourses-1 << "): ";
+            cin >> index;
+            if (index >= 0 && index < numCourses && courseCatalog[index].active) {
+                cout << "Enter"
+            }
         }
     }
     return 0;
@@ -219,4 +225,5 @@ int getEnrolledCount(const Course& course) {
             }
         }
     }
+    return count;
 }
