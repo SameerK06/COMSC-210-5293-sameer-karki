@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -20,7 +21,25 @@ void clearCourse(Course& course);
 void resizeCourse(Course& course, int newCapacity);
 
 int main() {
-    
+    cout << "=====================================" << endl;
+    cout << "          DVC COURSE CATALOG         " << endl;
+    cout << "=====================================" << endl;
+    int courseCapacity = 100;
+    Course* courseCatalog = new Course[courseCapacity];
+    cout << "Enter the number of courses to add to the catalog (max " << courseCapacity << "): ";
+    int numCourses;
+    cin >> numCourses;
+    cout << "Enter the file containing all courses information: ";
+    string filename;
+    cin >> filename;
+    ifstream file(filename);
+    if (!file) {
+        cout << "Error opening file: " << filename << endl;
+        delete[] courseCatalog;
+        courseCatalog = nullptr;
+        cout << "Exiting program." << endl;
+        return 1;
+    }
     return 0;
 }
 
