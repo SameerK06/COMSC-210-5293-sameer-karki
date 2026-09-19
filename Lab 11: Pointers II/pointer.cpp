@@ -39,6 +39,25 @@ int main() {
         courseCatalog = nullptr;
         cout << "Exiting program." << endl;
         return 1;
+    } else {
+        for (int i = 0; i < numCourses; ++i) {
+            string name, courseCode;
+            int credits, year, capacity;
+                file >> name >> courseCode >> credits >> year >> capacity;
+                initCourse(courseCatalog[i], name, courseCode, credits, year, capacity);
+        }
+        file.close();
+    }
+    // Creating a loop to enroll students in courses as well as displaying course info depending on user input
+    while (true) {
+        cout << "Enter 1 to enroll a student, 2 to display course info, 3 to resize a course, or 0 to exit: ";
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        } else if (choice == 1) {
+            
+        }
     }
     return 0;
 }
