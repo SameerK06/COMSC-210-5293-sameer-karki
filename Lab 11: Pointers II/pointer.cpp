@@ -30,7 +30,6 @@ int main() {
     cout << "=====================================" << endl;
     int catalogCapacity = 100;
     Course* courseCatalog = new Course[catalogCapacity];
-    cout << "Enter the number of courses to add to the catalog (max " << catalogCapacity << ") given a single run of the program: ";
     int numCourses = 0;
     cout << "Enter the file containing all courses information: ";
     string filename;
@@ -154,7 +153,7 @@ int main() {
                 cin >> credits;
                 cout << "Enter Year: ";
                 cin >> year;
-                cout << "Enter Capacity: ",
+                cout << "Enter Capacity: ";
                 cin >> capacity;
                 Course* newCoursePtr = courseCatalog + numCourses;
                 initCourse(*newCoursePtr, name, courseCode, credits, year, capacity, true);
@@ -165,6 +164,11 @@ int main() {
             cout << "Invalid menu choice. Please try again." << endl;
         }
     }
+    for (Course* cPtr = courseCatalog; cPtr < courseCatalog + numCourses; ++cPtr) {
+        clearCourse(*cPtr);
+    }
+    delete[] courseCatalog;
+    courseCatalog = nullptr;
     return 0;
 }
 
@@ -251,12 +255,12 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
     }
 
     for (Course* cPtr = catalog; cPtr < catalog + numCourses; ++cPtr) {
-        outFile << cPtr->name << " " << cPtr->courseCode << " " << cPtr->credits << " " 
-                << cPtr->year << " " << cPtr->capacity << " " << cPtr->active;
+        outFile << cPtr->name << "||" << cPtr->courseCode << "||" << cPtr->credits << "||" 
+                << cPtr->year << "||" << cPtr->capacity << "||" << cPtr->active;
         if (cPtr->enrolledStudents != nullptr) {
             for (string* sPtr = cPtr->enrolledStudents; sPtr < cPtr->enrolledStudents + cPtr->capacity; ++sPtr) {
                 if(!sPtr->empty()) {
-                    outFile << " " << *sPtr;
+                    outFile << "||" << *sPtr;
                 }
             }
         }
