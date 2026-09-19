@@ -105,6 +105,10 @@ void initCourse(Course& course, const string& name, const string& courseCode, in
 }
 
 void enrollStudent(Course& course, const string& studentName) {
+    if (!course.active || course.enrolledStudents == nullptr) {
+        cout << "Cannot enroll. Course is inactive." << endl;
+        return;
+    }
     string* ptr = course.enrolledStudents;
     string* endptr = course.enrolledStudents + course.capacity;
     while(ptr < endptr) {
@@ -171,13 +175,14 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
         cout << "Error opening file for saving: " << outputFile << endl;
         return;
     }
-    for (int i = 0; i < numCourses; i++) {
-        outFile << catalog[i].name << " " << catalog[i].courseCode << " " << catalog[i].credits << " " 
-                << catalog[i].year << " " << catalog[i].capacity << " " << catalog[i].active;
-        if (catalog[i].enrolledStudents != nullptr) {
-            for (string* ptr = catalog[i].enrolledStudents; ptr < catalog[i].enrolledStudents + catalog[i].capacity; ++ptr) {
-                if (!ptr->empty()) {
-                    outFile << " " << *ptr;
+
+    for (Course* cPtr = catalog; cPtr < catalog + numCourses; ++cPtr) {
+        outFile << cPtr->name << " " << cPtr->courseCode << " " << cPtr->credits << " " 
+                << cPtr->year << " " << cPtr->capacity << " " << cPtr->active;
+        if (cPtr->enrolledStudents != nullptr) {
+            for (string* sPtr = cPtr->enrolledStudents; sPtr < cPtr->enrolledStudents + cPtr->capacity; ++sPtr) {
+                if(!sPtr->empty()) {
+                    outFile << " " << *sPtr;
                 }
             }
         }
@@ -189,7 +194,7 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
 
 void displayCourseOptions(Course* catalog, int numCourses) {
     cout << "\n-------------------- AVAILABLE COURSES --------------------" << endl;
-    for (Course* ptr = catalog; ptr < catalog + numCourses; ptr++) {
+    for (Course* ptr = catalog; ptr < catalog + numCourses; ++ptr) {
         if (ptr->active) {
             int enrolled = getEnrolledCount(*ptr);
             int index = ptr - catalog;
@@ -203,4 +208,15 @@ void displayCourseOptions(Course* catalog, int numCourses) {
     }
     cout << "-----------------------------------------------------------" << endl;
 
+}
+
+int getEnrolledCount(const Course& course) {
+    int count = 0;
+    if (course.enrolledStudents != nullptr) {
+        for (string* ptr = course.enrolledStudents; ptr < course.enrolledStudents + course.capacity; ++ptr) {
+            if (!ptr->empty()){
+                count++;
+            }
+        }
+    }
 }
