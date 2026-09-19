@@ -189,5 +189,18 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
 
 void displayCourseOptions(Course* catalog, int numCourses) {
     cout << "\n-------------------- AVAILABLE COURSES --------------------" << endl;
-    
+    for (Course* ptr = catalog; ptr < catalog + numCourses; ptr++) {
+        if (ptr->active) {
+            int enrolled = getEnrolledCount(*ptr);
+            int index = ptr - catalog;
+            cout << "[" << index << "]" << ptr->name << " ( " << ptr->courseCode << ") - " << enrolled << "/" << ptr->capacity
+                 << " Enrolled";
+            if (enrolled >= ptr->capacity) {
+                cout << " [FULL]";
+            }
+            cout << endl;
+        }
+    }
+    cout << "-----------------------------------------------------------" << endl;
+
 }
