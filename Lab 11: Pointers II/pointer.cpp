@@ -28,6 +28,27 @@ void initCourse(Course& course, const string& name, const string& courseCode, in
     course.credits = credits;
     course.year = year;
     course.capacity = capacity;
-    course.enrolledStudents = nullptr;
+    course.enrolledStudents = new string[capacity];
 }
 
+void enrollStudent(Course& course, const string& studentName) {
+    for (int i = 0; i < course.capacity; i++) {
+        if (course.enrolledStudents[i].empty()) {
+            course.enrolledStudents[i] 
+            cout << "Student " << studentName << " enrolled in course " << course.name << endl;
+            return;
+        }
+    }
+    cout << "Course " << course.name << " is full. Cannot enroll student " << studentName << endl;
+}
+
+void outputCourse(const Course& course) {
+    cout << "Course Name: " << course.name << endl;
+    cout << "Course Code: " << course.courseCode << endl;
+    cout << "Credits: " << course.credits << endl;
+    cout << "Year: " << course.year << endl;
+    cout << "Capacity: " << course.capacity << endl;
+    cout << "Enrolled Students: ";
+    if (course.enrolledStudents != nullptr)
+    cout << endl;
+}
