@@ -28,9 +28,9 @@ int main() {
     cout << "=====================================" << endl;
     cout << "          DVC COURSE CATALOG         " << endl;
     cout << "=====================================" << endl;
-    int courseCapacity = 100;
-    Course* courseCatalog = new Course[courseCapacity];
-    cout << "Enter the number of courses to add to the catalog (max " << courseCapacity << ") given a single run of the program: ";
+    int catalogCapacity = 100;
+    Course* courseCatalog = new Course[catalogCapacity];
+    cout << "Enter the number of courses to add to the catalog (max " << catalogCapacity << ") given a single run of the program: ";
     int numCourses = 0;
     cout << "Enter the file containing all courses information: ";
     string filename;
@@ -41,7 +41,7 @@ int main() {
         cout << "Starting with an empty catalog." << endl;
     } else {
         string line;
-        while (numCourses < courseCapacity && getline(file, line)) {
+        while (numCourses < catalogCapacity && getline(file, line)) {
             if (line.empty()) {
                 continue;
             }
@@ -115,15 +115,34 @@ int main() {
             cin >> index;
             if (index >= 0 && index < numCourses) {
                 Course* selectedCourse = courseCatalog + index;
+                outputCourse(*selectedCourse);
+            } else {
+                cout << "Invalid course index." << endl;
+            }
+        } else if (choice == 3) {
+            if (numCourses == 0) {
+                cout << "No courses in catalog to display." << endl;
+                continue;
+            }
+            displayCourseOptions(courseCatalog, numCourses);
+            int index, newCapacity;
+            cout << "Enter course index to enroll in (0 to " << numCourses-1 << "): ";
+            cin >> index;
+            if (index >= 0 && index < numCourses) {
+                Course* selectedCourse = courseCatalog + index;
                 if (selectedCourse->active) {
-                    cout << "Enter student name: ";
-                    cin >> studentName;
-                    enrollStudent(*selectedCourse, studentName);
+                    cout << "Enter new capacity: ";
+                    cin >> newCapacity;
+                    resizeCourse(*selectedCourse, newCapacity);
                 } else {
-                    cout << "Could not add student to course " << selectedCourse->name << " due to it being inactive" << endl; 
+                    cout << "Could not increase capacity of course " << selectedCourse->name << " due to it being inactive" << endl; 
                 }
             } else {
                 cout << "Invalid course index." << endl;
+            }
+        } else if (choice == 4) {
+            if (numCourses >= catalogCapacity) {
+                cout << "Catalog is full (max " << catalogCapacity << " courses"
             }
         }
     }
