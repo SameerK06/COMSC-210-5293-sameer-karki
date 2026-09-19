@@ -20,6 +20,7 @@ void clearCourse(Course& course);
 void resizeCourse(Course& course, int newCapacity);
 
 int main() {
+    
     return 0;
 }
 
@@ -74,5 +75,21 @@ void clearCourse(Course& course) {
 void resizeCourse(Course& course, int newCapacity) {
     if (newCapacity <= course.capacity) {
         cout << "Increasing capacity is not allowed. New capacity must be larger than current capacity." << endl;
+    } else {
+        string* newEnrolledStudents = new string[newCapacity];
+        string* ptr = course.enrolledStudents;
+        string* newPtr = newEnrolledStudents;
+        while (ptr < course.enrolledStudents + course.capacity) {
+            if (!ptr->empty()) {
+                *newPtr = *ptr;
+                newPtr++;
+            }
+        ptr++;
+        }
+        delete[] course.enrolledStudents;
+        course.enrolledStudents = newEnrolledStudents;
+        course.capacity = newCapacity;
+        delete[] newEnrolledStudents;
+        newEnrolledStudents = nullptr;
     }
 }
