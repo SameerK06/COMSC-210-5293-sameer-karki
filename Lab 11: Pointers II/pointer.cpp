@@ -12,7 +12,7 @@ struct Course {
     int year;
     int capacity;
     string* enrolledStudents = nullptr;
-    bool active;
+    bool active = false;
 };
 
 void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity, bool active);
@@ -21,6 +21,8 @@ void outputCourse(const Course& course);
 void clearCourse(Course& course);
 void resizeCourse(Course& course, int newCapacity);
 void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile);
+void displayCourseOptions(Course* catalog, int numCourses);
+int getEnrolledCount(const Course& course);
 
 int main() {
     cout << "=====================================" << endl;
@@ -70,14 +72,23 @@ int main() {
     }
     // Creating a loop to enroll students in courses as well as displaying course info depending on user input
     while (true) {
-        cout << "\n Menu:\n 1: Enroll a student\n 2: Display course info\n 3: Resize a course\n 4: Add a new couse to catalog\n 0: Exit and save changes\n" 
+        cout << "\n Menu:\n 1: Enroll a student\n 2: Display course info\n 3: Resize a course\n 4: Add a new course to catalog\n"
+             << " 0: Exit and save changes\nChoice: ";
         int choice;
         cin >> choice;
         if (choice == 0) {
-
+            cout << "Enter output filename to save changes: ";
+            string saveFilename;
+            cin >> saveFilename;
+            saveCatalogToFile(courseCatalog, numCourses, saveFilename);
             break;
         } else if (choice == 1) {
-            
+            if (numCourses == 0) {
+                cout << "No courses in catalog. Please add a course first." << endl;
+                continue;
+            }
+            int index;
+            string studentName;
         }
     }
     return 0;
@@ -174,4 +185,9 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
     }
     outFile.close();
     cout << "Changes successfully saved to " << outputFile << endl;
+}
+
+void displayCourseOptions(Course* catalog, int numCourses) {
+    cout << "\n-------------------- AVAILABLE COURSES --------------------" << endl;
+    
 }
