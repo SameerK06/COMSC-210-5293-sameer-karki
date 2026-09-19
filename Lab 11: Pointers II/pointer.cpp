@@ -142,8 +142,27 @@ int main() {
             }
         } else if (choice == 4) {
             if (numCourses >= catalogCapacity) {
-                cout << "Catalog is full (max " << catalogCapacity << " courses"
+                cout << "Catalog is full (max " << catalogCapacity << " courses)." << endl;
+            } else {
+                string name, courseCode;
+                int credits, year, capacity;
+                cout << "Enter Course Name: ";
+                getline(cin >> ws, name);
+                cout << "Enter Course Code: ";
+                cin >> courseCode;
+                cout << "Enter Credits: ";
+                cin >> credits;
+                cout << "Enter Year: ";
+                cin >> year;
+                cout << "Enter Capacity: ",
+                cin >> capacity;
+                Course* newCoursePtr = courseCatalog + numCourses;
+                initCourse(*newCoursePtr, name, courseCode, credits, year, capacity, true);
+                cout << "Course '" << newCoursePtr->name << "' added at index " << numCourses << "." << endl;
+                numCourses++;
             }
+        } else {
+            cout << "Invalid menu choice. Please try again." << endl;
         }
     }
     return 0;
