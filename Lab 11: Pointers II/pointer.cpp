@@ -92,8 +92,38 @@ int main() {
             string studentName;
             cout << "Enter course index to enroll in (0 to " << numCourses-1 << "): ";
             cin >> index;
-            if (index >= 0 && index < numCourses && courseCatalog[index].active) {
-                cout << "Enter"
+            if (index >= 0 && index < numCourses) {
+                Course* selectedCourse = courseCatalog + index;
+                if (selectedCourse->active) {
+                    cout << "Enter student name: ";
+                    cin >> studentName;
+                    enrollStudent(*selectedCourse, studentName);
+                } else {
+                    cout << "Could not add student to course " << selectedCourse->name << " due to it being inactive" << endl; 
+                }
+            } else {
+                cout << "Invalid course index." << endl;
+            }
+        } else if (choice == 2) {
+            if (numCourses == 0) {
+                cout << "No courses in catalog to display." << endl;
+                continue;
+            }
+            displayCourseOptions(courseCatalog, numCourses);
+            int index;
+            cout << "Enter course index (0 to " << numCourses - 1 << "): ";
+            cin >> index;
+            if (index >= 0 && index < numCourses) {
+                Course* selectedCourse = courseCatalog + index;
+                if (selectedCourse->active) {
+                    cout << "Enter student name: ";
+                    cin >> studentName;
+                    enrollStudent(*selectedCourse, studentName);
+                } else {
+                    cout << "Could not add student to course " << selectedCourse->name << " due to it being inactive" << endl; 
+                }
+            } else {
+                cout << "Invalid course index." << endl;
             }
         }
     }
