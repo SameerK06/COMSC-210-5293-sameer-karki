@@ -10,7 +10,7 @@ struct Course {
     int credits;
     int year;
     int capacity;
-    string* enrolledStudents;
+    string* enrolledStudents = nullptr;
     bool active;
 };
 
@@ -35,10 +35,6 @@ int main() {
     ifstream file(filename);
     if (!file) {
         cout << "Error opening file: " << filename << endl;
-        delete[] courseCatalog;
-        courseCatalog = nullptr;
-        cout << "Exiting program." << endl;
-        return 1;
     } else {
         for (int i = 0; i < numCourses; i++) {
             string name, courseCode;
@@ -93,6 +89,7 @@ void outputCourse(const Course& course) {
     cout << "Credits: " << course.credits << endl;
     cout << "Year: " << course.year << endl;
     cout << "Capacity: " << course.capacity << endl;
+    cout << "Active: " << (course.active ? "Yes" : "No") << endl;
     cout << "Enrolled Students: ";
     if (course.enrolledStudents != nullptr) {
         for (string* ptr = course.enrolledStudents; ptr < course.enrolledStudents + course.capacity; ++ptr) {
@@ -141,6 +138,16 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
     }
     for (int i = 0; i < numCourses; i++) {
         outFile << catalog[i].name << " " << catalog[i].courseCode << " " << catalog[i].credits << " " 
-                << catalog[i].year << " " << catalog[i].capacity;
+                << catalog[i].year << " " << catalog[i].capacity << " " << catalog[i].active;
+        if (catalog[i].enrolledStudents != nullptr) {
+            for (string* ptr = catalog[i].enrolledStudents; ptr < catalog[i].enrolledStudents + catalog[i].capacity; ++ptr) {
+                if (!ptr->empty()) {
+                    outFile << " " << *ptr;
+                }
+            }
+        }
+        outFile << "\n";
     }
+    outFile.close();
+    cout << "Changes successfully saved to " << outputFile << endl;
 }
