@@ -145,8 +145,9 @@ int main() {
             } else {
                 string name, courseCode;
                 int credits, year, capacity;
-                cout << "Enter Course Name: ";
-                getline(cin >> ws, name);
+                // didn't want to deal with the string manipulation with the demlim and this
+                cout << "Enter Course Name (single world or use _ instead of spaces): ";
+                cin >> name;
                 cout << "Enter Course Code: ";
                 cin >> courseCode;
                 cout << "Enter Credits: ";
@@ -255,12 +256,12 @@ void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile
     }
 
     for (Course* cPtr = catalog; cPtr < catalog + numCourses; ++cPtr) {
-        outFile << cPtr->name << "||" << cPtr->courseCode << "||" << cPtr->credits << "||" 
-                << cPtr->year << "||" << cPtr->capacity << "||" << cPtr->active;
+        outFile << cPtr->name << " " << cPtr->courseCode << " " << cPtr->credits << " " 
+                << cPtr->year << " " << cPtr->capacity << " " << cPtr->active;
         if (cPtr->enrolledStudents != nullptr) {
             for (string* sPtr = cPtr->enrolledStudents; sPtr < cPtr->enrolledStudents + cPtr->capacity; ++sPtr) {
                 if(!sPtr->empty()) {
-                    outFile << "||" << *sPtr;
+                    outFile << " " << *sPtr;
                 }
             }
         }
