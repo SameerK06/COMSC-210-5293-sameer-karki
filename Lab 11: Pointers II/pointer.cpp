@@ -10,6 +10,7 @@ struct Course {
     int year;
     int capacity;
     string* enrolledStudents;
+    bool active;
 };
 
 void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity);
@@ -29,15 +30,19 @@ void initCourse(Course& course, const string& name, const string& courseCode, in
     course.year = year;
     course.capacity = capacity;
     course.enrolledStudents = new string[capacity];
+    course.active = true;
 }
 
 void enrollStudent(Course& course, const string& studentName) {
-    for (int i = 0; i < course.capacity; i++) {
-        if (course.enrolledStudents[i].empty()) {
-            course.enrolledStudents[i] 
+    string* ptr = course.enrolledStudents;
+    string* endptr = course.enrolledStudents + course.capacity;
+    while(ptr < endptr) {
+        if (ptr->empty()) {
+            *ptr = studentName;
             cout << "Student " << studentName << " enrolled in course " << course.name << endl;
             return;
         }
+        ptr++;
     }
     cout << "Course " << course.name << " is full. Cannot enroll student " << studentName << endl;
 }
@@ -49,6 +54,25 @@ void outputCourse(const Course& course) {
     cout << "Year: " << course.year << endl;
     cout << "Capacity: " << course.capacity << endl;
     cout << "Enrolled Students: ";
-    if (course.enrolledStudents != nullptr)
-    cout << endl;
+    if (course.enrolledStudents != nullptr) {
+        for (string* ptr = course.enrolledStudents; ptr < course.enrolledStudents + course.capacity; ++ptr) {
+            if (!ptr->empty()) {
+                cout << *ptr << " ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+void clearCourse(Course& course) {
+    delete[] course.enrolledStudents;
+    course.enrolledStudents = nullptr;
+    course.capacity = 0;
+    course.active = false;
+}
+
+void resizeCourse(Course& course, int newCapacity) {
+    if (newCapacity <= course.capacity) {
+        cout << "Increasing capacity is not allowed. New capacity must be larger than current capacity." << endl;
+    }
 }
