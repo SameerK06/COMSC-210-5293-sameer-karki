@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ struct Course {
     bool active;
 };
 
-void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity);
+void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity, bool active);
 void enrollStudent(Course& course, const string& studentName);
 void outputCourse(const Course& course);
 void clearCourse(Course& course);
@@ -34,19 +35,42 @@ int main() {
     cin >> filename;
     ifstream file(filename);
     if (!file) {
-        cout << "Error opening file: " << filename << endl;
+        cout << "Error opening file or file doesn't exist: " << filename << endl;
+        cout << "Starting with an empty catalog." << endl;
     } else {
-        for (int i = 0; i < numCourses; i++) {
+        string line;
+        while (numCourses < courseCapacity && getline(file, line)) {
+            if (line.empty()) {
+                continue;
+            }
+            stringstream ss(line);
             string name, courseCode;
             int credits, year, capacity;
-                file >> name >> courseCode >> credits >> year >> capacity;
-                initCourse(courseCatalog[i], name, courseCode, credits, year, capacity);
+            bool active = true;
+
+            if (ss >> name >> courseCode >> credits >> year >> capacity) {
+                if (!(ss >> active)) {
+                    active = true;
+                }
+                initCourse(courseCatalog[numCourses], name, courseCode, credits, year, capacity, active);
+                string studentName;
+                while (ss >> studentName) {
+                    enrollStudent(courseCatalog[numCourses], studentName);
+                }
+                numCourses++;
+            }
         }
         file.close();
+
+        if (numCourses == 0) {
+            cout << "The file is empty. Starting with an empty catalog." << endl;
+        } else {
+            cout << "Loaded " << numCourses << " courses from " << filename << endl;
+        }
     }
     // Creating a loop to enroll students in courses as well as displaying course info depending on user input
     while (true) {
-        cout << "Enter 1 to enroll a student, 2 to display course info, 3 to resize a course, or 0 to exit: ";
+        cout << "\n Menu:\n 1: Enroll a student\n 2: Display course info\n 3: Resize a course\n 4: Add a new couse to catalog\n 0: Exit and save changes\n" 
         int choice;
         cin >> choice;
         if (choice == 0) {
@@ -59,14 +83,14 @@ int main() {
     return 0;
 }
 
-void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity) {
+void initCourse(Course& course, const string& name, const string& courseCode, int credits, int year, int capacity, bool active) {
     course.name = name;
     course.courseCode = courseCode;
     course.credits = credits;
     course.year = year;
     course.capacity = capacity;
     course.enrolledStudents = new string[capacity];
-    course.active = true;
+    course.active = active;
 }
 
 void enrollStudent(Course& course, const string& studentName) {
