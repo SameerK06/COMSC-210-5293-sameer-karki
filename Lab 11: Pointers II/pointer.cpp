@@ -19,6 +19,7 @@ void enrollStudent(Course& course, const string& studentName);
 void outputCourse(const Course& course);
 void clearCourse(Course& course);
 void resizeCourse(Course& course, int newCapacity);
+void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile);
 
 int main() {
     cout << "=====================================" << endl;
@@ -26,9 +27,8 @@ int main() {
     cout << "=====================================" << endl;
     int courseCapacity = 100;
     Course* courseCatalog = new Course[courseCapacity];
-    cout << "Enter the number of courses to add to the catalog (max " << courseCapacity << "): ";
-    int numCourses;
-    cin >> numCourses;
+    cout << "Enter the number of courses to add to the catalog (max " << courseCapacity << ") given a single run of the program: ";
+    int numCourses = 0;
     cout << "Enter the file containing all courses information: ";
     string filename;
     cin >> filename;
@@ -54,6 +54,7 @@ int main() {
         int choice;
         cin >> choice;
         if (choice == 0) {
+
             break;
         } else if (choice == 1) {
             
@@ -112,7 +113,7 @@ void clearCourse(Course& course) {
 
 void resizeCourse(Course& course, int newCapacity) {
     if (newCapacity <= course.capacity) {
-        cout << "Increasing capacity is not allowed. New capacity must be larger than current capacity." << endl;
+        cout << "Decreasing capacity is not allowed. New capacity must be larger than current capacity." << endl;
     } else {
         string* newEnrolledStudents = new string[newCapacity];
         string* ptr = course.enrolledStudents;
@@ -127,7 +128,6 @@ void resizeCourse(Course& course, int newCapacity) {
         delete[] course.enrolledStudents;
         course.enrolledStudents = newEnrolledStudents;
         course.capacity = newCapacity;
-        delete[] newEnrolledStudents;
         newEnrolledStudents = nullptr;
     }
 }
