@@ -40,7 +40,7 @@ int main() {
         cout << "Exiting program." << endl;
         return 1;
     } else {
-        for (int i = 0; i < numCourses; ++i) {
+        for (int i = 0; i < numCourses; i++) {
             string name, courseCode;
             int credits, year, capacity;
                 file >> name >> courseCode >> credits >> year >> capacity;
@@ -129,5 +129,18 @@ void resizeCourse(Course& course, int newCapacity) {
         course.enrolledStudents = newEnrolledStudents;
         course.capacity = newCapacity;
         newEnrolledStudents = nullptr;
+        cout << "Course " << course.name << " capacity successfully resized to " << newCapacity << endl;
+    }
+}
+
+void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile) {
+    ofstream outFile(outputFile);
+    if (!outFile) {
+        cout << "Error opening file for saving: " << outputFile << endl;
+        return;
+    }
+    for (int i = 0; i < numCourses; i++) {
+        outFile << catalog[i].name << " " << catalog[i].courseCode << " " << catalog[i].credits << " " 
+                << catalog[i].year << " " << catalog[i].capacity;
     }
 }
