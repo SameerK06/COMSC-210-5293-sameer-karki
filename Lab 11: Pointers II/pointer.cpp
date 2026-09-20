@@ -33,7 +33,7 @@ int main() {
     int catalogCapacity = 100;
     Course* courseCatalog = new Course[catalogCapacity];
     int numCourses = 0;
-    cout << "Enter the file containing all courses information: ";
+    cout << "Enter the file containing all courses information (If you don't have one, then just type N): ";
     string filename;
     cin >> filename;
     ifstream file(filename);
@@ -95,7 +95,7 @@ int main() {
             if (index >= 0 && index < numCourses) {
                 Course* selectedCourse = courseCatalog + index;
                 if (selectedCourse->active) {
-                    cout << "Enter student name: ";
+                    cout << "Enter student name (firstname only): ";
                     cin >> studentName;
                     enrollStudent(*selectedCourse, studentName);
                 } else {
@@ -276,7 +276,7 @@ void displayCourseOptions(Course* catalog, int numCourses) {
         if (ptr->active) {
             int enrolled = getEnrolledCount(*ptr);
             int index = ptr - catalog;
-            cout << "[" << index << "]" << ptr->name << " ( " << ptr->courseCode << ") - " << enrolled << "/" << ptr->capacity
+            cout << "[" << index << "]" << ptr->name << " (" << ptr->courseCode << ") - " << enrolled << "/" << ptr->capacity
                  << " Enrolled";
             if (enrolled >= ptr->capacity) {
                 cout << " [FULL]";

@@ -1,0 +1,5 @@
+Program_and_Data COMS-210 5 2026 15 1 Sameer Bob
+Organic_Chemistry_I CHEM-226 5 2026 15 1 Sameer
+Cellular_and_Molecular_Bilogy BIOL-130 5 2026 15 1 Sameer
+Computer_Programing_Using_MATLAB ENGIN-136 4 2026 15 1 Sameer
+Heat_and_Electro_Magnetism PHYS-230 5 2026 15 1 Sameer
