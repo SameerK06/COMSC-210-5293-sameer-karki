@@ -13,5 +13,6 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 6** | Dynamic Arrays & Functions I | [Go to Lab 6](./Lab%206:%20Dynamic%20Arrays%20%26%20Functions%20I/README.md) |
 | **Lab 7** | Dynamic Arrays & Functions II | [Go to Lab 7](./Lab%207:%20Dynamic%20Arrays%20%26%20Functions%20II/README.md) |
 | **Lab 9** | STD::array & STD::vector | [Go to Lab 9](./Lab%209%3A%20STD%3A%3Aarray%20%26%20STD%3A%3Avector/README.md) |
+| **Lab 11** | Pointers II | [Go to Lab 11](./Lab%2011:%20Pointers%20II/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*

@@ -3,3 +3,11 @@ Organic_Chemistry_I CHEM-226 5 2026 15 1 Sameer
 Cellular_and_Molecular_Bilogy BIOL-130 5 2026 15 1 Sameer
 Computer_Programing_Using_MATLAB ENGIN-136 4 2026 15 1 Sameer
 Heat_and_Electro_Magnetism PHYS-230 5 2026 15 1 Sameer
+Data_Structures_and_Algorithms COMS-260 4 2026 30 1 Alice Bob Charlie
+Introduction_to_C++ COMS-165 4 2026 25 1 Dave Eve
+Calculus_I MATH-192 5 2026 35 1 Frank Grace Heidi
+Physics_for_Engineers_I PHYS-130 4 2026 20 1 Ivan
+General_Psychology PSYCH-122 3 2026 40 1 Judy Karl
+English_Composition ENGL-122 3 2026 25 0
+Discrete_Mathematics MATH-210 4 2026 15 1 Liam Mia Noah
+Database_Design COMS-280 3 2026 2 1 Olivia Sophia
