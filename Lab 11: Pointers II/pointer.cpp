@@ -23,6 +23,8 @@ void resizeCourse(Course& course, int newCapacity);
 void saveCatalogToFile(Course* catalog, int numCourses, const string& outputFile);
 void displayCourseOptions(Course* catalog, int numCourses);
 int getEnrolledCount(const Course& course);
+int getValidInt();
+
 
 int main() {
     cout << "=====================================" << endl;
@@ -52,6 +54,7 @@ int main() {
             if (ss >> name >> courseCode >> credits >> year >> capacity) {
                 if (!(ss >> active)) {
                     active = true;
+                    ss.clear();
                 }
                 initCourse(courseCatalog[numCourses], name, courseCode, credits, year, capacity, active);
                 string studentName;
@@ -73,8 +76,7 @@ int main() {
     while (true) {
         cout << "\n Menu:\n 1: Enroll a student\n 2: Display course info\n 3: Resize a course\n 4: Add a new course to catalog\n"
              << " 0: Exit and save changes\nChoice: ";
-        int choice;
-        cin >> choice;
+        int choice = getValidInt();
         if (choice == 0) {
             cout << "Enter output filename to save changes: ";
             string saveFilename;
@@ -87,10 +89,9 @@ int main() {
                 continue;
             }
             displayCourseOptions(courseCatalog, numCourses);
-            int index;
             string studentName;
             cout << "Enter course index to enroll in (0 to " << numCourses-1 << "): ";
-            cin >> index;
+            int index = getValidInt();
             if (index >= 0 && index < numCourses) {
                 Course* selectedCourse = courseCatalog + index;
                 if (selectedCourse->active) {
@@ -109,9 +110,8 @@ int main() {
                 continue;
             }
             displayCourseOptions(courseCatalog, numCourses);
-            int index;
             cout << "Enter course index (0 to " << numCourses - 1 << "): ";
-            cin >> index;
+            int index = getValidInt();
             if (index >= 0 && index < numCourses) {
                 Course* selectedCourse = courseCatalog + index;
                 outputCourse(*selectedCourse);
@@ -126,12 +126,12 @@ int main() {
             displayCourseOptions(courseCatalog, numCourses);
             int index, newCapacity;
             cout << "Enter course index to enroll in (0 to " << numCourses-1 << "): ";
-            cin >> index;
+            index = getValidInt();
             if (index >= 0 && index < numCourses) {
                 Course* selectedCourse = courseCatalog + index;
                 if (selectedCourse->active) {
                     cout << "Enter new capacity: ";
-                    cin >> newCapacity;
+                    newCapacity = getValidInt();
                     resizeCourse(*selectedCourse, newCapacity);
                 } else {
                     cout << "Could not increase capacity of course " << selectedCourse->name << " due to it being inactive" << endl; 
@@ -151,11 +151,11 @@ int main() {
                 cout << "Enter Course Code: ";
                 cin >> courseCode;
                 cout << "Enter Credits: ";
-                cin >> credits;
+                credits = getValidInt();
                 cout << "Enter Year: ";
-                cin >> year;
+                year = getValidInt();
                 cout << "Enter Capacity: ";
-                cin >> capacity;
+                capacity = getValidInt();
                 Course* newCoursePtr = courseCatalog + numCourses;
                 initCourse(*newCoursePtr, name, courseCode, credits, year, capacity, true);
                 cout << "Course '" << newCoursePtr->name << "' added at index " << numCourses << "." << endl;
@@ -243,7 +243,6 @@ void resizeCourse(Course& course, int newCapacity) {
         delete[] course.enrolledStudents;
         course.enrolledStudents = newEnrolledStudents;
         course.capacity = newCapacity;
-        newEnrolledStudents = nullptr;
         cout << "Course " << course.name << " capacity successfully resized to " << newCapacity << endl;
     }
 }
@@ -299,4 +298,14 @@ int getEnrolledCount(const Course& course) {
         }
     }
     return count;
+}
+
+int getValidInt() {
+    int value;
+    while(!(cin >> value)) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Please enter a number: ";
+    }
+    return value;
 }
