@@ -80,7 +80,25 @@ int main() {
     }
     standard_d = sqrt(standard_d/count);
 
+    for (int i = 0; i < count-1; i++) {
+        int minIndex=i;
+        for (int j = i+1; j < count; j++) {
+            if (student_arr[i].score < student_arr[minIndex].score) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            Student temp = student_arr[i];
+            student_arr[i] = student_arr[minIndex];
+            student_arr[minIndex] = temp;
+        }
+    }
 
-
+    cout << "--- Summary Statistics ---\n";
+    cout << "Minimum Score: " << minScore << " (Student ID: " << minId << ")\n";
+    cout << "Maximum Score: " << maxScore << " (Student ID: " << maxId << ")\n";
+    cout << "Mean Score: " << mean << "\n";
+    cout << "Median Score: " << student_arr[count/2].score << " (Student ID: " << student_arr[count/2].id << ")\n";
+    cout << "Standard Deviation: " << standard_d << "\n";
     return 0;
 }
