@@ -63,7 +63,7 @@ int main() {
     double minScore, maxScore = student_arr[0].score;
     int minId, maxId;
     for (int i = 0; i < count; i++) {
-        sum += student_arr[i].score;
+        mean += student_arr[i].score;
         if (student_arr[i].score < minScore) {
             minScore = student_arr[i].score;
             minId = student_arr[i].id;
@@ -73,7 +73,12 @@ int main() {
             maxId = student_arr[i].id;
         }
     }
-    mean/=count;
+    mean /= count;
+    double standard_d = 0.0;
+    for (int i = 0; i < count; i++) {
+        standard_d += pow(student_arr[i].score-mean,2);
+    }
+    standard_d = sqrt(standard_d/count);
 
 
 
