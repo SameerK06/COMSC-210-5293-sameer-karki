@@ -11,6 +11,8 @@ struct Student {
     double score;
 };
 
+
+
 int main() {
     Student student_arr[MAX_STUDENTS];
     string filename = "210-lab-13-grades.txt";
@@ -21,8 +23,39 @@ int main() {
     }
     int count = 0;
     while (inFile >> student_arr[count].id >> student_arr[count].score) {
-        cout 
+        count++;
     }
+    inFile.close();
+    if (count <= 0) {
+        cout << "No records found or error reading file " << filename << endl;
+        return 1;
+    } else {
+        cout << "Read " << count << " student records" << endl;
+    }
+
+    for (int i = 0; i < count-1; i++) {
+        int minIndex=i;
+        for (int j = i+1; j < count; j++) {
+            if (student_arr[i].id < student_arr[minIndex].id) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            Student temp = student_arr[i];
+            student_arr[i] = student_arr[minIndex];
+            student_arr[minIndex] = temp;
+        }
+    }
+
+    ofstream outFile(filename);
+    if (!outFile) {
+        cout << "Error: Cannot open output file " << filename << endl;
+        return 1;
+    }
+    for (int i = 0; i < count; i++) {
+        outFile << student_arr[i] << " " <<
+    }
+
 
 
 
