@@ -37,7 +37,7 @@ int main() {
     for (int i = 0; i < count-1; i++) {
         int minIndex=i;
         for (int j = i+1; j < count; j++) {
-            if (student_arr[i].id < student_arr[minIndex].id) {
+            if (student_arr[j].id < student_arr[minIndex].id) {
                 minIndex = j;
             }
         }
@@ -60,7 +60,8 @@ int main() {
     cout << "The sorted results are saved to " << outputFile << endl;
 
     double mean = 0.0;
-    double minScore, maxScore = student_arr[0].score;
+    double minScore = student_arr[0].score;
+    double maxScore = student_arr[0].score;
     int minId, maxId;
     for (int i = 0; i < count; i++) {
         mean += student_arr[i].score;
@@ -83,7 +84,7 @@ int main() {
     for (int i = 0; i < count-1; i++) {
         int minIndex=i;
         for (int j = i+1; j < count; j++) {
-            if (student_arr[i].score < student_arr[minIndex].score) {
+            if (student_arr[j].score < student_arr[minIndex].score) {
                 minIndex = j;
             }
         }
