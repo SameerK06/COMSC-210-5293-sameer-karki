@@ -35,6 +35,15 @@ public:
         blue = limit(b);
     }
     
+    int getRed() const {
+        return red;
+    }
+    int getGreen() const {
+        return green;
+    }
+    int getBlue() const {
+        return blue;
+    }
 
 };
 
