@@ -39,10 +39,10 @@ public:
     int getBlue() const { return blue; }
 
     void print() const {
-        cout << this->name << ":\n"
-        << "[ R: " << this->red
-        << " | G: " << this->green
-        << " | B: " << this->blue << " ]" << endl;
+        cout << getName() << ":\n"
+        << "[ R: " << getRed()
+        << " | G: " << getGreen()
+        << " | B: " << getBlue() << " ]" << endl;
     }
 
 };
