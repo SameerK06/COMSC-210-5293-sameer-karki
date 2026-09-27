@@ -21,10 +21,11 @@ private:
     }
 public:
     Color() : name(""), red(0), green(0), blue(0) {}
-    Color(string name, int r, int g, int b) {
+    Color(string n, int r, int g, int b) {
+        setName(n);
         setRed(r);
-        setBlue(g);
-        setGreen(b);
+        setGreen(g);
+        setBlue(b);
     }
 
     void setName(string name) { this->name = name; }
@@ -38,7 +39,7 @@ public:
     int getBlue() const { return blue; }
 
     void print() const {
-        cout << this->name << ":\t"
+        cout << this->name << ":\n"
         << "[ R: " << this->red
         << " | G: " << this->green
         << " | B: " << this->blue << " ]" << endl;
