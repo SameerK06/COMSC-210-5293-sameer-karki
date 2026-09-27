@@ -41,5 +41,18 @@ int main() {
         return 1;
     }
 
+    string tempScreenWriter;
+    string tempYearReleased;
+    string tempTitle;
+
+    while (getline(inFile, tempScreenWriter) && getline(inFile, tempYearReleased) && getline(inFile, tempTitle)) {
+        movieList.emplace_back(tempScreenWriter, stoi(tempYearReleased), tempTitle);
+    }
+
+    for (Movie movie: movieList) {
+        movie.print();
+    }
+
+
     return 0;
 }
