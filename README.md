@@ -15,5 +15,6 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 9** | STD::array & STD::vector | [Go to Lab 9](./Lab%209%3A%20STD%3A%3Aarray%20%26%20STD%3A%3Avector/README.md) |
 | **Lab 11** | Pointers II | [Go to Lab 11](./Lab%2011:%20Pointers%20II/README.md) |
 | **Lab 13** | Student Grade Sorter | [Go to Lab 13](./Lab%2013:%20Student%20Grade%20Sorter/README.md) |
+| **Lab 14** | Color Class | [Go to Lab 14](./Lab%2014:%20Color%20Class/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
