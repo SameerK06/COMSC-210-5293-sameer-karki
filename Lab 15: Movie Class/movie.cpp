@@ -29,30 +29,28 @@ public:
         cout << "Movie: " << getTitle() << endl;
         cout << "   Year Released: " << getYearReleased() << endl;
         cout << "   Screenwriter: " << getScreenWriter() << endl;
+        cout << endl;
     }
 };
 
 int main() {
     vector<Movie> movieList;
-    string inputFile = "movielist.txt";
+    string inputFile = "movieList.txt";
+    string tempScreenWriter;
+    string tempYearReleased;
+    string tempTitle;
     ifstream inFile(inputFile);
     if (!inFile) {
         cout << "Error: Could not open " << inputFile << endl;
         return 1;
     }
-
-    string tempScreenWriter;
-    string tempYearReleased;
-    string tempTitle;
-
     while (getline(inFile, tempScreenWriter) && getline(inFile, tempYearReleased) && getline(inFile, tempTitle)) {
         movieList.emplace_back(tempScreenWriter, stoi(tempYearReleased), tempTitle);
     }
+    inFile.close();
 
     for (Movie movie: movieList) {
         movie.print();
     }
-
-
     return 0;
 }
