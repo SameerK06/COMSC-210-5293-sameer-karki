@@ -21,36 +21,39 @@ private:
     }
 public:
     Color() : name(""), red(0), green(0), blue(0) {}
-    Color(int r, int g, int b) {
+    Color(string name, int r, int g, int b) {
         setRed(r);
         setBlue(g);
         setGreen(b);
     }
 
-    void setRed(int r) {
-        red = limit(r);
-    }
-    void setGreen(int g) {
-        green = limit(g);
-    }
-    void setBlue(int b) {
-        blue = limit(b);
-    }
-    
-    int getRed() const {
-        return red;
-    }
-    int getGreen() const {
-        return green;
-    }
-    int getBlue() const {
-        return blue;
-    }
+    void setName(string name) { this->name = name; }
+    void setRed(int red) { this->red = limit(red); }
+    void setGreen(int green) { this->green = limit(green); }
+    void setBlue(int blue) { this->blue = limit(blue); }
 
-    void print(const)
+    string getName() const { return name; }
+    int getRed() const { return red; }
+    int getGreen() const { return green; }
+    int getBlue() const { return blue; }
+
+    void print() const {
+        cout << this->name << ":\t"
+        << "[ R: " << this->red
+        << " | G: " << this->green
+        << " | B: " << this->blue << " ]" << endl;
+    }
 
 };
 
 int main() {
+    Color pureRed("Pure Red", 255, 0, 0);
+    Color pureGreen;
+    Color pureBlue;
+    Color impossibleColor("Impossible Color", -1, 1000, 50);
+    Color violet("Violet", 143, 0, 255);
+
+    
+
     return 0;
 }
