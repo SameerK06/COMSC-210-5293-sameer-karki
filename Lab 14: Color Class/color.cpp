@@ -1,9 +1,11 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 class Color {
 private:
+    string name;
     int red;
     int green;
     int blue;
@@ -18,7 +20,7 @@ private:
         }
     }
 public:
-    Color() : red(0), green(0), blue(0) {}
+    Color() : name(""), red(0), green(0), blue(0) {}
     Color(int r, int g, int b) {
         setRed(r);
         setBlue(g);
@@ -44,6 +46,8 @@ public:
     int getBlue() const {
         return blue;
     }
+
+    void print(const)
 
 };
 
