@@ -48,12 +48,16 @@ public:
 
 int main() {
     Color pureRed("Pure Red", 255, 0, 0);
-    Color pureGreen;
-    Color pureBlue;
+    Color pureGreen("Pure Green", 0, 255, 0);
+    Color pureBlue("Pure Blue", 0, 0, 255);
     Color impossibleColor("Impossible Color", -1, 1000, 50);
     Color violet("Violet", 143, 0, 255);
 
-    
+    Color colors[5] = { pureRed, pureGreen, pureBlue, impossibleColor, violet };
+
+    for (Color color: colors) {
+        color.print();
+    }
 
     return 0;
 }
