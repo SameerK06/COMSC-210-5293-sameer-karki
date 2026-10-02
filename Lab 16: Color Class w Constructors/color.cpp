@@ -68,6 +68,8 @@ public:
     void print() const {
         if (getName().empty() && getRed() == 0 && getGreen() == 0 && getBlue() == 0) {
             cout << "Black:\n";
+        } else if (getName().empty()) {
+            cout << "No name given:\n";
         } else {
             cout << getName() << ":\n";
         }
@@ -93,7 +95,7 @@ int main() {
     Color colorName("Partial Color Name parameter [Black]");
     Color noColorName(5,255,152);
     Color grayscale(99);
-    
+
     Color colors[9] = { pureRed, pureGreen, pureBlue, impossibleColor, violet, colorDefault, colorName, noColorName, grayscale };
 
     for (Color color: colors) {
