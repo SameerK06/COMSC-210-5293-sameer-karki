@@ -20,19 +20,40 @@ private:
         }
     }
 public:
+    // Default Constructor
     Color() {
         setName("");
         setRed(0);
         setGreen(0);
         setBlue(0);
     }
-    
+    // Parameter Constructor
     Color(string n, int r, int g, int b) {
         setName(n);
         setRed(r);
         setGreen(g);
         setBlue(b);
     }
+    // Partial Parameter Constructors
+    Color(string n) {
+        setName(n);
+        setRed(0);
+        setGreen(0);
+        setBlue(0);
+    }
+    Color(int r, int g, int b) {
+        setName("");
+        setRed(r);
+        setGreen(g);
+        setBlue(b);
+    }
+    Color(int grayscale) {
+        setName("");
+        setRed(grayscale);
+        setGreen(grayscale);
+        setBlue(grayscale);
+    }
+    
 
     void setName(string name) { this->name = name; }
     void setRed(int red) { this->red = limit(red); }
