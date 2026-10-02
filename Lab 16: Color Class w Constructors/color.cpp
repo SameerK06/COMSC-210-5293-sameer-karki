@@ -66,8 +66,12 @@ public:
     int getBlue() const { return blue; }
 
     void print() const {
-        cout << getName() << ":\n"
-        << "[ R: " << getRed()
+        if (getName().empty() && getRed() == 0 && getGreen() == 0 && getBlue() == 0) {
+            cout << "Black:\n";
+        } else {
+            cout << getName() << ":\n";
+        }
+        cout << "[ R: " << getRed()
         << " | G: " << getGreen()
         << " | B: " << getBlue() << " ]" << endl;
     }
@@ -75,13 +79,22 @@ public:
 };
 
 int main() {
+    //  Parameter Constructor
     Color pureRed("Pure Red", 255, 0, 0);
     Color pureGreen("Pure Green", 0, 255, 0);
     Color pureBlue("Pure Blue", 0, 0, 255);
     Color impossibleColor("Impossible Color", -1, 1000, 50);
     Color violet("Violet", 143, 0, 255);
 
-    Color colors[5] = { pureRed, pureGreen, pureBlue, impossibleColor, violet };
+    // Default Constructor
+    Color colorDefault;
+
+    // Partial Constructor
+    Color colorName("Partial Color Name parameter [Black]");
+    Color noColorName(5,255,152);
+    Color grayscale(99);
+    
+    Color colors[9] = { pureRed, pureGreen, pureBlue, impossibleColor, violet, colorDefault, colorName, noColorName, grayscale };
 
     for (Color color: colors) {
         color.print();
