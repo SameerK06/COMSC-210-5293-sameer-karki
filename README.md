@@ -17,5 +17,5 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 13** | Student Grade Sorter | [Go to Lab 13](./Lab%2013:%20Student%20Grade%20Sorter/README.md) |
 | **Lab 14** | Color Class | [Go to Lab 14](./Lab%2014:%20Color%20Class/README.md) |
 | **Lab 15** | Movie Class | [Go to Lab 15](./Lab%2015:%20Movie%20Class/README.md) |
-
+| **Lab 16** | Color Class w Constructors | [Go to Lab 14](./Lab%2014:%20Color%20Class%20w%20Constructors/README.md) |
 *Note: Click the links in the table above to view the code and specific details for each task.*

@@ -6,6 +6,7 @@ This task focuses on the fundamental ideas related to classes within C++ and how
 
 ## Creator's Thoughts
 - This was okay, it was not bad. Definitely  reminded that I forgot a lot about classes in C++, but a helpful reminder.
+- The other constructors were easy enough to add, didn't have to rework anything that much.
 
 ## Layout
 .\
