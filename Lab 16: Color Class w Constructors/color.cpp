@@ -20,7 +20,13 @@ private:
         }
     }
 public:
-    Color() : name(""), red(0), green(0), blue(0) {}
+    Color() {
+        setName("");
+        setRed(0);
+        setGreen(0);
+        setBlue(0);
+    }
+    
     Color(string n, int r, int g, int b) {
         setName(n);
         setRed(r);
