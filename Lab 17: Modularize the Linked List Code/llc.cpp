@@ -8,6 +8,11 @@ struct Node {
     Node *next;
 };
 
+void addNodeFront(Node *&head, float value);
+void addNodeTail(Node *&head, float value);
+void deleteNode(Node *&head, int position);
+void insertNodeAfter(Node *&head, int position, float value);
+void deleteList(Node *&head);
 void output(Node *);
 
 int main() {
