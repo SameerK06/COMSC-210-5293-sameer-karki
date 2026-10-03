@@ -8,10 +8,16 @@ struct Node {
     Node *next;
 };
 
-void addNodeFront(Node *&head, float value);
-void addNodeTail(Node *&head, float value);
+/* 
+* Used passing by reference due to its ability to modify the original pointer. This is less error-prone since
+* it always guarantees the calling function will always have access to the updated pointer without needing
+* programmer to reassign it. 
+*/
+
+void addNodeFront(Node *&head, float val);
+void addNodeTail(Node *&head, float val);
 void deleteNode(Node *&head, int position);
-void insertNodeAfter(Node *&head, int position, float value);
+void insertNodeAfter(Node *&head, int position, float val);
 void deleteList(Node *&head);
 void output(Node *);
 
@@ -110,6 +116,28 @@ int main() {
     output(head);
 
     return 0;
+}
+
+void addNodeFront(Node *&head, float val) {
+    Node *newNode = new Node;
+    newNode->value = val;
+    newNode->next = head;
+    head = newNode;
+}
+
+void addNodeTail(Node *&head, float val) {
+    Node *newNode = new Node;
+    newNode->value = val;
+    newNode->next = nullptr;
+    if (!head) {
+        head = newNode;
+        return;
+    }
+    Node *current = head;
+    while (current->next) {
+        current = current->next;
+    }
+    current->next = newNode;
 }
 
 void output(Node *hd) {
