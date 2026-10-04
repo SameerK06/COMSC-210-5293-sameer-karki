@@ -67,14 +67,14 @@ public:
     }
 
     void printReviews() const {
-        cout << "Movie Title: " << title << endl;
+        cout << "\nMovie Title: " << title << endl;
         Reviews* current = head;
         cout.setf(ios::fixed);
         cout.precision(1);
         int count = 1;
         double sum = 0.0;
         while (current) {
-            cout << "Review " << count << ": " << current->rating << " - " << current->comment << endl;
+            cout << "Review " << count << ":\n Rating: " << current->rating << "\n Comment: " << current->comment << endl;
             sum += current->rating;
             current = current->next;
             count++;
