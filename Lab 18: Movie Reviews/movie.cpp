@@ -92,6 +92,39 @@ double generateRandomRatings();
 
 
 int main() {
+    string filename = "input.txt";
+    prepareInputFile(filename);
+    vector<string> comments;
+    string line;
+    ifstream inFile(filename);
+    if (inFile) {
+        while (getline(inFile, line)) {
+            comments.push_back(line);
+        }
+        inFile.close();
+    } else {
+        cout << "Error opening file." << endl;
+        return 1;
+    }
+
+    vector<Movie> movies;
+    movies.push_back(Movie("The Lord of the Rings"));
+    movies.push_back(Movie("The Godfather"));
+    movies.push_back(Movie("Star Wars"));
+    movies.push_back(Movie("Jurassic Park"));
+
+    int commentIndex = 0;
+    for (int i  = 0; i < movies.size(); i++) {
+        for (int j = 0; j < 3 && commentIndex < comments.size(); j++) {
+            double rating = generateRandomRatings();
+            movies[i].addReview(rating, comments[commentIndex]);
+            commentIndex++;
+        }
+    }
+
+    for (const Movie& movie : movies) {
+        movie.printReviews();
+    }
     return 0;
 }
 
@@ -114,10 +147,11 @@ void prepareInputFile(const string& filename) {
         outFile.close();
         cout << "Input file doesn't exist. Creating a new one with sample reviews." << endl;
     }
+    inFile.close();
 }
 
 double generateRandomRatings() {
     srand(time(0));
-    double rating = 1.0 + (rand() % 50) / 10.0;
+    double rating = 1.0 + (rand() % 49) / 10.0;
     return rating;
 }
