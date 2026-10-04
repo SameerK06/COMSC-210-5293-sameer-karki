@@ -154,13 +154,39 @@ void deleteNode(Node *&head, int position) {
         for (int i = 1; i < position && current != nullptr; i++) {
             prev = current;
             current = current->next;
+            if (!current) {
+                cout << "Position out of bounds.\n";
+                return;
+            }
         }
-        
+        prev->next = current->next;
+        delete current;
     }
     cout << "Node at position " << position << " deleted.\n";
-    return;
-   
-} 
+}
+
+void insertNode(Node *&head, int position, float val) {
+    if (position < 0) {
+        cout << "Invalid position.\n";
+    } else if (position == 1) {
+        addNodeFront(head, val);
+    } else {
+        Node *current = head;
+        for (int i = 1; i < position && current != nullptr; i++) {
+            current = current->next;
+        }
+        if (!current) {
+            cout << "Position out of bounds. Appending to the end instead.\n";
+            addNodeTail(head, val);
+            return;
+        }
+        Node *newNode = new Node;
+        newNode->value = val;
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+    cout << "Node inserted at position " <<
+}
 
 void output(Node *hd) {
     if (!hd) {
