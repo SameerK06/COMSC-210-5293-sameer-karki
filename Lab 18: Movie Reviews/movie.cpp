@@ -67,11 +67,57 @@ public:
     }
 
     void printReviews() const {
-        cout << "Movie Title: "
+        cout << "Movie Title: " << title << endl;
+        Reviews* current = head;
+        cout.setf(ios::fixed);
+        cout.precision(1);
+        int count = 1;
+        double sum = 0.0;
+        while (current) {
+            cout << "Review " << count << ": " << current->rating << " - " << current->comment << endl;
+            sum += current->rating;
+            current = current->next;
+            count++;
+        }
+        if (count > 1) {
+            cout << "Average Rating: " << sum / (count - 1) << endl;
+        }
+        cout.unsetf(ios::fixed);
     }
-
 };
+
+
+void prepareInputFile(const string& filename);
+double generateRandomRatings();
+
 
 int main() {
     return 0;
+}
+
+void prepareInputFile(const string& filename) {
+    ifstream inFile(filename);
+    if (!inFile) {
+        ofstream outFile(filename);
+        outFile << "An epic journey with stunning visuals.\n";
+        outFile << "Too long, but the battles are incredible.\n";
+        outFile << "The best fantasy film ever made.\n";
+        outFile << "A masterpiece of storytelling and acting.\n";
+        outFile << "Brando's performance is unforgettable.\n";
+        outFile << "Slow start, but worth every minute.\n";
+        outFile << "Classic space adventure that still holds up.\n";
+        outFile << "Great characters and a legendary score.\n";
+        outFile << "Some effects look dated today.\n";
+        outFile << "The dinosaurs still look amazing.\n";
+        outFile << "Tense, fun, and perfectly paced.\n";
+        outFile << "The science is shaky but who cares.\n";
+        outFile.close();
+        cout << "Input file doesn't exist. Creating a new one with sample reviews." << endl;
+    }
+}
+
+double generateRandomRatings() {
+    srand(time(0));
+    double rating = 1.0 + (rand() % 50) / 10.0;
+    return rating;
 }
