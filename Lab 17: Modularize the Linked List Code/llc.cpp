@@ -142,6 +142,8 @@ void output(Node *hd) {
 
 void displayMenu(Node *&head) {
     int choice = 0;
+    float val;
+    int pos;
     do {
         cout << "\n=== Linked List Menu ===\n"
         << "1. Add Node at Front\n"
@@ -156,12 +158,12 @@ void displayMenu(Node *&head) {
         switch (choice) {
             case 1:
                 cout << "Enter the value to add at the front: ";
-                float val = getValidFloat();
+                val = getValidFloat();
                 addNodeFront(head, val);
                 break;
             case 2:
                 cout << "Enter the value to add at the end: ";
-                float val = getValidFloat();
+                val = getValidFloat();
                 addNodeTail(head, val);
                 break;
             case 3:
@@ -171,15 +173,15 @@ void displayMenu(Node *&head) {
                 }
                 output(head);
                 cout << "Enter the node number to delete: ";
-                int pos = getValidInt(1, head->getLength());
+                pos = getValidInt(1, head->getLength());
                 deleteNode(head, pos);
                 break;
             case 4:
                 output(head);
                 cout << "Enter the position to insert the node: ";
-                int pos = getValidInt(1, head->getLength());
+                pos = getValidInt(1, head->getLength());
                 cout << "Enter the value to insert: ";
-                float val = getValidFloat();
+                val = getValidFloat();
                 insertNode(head, pos, val);
                 break;
             case 5:
