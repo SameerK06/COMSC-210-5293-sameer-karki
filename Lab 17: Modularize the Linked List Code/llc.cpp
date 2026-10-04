@@ -229,51 +229,67 @@ void output(Node *hd) {
 }
 
 void displayMenu(Node *&head) {
-    cout << "\n=== Linked List Menu ===\n"
-    << "1. Add Node at Front\n"
-    << "2. Add Node at Tail\n"
-    << "3. Delete Node at Position\n"
-    << "4. Insert Node at Position\n"
-    << "5. Delete the Whole List\n"
-    << "6. Exit\n";
-    cout << "Enter your choice: ";
-    int choice = getValidInt(1, 6);
-    switch (choice) {
-        case 1:
-            cout << "Enter the value to add at the front: ";
-            float val = getValidFloat();
-            addNodeFront(head, val);
-            break;
-        case 2:
-            cout << "Enter the value to add at the end: ";
-            float val = getValidFloat();
-            addNodeTail(head, val);
-            break;
-        case 3:
-            if (!head) {
-                cout << "List is empty, nothing to delete.\n";
+    int choice = 0;
+    do {
+        cout << "\n=== Linked List Menu ===\n"
+        << "1. Add Node at Front\n"
+        << "2. Add Node at Tail\n"
+        << "3. Delete Node at Position\n"
+        << "4. Insert Node at Position\n"
+        << "5. Delete the Whole List\n"
+        << "6. Print the List\n"
+        << "7. Exit\n";
+        cout << "Enter your choice: ";
+        choice = getValidInt(1, 7);
+        switch (choice) {
+            case 1:
+                cout << "Enter the value to add at the front: ";
+                float val = getValidFloat();
+                addNodeFront(head, val);
                 break;
-            }
-            output(head);
-            cout << "Enter the node number to delete: ";
-            int pos = getValidInt(1, head->getLength());
-            deleteNode(head, pos);
-            break;
-        case 4:
-            output(head);
-            cout << "Enter the position to insert the node: ";
-            int pos = getValidInt(1, head->getLength());
-            cout << "Enter the value to insert: ";
-            float val = getValidFloat();
-            insertNode(head, pos, val);
-            break;
-        case 5:
-            deleteList(head);
-            break;
-        case 6:
-            output(head);
-            break;
-        
-        
+            case 2:
+                cout << "Enter the value to add at the end: ";
+                float val = getValidFloat();
+                addNodeTail(head, val);
+                break;
+            case 3:
+                if (!head) {
+                    cout << "List is empty, nothing to delete.\n";
+                    break;
+                }
+                output(head);
+                cout << "Enter the node number to delete: ";
+                int pos = getValidInt(1, head->getLength());
+                deleteNode(head, pos);
+                break;
+            case 4:
+                output(head);
+                cout << "Enter the position to insert the node: ";
+                int pos = getValidInt(1, head->getLength());
+                cout << "Enter the value to insert: ";
+                float val = getValidFloat();
+                insertNode(head, pos, val);
+                break;
+            case 5:
+                deleteList(head);
+                break;
+            case 6:
+                output(head);
+                break;
+            case 7:
+                cout << "Exiting...\n";
+                deleteList(head);
+                break;
+        }
+    } while (choice != 7);
+}
+
+int getValidInt(int min, int max) {
+    int val;
+    while (cin >> val) {
+        if (val >= min && val <= max) {
+            return val;
+        }
+        cout << "Invalid input. Please enter a number between " << min << " and " << max << ".\n";
     }
 }
