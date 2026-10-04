@@ -6,6 +6,16 @@ const int SIZE = 7;
 struct Node {
     float value;
     Node *next;
+
+    int getLength() {
+        int count = 0;
+        const Node *current = this;
+        while (current != nullptr) {
+            count++;
+            current = current->next;
+        }
+        return count;
+    }
 };
 
 /* 
@@ -22,7 +32,7 @@ void deleteList(Node *&head);
 void output(Node *);
 
 // Game Loop functions
-void displayMenu();
+void displayMenu(Node *&head);
 int getValidInt(int min, int max);
 float getValidFloat();
 
@@ -201,6 +211,7 @@ void deleteList(Node *&head) {
         current = head;
     }
     head = nullptr;
+    cout << "Entire List Deleted.\n";
 }
 
 void output(Node *hd) {
@@ -217,7 +228,7 @@ void output(Node *hd) {
     cout << endl;
 }
 
-void displayMenu() {
+void displayMenu(Node *&head) {
     cout << "\n=== Linked List Menu ===\n"
     << "1. Add Node at Front\n"
     << "2. Add Node at Tail\n"
@@ -233,20 +244,36 @@ void displayMenu() {
             float val = getValidFloat();
             addNodeFront(head, val);
             break;
-        case 1:
-            cout << "Enter the value to add at the front: ";
+        case 2:
+            cout << "Enter the value to add at the end: ";
             float val = getValidFloat();
-            addNodeFront(head, val);
+            addNodeTail(head, val);
             break;
-        case 1:
-            cout << "Enter the value to add at the front: ";
+        case 3:
+            if (!head) {
+                cout << "List is empty, nothing to delete.\n";
+                break;
+            }
+            output(head);
+            cout << "Enter the node number to delete: ";
+            int pos = getValidInt(1, head->getLength());
+            deleteNode(head, pos);
+            break;
+        case 4:
+            output(head);
+            cout << "Enter the position to insert the node: ";
+            int pos = getValidInt(1, head->getLength());
+            cout << "Enter the value to insert: ";
             float val = getValidFloat();
-            addNodeFront(head, val);
+            insertNode(head, pos, val);
             break;
-        case 1:
-            cout << "Enter the value to add at the front: ";
-            float val = getValidFloat();
-            addNodeFront(head, val);
+        case 5:
+            deleteList(head);
             break;
+        case 6:
+            output(head);
+            break;
+        
+        
     }
 }
