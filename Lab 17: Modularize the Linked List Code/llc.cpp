@@ -185,7 +185,17 @@ void insertNode(Node *&head, int position, float val) {
         newNode->next = current->next;
         current->next = newNode;
     }
-    cout << "Node inserted at position " <<
+    cout << "Node inserted at position " << position << ".\n";
+}
+
+void deleteList(Node *&head) {
+    Node *current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
 }
 
 void output(Node *hd) {
