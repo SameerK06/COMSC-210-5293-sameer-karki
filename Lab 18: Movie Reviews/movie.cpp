@@ -11,7 +11,7 @@ struct Reviews {
     string comment;
     Reviews* next;
 
-    Reviews(const double& r, const string& c, Reviews* n = nullptr) : rating(r), comment(c), next(n) {}
+    Reviews(const double r, const string& c, Reviews* n = nullptr) : rating(r), comment(c), next(n) {}
 };
 
 class Movie {
@@ -63,8 +63,11 @@ public:
     }
 
     void addReview(const double& rating, const string& comment) {
-        Reviews* newReview = new Reviews(rating, comment);
-        head = new Reviews(rating, comment);
+        head = new Reviews(rating, comment, head);
+    }
+
+    void printReviews() const {
+        cout << "Movie Title:"
     }
 
 };
