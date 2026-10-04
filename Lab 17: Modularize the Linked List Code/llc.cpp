@@ -286,10 +286,35 @@ void displayMenu(Node *&head) {
 
 int getValidInt(int min, int max) {
     int val;
-    while (cin >> val) {
+    while (true) {
+        while (!(cin >> val)) {
+            cin.clear();
+            while (cin.get() != '\n') {
+                continue;
+            }
+            cout << "Invalid input. Please enter a number between " << min << " and " << max << ".\n";
+        }
         if (val >= min && val <= max) {
             return val;
+        } else {
+            cout << "Input out of bounds. Please enter a number between " << min << " and " << max << ".\n";
         }
-        cout << "Invalid input. Please enter a number between " << min << " and " << max << ".\n";
+    }
+
+float getValidFloat() {
+    float val;
+    while (true) {
+        if (cin >> val) {
+            while (cin.get() != '\n') {
+                continue;
+            }
+            return val;
+        } else {
+            cin.clear();
+            while (cin.get() != '\n') {
+                continue;
+            }
+            cout << "Invalid input. Please enter a valid float value.\n";
+        }
     }
 }
