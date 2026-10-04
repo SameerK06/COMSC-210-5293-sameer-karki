@@ -67,7 +67,7 @@ public:
     }
 
     void printReviews() const {
-        cout << "Movie Title:"
+        cout << "Movie Title: "
     }
 
 };
