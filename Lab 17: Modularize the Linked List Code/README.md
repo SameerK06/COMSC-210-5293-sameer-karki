@@ -8,6 +8,7 @@ This project focuses on building and managing a singly linked list in C++. The g
 - I learned how important pointer references are when modifying the head of a linked list.
 - Passing the head by reference allows the function to change the actual list rather than a copy of the pointer.
 - The menu-driven design makes it easy to test each linked list function individually.
+- Used passing by reference due to its ability to modify the original pointer. This is less error-prone since it always guarantees the calling function will always have access to the updated pointer without needing programmer to reassign it.
 
 ## Layout
 .\
