@@ -18,4 +18,7 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 14** | Color Class | [Go to Lab 14](./Lab%2014:%20Color%20Class/README.md) |
 | **Lab 15** | Movie Class | [Go to Lab 15](./Lab%2015:%20Movie%20Class/README.md) |
 | **Lab 16** | Color Class w Constructors | [Go to Lab 16](./Lab%2016:%20Color%20Class%20w%20Constructors/README.md) |
+| **Lab 17** | Modularize the Linked List Code | [Go to Lab 17](./Lab%2017:%20Modularize%20the%20Linked%20List%20Code/README.md) |
+| **Lab 18** | Movie Reviews | [Go to Lab 18](./Lab%2018:%20Movie%20Reviews/README.md) |
+
 *Note: Click the links in the table above to view the code and specific details for each task.*
