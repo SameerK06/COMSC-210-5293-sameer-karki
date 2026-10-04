@@ -46,6 +46,7 @@ public:
             otherCurrent = otherCurrent->next;
         }
     }
+
     Movie& operator=(const Movie& other) {
         if (this == &other) return *this;
         clearReviews();
@@ -59,6 +60,11 @@ public:
             otherCurrent = otherCurrent->next;
         }
         return *this;
+    }
+
+    void addReview(const double& rating, const string& comment) {
+        Reviews* newReview = new Reviews(rating, comment);
+        head = new Reviews(rating, comment);
     }
 
 };
