@@ -39,7 +39,26 @@ public:
         if (!other.head) return;
         head = new Reviews(other.head->rating, other.head->comment);
         Reviews* current = head;
-        
+        Reviews* otherCurrent = other.head->next;
+        while (otherCurrent != nullptr) {
+            current->next = new Reviews(otherCurrent->rating, otherCurrent->comment);
+            current = current->next;
+            otherCurrent = otherCurrent->next;
+        }
+    }
+    Movie& operator=(const Movie& other) {
+        if (this == &other) return *this;
+        clearReviews();
+        if (!other.head) return *this;
+        head = new Reviews(other.head->rating, other.head->comment);
+        Reviews* current = head;
+        Reviews* otherCurrent = other.head->next;
+        while (otherCurrent != nullptr) {
+            current->next = new Reviews(otherCurrent->rating, otherCurrent->comment);
+            current = current->next;
+            otherCurrent = otherCurrent->next;
+        }
+        return *this;
     }
 
 };
