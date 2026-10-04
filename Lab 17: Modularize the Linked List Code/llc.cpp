@@ -21,6 +21,11 @@ void insertNodeAfter(Node *&head, int position, float val);
 void deleteList(Node *&head);
 void output(Node *);
 
+// Game Loop functions
+void displayMenu();
+int getValidInt(int min, int max);
+float getValidFloat();
+
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -210,4 +215,38 @@ void output(Node *hd) {
         current = current->next;
     }
     cout << endl;
+}
+
+void displayMenu() {
+    cout << "\n=== Linked List Menu ===\n"
+    << "1. Add Node at Front\n"
+    << "2. Add Node at Tail\n"
+    << "3. Delete Node at Position\n"
+    << "4. Insert Node at Position\n"
+    << "5. Delete the Whole List\n"
+    << "6. Exit\n";
+    cout << "Enter your choice: ";
+    int choice = getValidInt(1, 6);
+    switch (choice) {
+        case 1:
+            cout << "Enter the value to add at the front: ";
+            float val = getValidFloat();
+            addNodeFront(head, val);
+            break;
+        case 1:
+            cout << "Enter the value to add at the front: ";
+            float val = getValidFloat();
+            addNodeFront(head, val);
+            break;
+        case 1:
+            cout << "Enter the value to add at the front: ";
+            float val = getValidFloat();
+            addNodeFront(head, val);
+            break;
+        case 1:
+            cout << "Enter the value to add at the front: ";
+            float val = getValidFloat();
+            addNodeFront(head, val);
+            break;
+    }
 }
