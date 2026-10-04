@@ -140,6 +140,28 @@ void addNodeTail(Node *&head, float val) {
     current->next = newNode;
 }
 
+void deleteNode(Node *&head, int position) {
+    if(!head || position <= 0) {
+        cout << "Empty List or Invalid Position.\n";
+        return;
+    } else if (position == 1) {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+    } else {
+        Node *current = head;
+        Node *prev = nullptr;
+        for (int i = 1; i < position && current != nullptr; i++) {
+            prev = current;
+            current = current->next;
+        }
+        
+    }
+    cout << "Node at position " << position << " deleted.\n";
+    return;
+   
+} 
+
 void output(Node *hd) {
     if (!hd) {
         cout << "Empty list.\n";
