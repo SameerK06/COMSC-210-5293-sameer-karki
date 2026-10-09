@@ -20,5 +20,6 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 16** | Color Class w Constructors | [Go to Lab 16](./Lab%2016:%20Color%20Class%20w%20Constructors/README.md) |
 | **Lab 17** | Modularize the Linked List Code | [Go to Lab 17](./Lab%2017:%20Modularize%20the%20Linked%20List%20Code/README.md) |
 | **Lab 18** | Movie Reviews | [Go to Lab 18](./Lab%2018:%20Movie%20Reviews/README.md) |
+| **Lab 20** | Chair Maker 3000 | [Go to Lab 20](./Lab%2020:%20Chair%20Maker%203000/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
