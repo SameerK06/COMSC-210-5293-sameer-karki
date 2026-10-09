@@ -60,12 +60,14 @@ int main() {
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
+    cout << "Chair 1 (built using setters)" << endl;
     Chair *chairPtr = new Chair;
     chairPtr->setLegs(4);
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
 
     //creating dynamic chair object with constructor
+    cout << "Living Room Chair (built using parameterized constructor)" << endl;
     double livingChairPrices[SIZE] = {525.25, 434.34, 252.52};
     Chair *livingChair = new Chair(3, livingChairPrices);
     livingChair->print();
@@ -74,6 +76,7 @@ int main() {
 
     //creating dynamic array of chair object
     Chair *collection = new Chair[SIZE];
+    cout << "Collection of Chairs:" << endl;
     for (int i = 0; i < SIZE; i++) {
         cout << "Collection Item " << i + 1 << ":" << endl;
         collection[i].print();
