@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -100,9 +102,74 @@ public:
         delete temp;
     }
 
+    void delete_pos(int position) {
+        if (position < 0) {
+            cout << "Position must be greater than or equal to 0." << endl;
+            return;
+        }
+        if (!head) {
+            cout << "List is empty." << endl;
+            return;
+        }
+        if (position == 0) {
+            pop_front();
+            return;
+        }
+        Node* temp = head;
+        for (int i = 0; i < position && temp; i++) {
+            temp = temp->next;
+        }
+        if(!temp) {
+            cout << "Position exceeds list size." << endl;
+            return;
+        }
+        if (temp->prev) {
+            temp->prev->next = temp->next;
+        }
+        if (temp->next) {
+            temp->next->prev = temp->prev;
+        } else {
+            tail = temp->prev;
+        }
+        delete temp;
+    }
+
+    void pop_front() {
+        if (!head) {
+            cout << "List is empty." << endl;
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        if (head) {
+            head->prev = nullptr;
+        } else {
+            tail = nullptr;
+        }
+        delete temp;
+    }
+
+    void pop_back() {
+        if (!head) {
+            cout << "List is empty." << endl;
+            return;
+        }
+        Node* temp = tail;
+        tail = tail->next;
+        if (tail) {
+            tail->prev = nullptr;
+        } else {
+            head = nullptr;
+        }
+        delete temp;
+    }
+
     void print() {
         Node* current = head;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty." << endl;
+            return;
+        }
         while (current) {
             cout << current->data << " ";
             current = current->next;
@@ -112,7 +179,10 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty." << endl;
+            return;
+        }
         while (current) {
             cout << current->data << " ";
             current = current->prev;
@@ -126,21 +196,41 @@ public:
             head = head->next;
             delete temp;
         }
+        tail = nullptr;
     }
 };
 
 // Driver program
 int main() {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
-
+    
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back(i*10);
+    cout << "Initial list: " << endl;
     cout << "List forward: ";
     list.print();
-
     cout << "List backward: ";
     list.print_reverse();
+
+    cout << "pop_front() testing" << endl;
+    list.pop_front();
+    cout << "After pop_front(): " << endl;
+    list.print();
+
+    cout << "pop_back() testing" << endl;
+    list.pop_back();
+    cout << "After pop_back(): " << endl;
+    list.print();
+
+    cout << "delete_val() testing" << endl;
+    list.delete_val(20);
+    cout << "After delete_val(20)" << endl;
+    
+
+
+
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
