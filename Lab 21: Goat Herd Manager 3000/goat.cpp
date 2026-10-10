@@ -27,8 +27,16 @@ public:
         age  = (rand() % 20) + 1;
         name = names[rand() % GOAT_ARRAY_SIZE];
         color = colors[rand() % GOAT_ARRAY_SIZE];
-
     }
+    Goat(string n, string c, int a) {
+        name = n;
+        color = c;
+        age = a;
+    }
+
+    string getName() const { return name;}
+    string getColor() const { return color; }
+    int getAge() const { return age; }
 };
 
 class DoublyLinkedList {
@@ -51,7 +59,7 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat value) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
@@ -62,7 +70,7 @@ public:
         }
     }
 
-    void push_front(int value) {
+    void push_front(Goat value) {
         Node* newNode = new Node(value);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
@@ -73,7 +81,7 @@ public:
         }
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(Goat value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
