@@ -1,7 +1,35 @@
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, GOAT_ARRAY_SIZE = 15;
+
+class Goat {
+private:
+    int age;
+    string color;
+    string name;
+    string names[GOAT_ARRAY_SIZE] = {
+        "Senior", "Godlike", "Old", "Mature", "Teen", 
+        "Billy", "Nanny", "Gruff", "Snowy", "Shadow", 
+        "Kid", "Pippin", "Vincent", "Grover", "Hazel"
+    };
+    string colors[GOAT_ARRAY_SIZE] = {
+        "White", "Black", "Brown", "Spotted", "Ticked",
+        "Light Gray", "Dark Gray", "Tan", "Beige", "Olive",
+        "Chestnut", "Bay", "Sorrel", "Auburn", "Red"
+    };
+public:
+    Goat() {
+        age  = (rand() % 20) + 1;
+        name = names[rand() % GOAT_ARRAY_SIZE];
+        color = colors[rand() % GOAT_ARRAY_SIZE];
+
+    }
+};
 
 class DoublyLinkedList {
 private:
