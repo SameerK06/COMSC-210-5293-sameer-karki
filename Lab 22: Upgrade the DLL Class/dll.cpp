@@ -227,10 +227,24 @@ int main() {
     cout << "delete_val() testing" << endl;
     list.delete_val(20);
     cout << "After delete_val(20)" << endl;
-    
+    list.print();
 
+    cout << "Adding more elements: " << endl;
+    for (int i = 0; i < 10; i++) {
+        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    }
+    cout << "Current list: " << endl;
+    list.print();
+    cout << "Deleting certain positions: " << endl;
+    list.delete_pos(0);
+    list.delete_pos(2);
+    list.delete_pos(2);
+    list.delete_pos(10);
 
-
+    cout << "Final list: " << endl;
+    list.print();
+    cout << "Reversing final list: " << endl;
+    list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
