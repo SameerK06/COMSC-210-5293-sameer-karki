@@ -138,13 +138,14 @@ public:
 
     void print() {
         if (!head) {
-            cout << "List is empty.\n";
+            cout << "   List is empty.\n";
             return;
         }
         Node* current = head;
         if (!current) return;
         while (current) {
-            cout << current->data.getName() << " ";
+            cout << "   " << current->data.getName() << " " << "(" << current->data.getColor() << ", " 
+            << current->data.getAge() << ")\n";
             current = current->next;
         }
         cout << endl;
@@ -154,7 +155,8 @@ public:
         Node* current = tail;
         if (!current) return;
         while (current) {
-            cout << current->data.getName() << " ";
+            cout << "   " << current->data.getName() << " " << "(" << current->data.getColor() << ", " 
+            << current->data.getAge() << ")\n";
             current = current->prev;
         }
         cout << endl;
@@ -181,15 +183,15 @@ int main() {
         list.push_back(newGoat);
     }
         
-    cout << "List forward: ";
+    cout << "List forward: \n";
     list.print();
 
-    cout << "List backward: ";
+    cout << "List backward: \n";
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
-    cout << "List forward: ";
+    cout << "List forward: \n";
     list.print();
 
     return 0;
