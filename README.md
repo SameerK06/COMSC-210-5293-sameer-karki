@@ -21,5 +21,7 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 17** | Modularize the Linked List Code | [Go to Lab 17](./Lab%2017:%20Modularize%20the%20Linked%20List%20Code/README.md) |
 | **Lab 18** | Movie Reviews | [Go to Lab 18](./Lab%2018:%20Movie%20Reviews/README.md) |
 | **Lab 20** | Chair Maker 3000 | [Go to Lab 20](./Lab%2020:%20Chair%20Maker%203000/README.md) |
+| **Lab 21** | Goat Herd Manager 3000 | [Go to Lab 21](./Lab%2021:%20Goat%20Herd%20Manager%203000/README.md) |
+| **Lab 22** | Upgrade the DLL Class | [Go to Lab 22](./Lab%2022:%20Upgrade%20the%20DLL%20Class/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
