@@ -42,10 +42,10 @@ public:
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
             next = n;
@@ -112,11 +112,11 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_node(Goat value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && temp->data != value)
+        while (temp && temp->data.getName() != value.getName())
             temp = temp->next;
 
         if (!temp) return; // Value not found
@@ -140,7 +140,7 @@ public:
         Node* current = head;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->data.getName() << " ";
             current = current->next;
         }
         cout << endl;
@@ -150,7 +150,7 @@ public:
         Node* current = tail;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->data.getName() << " ";
             current = current->prev;
         }
         cout << endl;
@@ -162,6 +162,7 @@ public:
             head = head->next;
             delete temp;
         }
+        tail = nullptr;
     }
 };
 
