@@ -150,14 +150,14 @@ public:
     }
 
     void pop_back() {
-        if (!head) {
+        if (!tail) {
             cout << "List is empty." << endl;
             return;
         }
         Node* temp = tail;
-        tail = tail->next;
+        tail = tail->prev;
         if (tail) {
-            tail->prev = nullptr;
+            tail->next = nullptr;
         } else {
             head = nullptr;
         }
