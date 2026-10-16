@@ -48,3 +48,12 @@ int main_menu() {
     return choice;
 }
 
+void add_goat(list<Goat> &trip, string names[], string color[]) {
+    string randName = names[rand() % SZ_NAMES];
+    int randAge = rand() % (MAX_AGE + 1);
+    string randColor = color[rand() % SZ_COLORS];
+    Goat newGoat(randName, randAge, randColor);
+    trip.push_back(newGoat);
+    cout << "Woop! Woop! Woop!\nNew goat added: " << newGoat.get_name() << ", Age: " << newGoat.get_age() << ", Color: "
+    << newGoat.get_color() << endl;
+}
