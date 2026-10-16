@@ -29,9 +29,25 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
-
-
+    list<Goat> trip;
+    int choice = 0;
+    while (choice != 4) {
+        choice = main_menu();
+        switch (choice) {
+            case 1:
+                add_goat(trip, names, colors);
+                break;
+            case 2:
+                delete_goat(trip);
+                break;
+            case 3:
+                display_trip(trip);
+                break;
+            case 4:
+                cout << "Exiting Goat Manager 3001. Goodbye!\n";
+                break;
+        }
+    }
     return 0;
 }
 
@@ -72,10 +88,6 @@ void display_trip(list<Goat> trip) {
 
 int select_goat(list<Goat> trip) {
     display_trip(trip);
-    if (trip.empty()) {
-        cout << "The trip is empty. No goats to delete.\n";
-        return -1;
-    }
     int choice;
     cout << "Select a goat to delete (1-" << trip.size() << ") -->";
     while (!(cin >> choice) || choice < 1 || choice > trip.size()) {
@@ -91,11 +103,7 @@ void delete_goat(list<Goat> &trip) {
         cout << "The trip is empty. No goats to delete.\n";
         return;
     }
-    display_trip(trip);
     int choice = select_goat(trip);
-    if (choice == -1) {
-        return;
-    }
     auto it = trip.begin();
     advance(it, choice - 1);
     cout << "\nDeleting goat: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
