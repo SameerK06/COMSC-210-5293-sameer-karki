@@ -70,18 +70,31 @@ void display_trip(list<Goat> trip) {
     }
 }
 
+int select_goat(list<Goat> trip) {
+    display_trip(trip);
+    if (trip.empty()) {
+        cout << "The trip is empty. No goats to delete.\n";
+        return -1;
+    }
+    int choice;
+    cout << "Select a goat to delete (1-" << trip.size() << ") -->";
+    while (!(cin >> choice) || choice < 1 || choice > trip.size()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid choice. Please enter a number between 1 and  " << trip.size() << ".\nChoice --> ";
+    }
+    return choice;
+}
+
 void delete_goat(list<Goat> &trip) {
     if (trip.empty()) {
         cout << "The trip is empty. No goats to delete.\n";
         return;
     }
     display_trip(trip);
-    int choice;
-    cout << "Select a goat to delete (1-" << trip.size() << ") --> ";
-    while (!(cin >> choice) || choice < 1 || choice > trip.size()) {
-        cin.clear();
-        cin.ignore(10000, '\n');
-        cout << "Invalid choice. Please enter a number between 1 and  " << trip.size() << ".\nChoice --> ";
+    int choice = select_goat(trip);
+    if (choice == -1) {
+        return;
     }
     auto it = trip.begin();
     advance(it, choice - 1);
