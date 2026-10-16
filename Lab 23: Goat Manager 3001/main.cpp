@@ -82,7 +82,7 @@ void display_trip(list<Goat> trip) {
     cout << "\n--- Curren Goat Trip ---\n";
     int index = 0;
     for (const Goat &g : trip) {
-        cout << "   [" << index++ << "] " << g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
+        cout << "   [" << ++index << "] " << g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
     }
 }
 
