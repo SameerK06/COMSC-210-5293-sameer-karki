@@ -69,3 +69,19 @@ void display_trip(list<Goat> trip) {
         cout << "   [" << index++ << "] " << g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
     }
 }
+
+void delete_goat(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "The trip is empty. No goats to delete.\n";
+        return;
+    }
+    display_trip(trip);
+    int choice;
+    cout << "Select a goat to delete (1-" << trip.size() << ") --> ";
+    while (!(cin >> choice) || choice < 1 || choice > trip.size()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid choice. Please enter a number between 1 and  " << trip.size() << ".\nChoice --> ";
+    }
+    
+}
