@@ -35,3 +35,16 @@ int main() {
     return 0;
 }
 
+int main_menu() {
+    int choice;
+    cout << "\n*** GOAT MANAGER 3001 ***\n";
+    cout << "[1] Add a goat\n[2] Delete a goat\n[3] List goats\n[4] Quit\n";
+    cout << "Choice --> ";
+    while (!(cin >> choice) || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid choice. Please enter a number between 1 and 4.\nChoice --> ";
+    }
+    return choice;
+}
+
