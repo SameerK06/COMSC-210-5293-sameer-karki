@@ -83,5 +83,8 @@ void delete_goat(list<Goat> &trip) {
         cin.ignore(10000, '\n');
         cout << "Invalid choice. Please enter a number between 1 and  " << trip.size() << ".\nChoice --> ";
     }
-    
+    auto it = trip.begin();
+    advance(it, choice - 1);
+    cout << "\nDeleting goat: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
+    trip.erase(it);
 }
