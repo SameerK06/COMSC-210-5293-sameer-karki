@@ -57,3 +57,15 @@ void add_goat(list<Goat> &trip, string names[], string color[]) {
     cout << "Woop! Woop! Woop!\nNew goat added: " << newGoat.get_name() << ", Age: " << newGoat.get_age() << ", Color: "
     << newGoat.get_color() << endl;
 }
+
+void display_trip(list<Goat> trip) {
+    if (trip.empty()) {
+        cout << "No goats in the trip.\n";
+        return;
+    }
+    cout << "\n--- Curren Goat Trip ---\n";
+    int index = 0;
+    for (const Goat &g : trip) {
+        cout << "   [" << index++ << "] " << g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
+    }
+}
