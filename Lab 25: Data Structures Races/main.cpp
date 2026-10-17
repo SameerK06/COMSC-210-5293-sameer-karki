@@ -10,10 +10,11 @@
 using namespace std;
 using namespace std::chrono;
 
-void Race1(vector<string> &v, list<string> &l, set<string> &s);
-void Race2();
-void Race3();
-void Race4();
+void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData); // Reading
+void Race2(vector<string> &v, list<string> &l, set<string> &s); // Sorting
+void Race3(vector<string> &v, list<string> &l, set<string> &s); // Inserting
+void Race4(vector<string> &v, list<string> &l, set<string> &s); //Deleting
+
 struct Timer {
     time_point<high_resolution_clock> start_time;
     void start() {
@@ -46,7 +47,17 @@ int main() {
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set" << endl;
     cout << string(60, '-') << endl;
 
-    // Race 1: Reading
+    Race1(v, l, s, rawData);
+    Race2(v, l, s);
+    Race3(v, l, s);
+    Race4(v, l, s);
+
+    return 0;
+}
+
+void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData) {
+    Timer timer;
+    int time_v, time_l, time_s;
     // Vector
     timer.start();
     for (const string& code : rawData) {
@@ -66,8 +77,11 @@ int main() {
     }
     time_s = timer.stop();
     cout << left << setw(15) << "Reading (ns)" << setw(15) << time_v  << setw(15) << time_l << setw(15) << time_s << endl;
+}
 
-    // Race 2: Sorting
+void Race2(vector<string> &v, list<string> &l, set<string> &s) {
+    Timer timer;
+    int time_v, time_l, time_s;
     // Vector
     timer.start();
     sort(v.begin(), v.end());
@@ -79,8 +93,10 @@ int main() {
     // Set (Already sorted)
     time_s = -1;
     cout << left << setw(15) << "Sorting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
-
-    // Race 3: Inserting
+}
+void Race3(vector<string> &v, list<string> &l, set<string> &s) {
+    Timer timer;
+    int time_v, time_l, time_s;
     // Vector
     timer.start();
     v.insert(v.begin() + v.size() /2, "TESTCODE");
@@ -96,15 +112,17 @@ int main() {
     s.insert("TESTCODE");
     time_s = timer.stop();
     cout << left << setw(15) << "Inserting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
-    
-    // Race 4: Deleting
+}
+void Race4(vector<string> &v, list<string> &l, set<string> &s) {
+    Timer timer;
+    int time_v, time_l, time_s;
     // Vector
     timer.start();
     v.erase(v.begin() + v.size()/2);
     time_v = timer.stop();
     // List
     timer.start();
-    it = l.begin();
+    auto it = l.begin();
     advance(it, l.size()/2);
     l.erase(it);
     time_l = timer.stop();
@@ -115,8 +133,6 @@ int main() {
     s.erase(itS);
     time_s = timer.stop();
     cout << left << setw(15) << "Deleting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
-
-    return 0;
 }
 
 /* syntax examples:
