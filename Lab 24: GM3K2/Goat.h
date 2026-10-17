@@ -33,11 +33,11 @@ public:
     bool operator<(const Goat &other) const {
         if (name != other.name) {
             return name < other.name;
-        } else if (age != other.age) {
+        } 
+        if (age != other.age) {
             return age < other.age;
-        } else {
-            return color < other.color;
         }
+        return color < other.color;
     }
 };
 
