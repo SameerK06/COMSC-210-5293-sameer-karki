@@ -5,6 +5,7 @@
 #include <list>
 #include <set>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 using namespace std::chrono;
@@ -60,8 +61,10 @@ int main() {
         s.insert(code);
     }
     time_s = timer.stop();
-    
-    
+    cout << left << setw(15) << "Reading (ns)" << setw(15) << time_v  << setw(15) << time_l << setw(15) << time_s << endl;
+
+    // Race 2: Sorting
+
 
     return 0;
 }
