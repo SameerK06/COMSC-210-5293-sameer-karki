@@ -105,7 +105,7 @@ int main() {
     time_l = timer.stop();
     // Set
     timer.start();
-    set<string> itS = s.begin();
+    auto itS = s.begin();
     advance(itS, s.size()/2);
     s.erase(itS);
     time_s = timer.stop();
