@@ -23,5 +23,8 @@ This repository contains all lab assignments and programming projects (from ongo
 | **Lab 20** | Chair Maker 3000 | [Go to Lab 20](./Lab%2020:%20Chair%20Maker%203000/README.md) |
 | **Lab 21** | Goat Herd Manager 3000 | [Go to Lab 21](./Lab%2021:%20Goat%20Herd%20Manager%203000/README.md) |
 | **Lab 22** | Upgrade the DLL Class | [Go to Lab 22](./Lab%2022:%20Upgrade%20the%20DLL%20Class/README.md) |
+| **Lab 23** | Goat Manager 3001 | [Go to Lab 23](./Lab%2023:%20Goat%20Manager%203001/README.md) |
+| **Lab 24** | GM3K2 | [Go to Lab 24](./Lab%2024:%20GM3K2/README.md) |
+| **Lab 25** | Data Structures Races | [Go to Lab 25](./Lab%2025:%20Data%20Structures%20Races/README.md) |
 
 *Note: Click the links in the table above to view the code and specific details for each task.*
