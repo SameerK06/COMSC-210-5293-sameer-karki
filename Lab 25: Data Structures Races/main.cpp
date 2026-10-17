@@ -64,7 +64,31 @@ int main() {
     cout << left << setw(15) << "Reading (ns)" << setw(15) << time_v  << setw(15) << time_l << setw(15) << time_s << endl;
 
     // Race 2: Sorting
+    // Vector
+    timer.start();
+    sort(v.begin(), v.end());
+    time_v = timer.stop();
+    // List
+    timer.start();
+    l.sort();
+    time_l = timer.stop();
+    // Set (Already sorted)
+    time_s = -1;
+    cout << left << setw(15) << "Sorting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
 
+    // Race 3: Inserting
+    // Vector
+    timer.start();
+    v.insert(v.begin() + v.size() /2, "TESTCODE");
+    time_v = timer.stop();
+    // List
+    timer.start();
+    auto it = l.begin();
+    advance(it, l.size()/2);
+    l.insert(it, "TESTCODE");
+    time_l = timer.stop();
+
+    
 
     return 0;
 }
