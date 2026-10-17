@@ -10,6 +10,10 @@
 using namespace std;
 using namespace std::chrono;
 
+void Race1(vector<string> &v, list<string> &l, set<string> &s);
+void Race2();
+void Race3();
+void Race4();
 struct Timer {
     time_point<high_resolution_clock> start_time;
     void start() {
@@ -92,6 +96,7 @@ int main() {
     s.insert("TESTCODE");
     time_s = timer.stop();
     cout << left << setw(15) << "Inserting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
+    
     // Race 4: Deleting
     // Vector
     timer.start();
@@ -110,8 +115,6 @@ int main() {
     s.erase(itS);
     time_s = timer.stop();
     cout << left << setw(15) << "Deleting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
-
-    
 
     return 0;
 }
