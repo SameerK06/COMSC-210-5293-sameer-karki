@@ -87,6 +87,29 @@ int main() {
     advance(it, l.size()/2);
     l.insert(it, "TESTCODE");
     time_l = timer.stop();
+    // Set
+    timer.start();
+    s.insert("TESTCODE");
+    time_s = timer.stop();
+    cout << left << setw(15) << "Inserting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
+    // Race 4: Deleting
+    // Vector
+    timer.start();
+    v.erase(v.begin() + v.size()/2);
+    time_v = timer.stop();
+    // List
+    timer.start();
+    it = l.begin();
+    advance(it, l.size()/2);
+    l.erase(it);
+    time_l = timer.stop();
+    // Set
+    timer.start();
+    set<string> itS = s.begin();
+    advance(itS, s.size()/2);
+    s.erase(itS);
+    time_s = timer.stop();
+    cout << left << setw(15) << "Deleting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
 
     
 
