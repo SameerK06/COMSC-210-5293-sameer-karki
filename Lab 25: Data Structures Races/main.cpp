@@ -40,6 +40,29 @@ int main() {
     int time_v, time_l, time_s;
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set" << endl;
     cout << string(60, '-') << endl;
+
+    // Race 1: Reading
+    // Vector
+    timer.start();
+    for (const string& code : rawData) {
+        v.push_back(code);
+    }
+    time_v = timer.stop();
+    // List
+    timer.start();
+    for (const string& code: rawData) {
+        l.push_back(code);
+    }
+    time_l = timer.stop();
+    // Set
+    timer.start();
+    for (const string& code: rawData) {
+        s.insert(code);
+    }
+    time_s = timer.stop();
+    
+    
+
     return 0;
 }
 
