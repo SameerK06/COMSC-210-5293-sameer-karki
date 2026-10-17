@@ -22,7 +22,7 @@ struct Timer {
     }
     int stop() {
         auto end_time = high_resolution_clock::now();
-        return duration_cast<milliseconds>(end_time - start_time).count();
+        return duration_cast<nanoseconds>(end_time - start_time).count();
     }
 };
 
@@ -42,8 +42,6 @@ int main() {
     vector<string> v;
     list<string> l;
     set<string> s;
-    Timer timer;
-    int time_v, time_l, time_s;
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set" << endl;
     cout << string(60, '-') << endl;
 
@@ -134,10 +132,3 @@ void Race4(vector<string> &v, list<string> &l, set<string> &s) {
     time_s = timer.stop();
     cout << left << setw(15) << "Deleting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
 }
-
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
