@@ -8,6 +8,17 @@
 using namespace std;
 using namespace std::chrono;
 
+struct Timer {
+    time_point<high_resolution_clock> start_time;
+    void start() {
+        start_time = high_resolution_clock::now();
+    }
+    int stop() {
+        auto end_time = high_resolution_clock::now();
+        return duration_cast<milliseconds>(end_time - start_time).count();
+    }
+};
+
 int main() {
     
 
