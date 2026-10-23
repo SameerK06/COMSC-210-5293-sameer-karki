@@ -65,7 +65,12 @@ int main() {
     cout << "Number of simulations: " << NUM_RUNS << endl;
     cout << right << setw(11) << "Operation" << setw(11) << "Vector" << setw(11) << "List" << setw(11) << "Set" << endl;
     for (int operation = 0; operation < NUM_OPERATIONS; operation++) {
-
+        cout << right << setw(11) << operationNames[operation];
+        for (int cont = 0; cont < NUM_CONTAINERS; cont++) {
+            long avg = results[1][operation][cont] / NUM_RUNS;
+            cout << setw(11) << avg;
+        }
+        cout << endl;
     }
 
     return 0;
