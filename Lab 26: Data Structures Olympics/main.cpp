@@ -10,6 +10,7 @@
 using namespace std;
 using namespace std::chrono;
 
+// CONST for 3D array
 const int NUM_RUNS = 15, NUM_OPERATIONS = 4, NUM_CONTAINERS = 3, NUM_SLICES = 2;
 
 void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]); // Reading
@@ -48,12 +49,13 @@ int main() {
         vector<string> v;
         list<string> l;
         set<string> s;
-
+        cout << "\n--- Run: " << run+1;
+        // Races
         Race1(v, l, s, rawData, results[0]);
         Race2(v, l, s, results[0]);
         Race3(v, l, s, results[0]);
         Race4(v, l, s, results[0]);
-
+        // Aggegrate results
         for (int operation = 0; operation < NUM_OPERATIONS; operation++) {
             for (int cont = 0; cont < NUM_CONTAINERS; cont++) {
                 results[1][operation][cont] += results[0][operation][cont];
@@ -61,8 +63,9 @@ int main() {
         }
     }
 
+    // Output Results
     string operationNames[NUM_OPERATIONS] = {"Read (ns)", "Sort (ns)", "Insert (ns)", "Delete (ns)"};
-    cout << "\nNumber of simulations: " << NUM_RUNS << endl;
+    cout << "\n---\nNumber of simulations: " << NUM_RUNS << endl;
     cout << right << setw(11) << "Operation" << setw(11) << "Vector" << setw(11) << "List" << setw(11) << "Set" << endl;
     for (int operation = 0; operation < NUM_OPERATIONS; operation++) {
         cout << right << setw(11) << operationNames[operation];
