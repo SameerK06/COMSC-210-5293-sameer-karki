@@ -41,16 +41,25 @@ int main() {
     }
     fin.close();
 
-    vector<string> v;
-    list<string> l;
-    set<string> s;
-    cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set" << endl;
-    cout << string(60, '-') << endl;
+    // 3D array results[slice][operation][container]
+    // Slice 0: Current time, Slice 1: Aggeregate time
+    long results[NUM_SLICES][NUM_OPERATIONS][NUM_CONTAINERS] = {0};
+    for (int run = 0; run < NUM_RUNS; run++) {
+        vector<string> v;
+        list<string> l;
+        set<string> s;
 
-    Race1(v, l, s, rawData);
-    Race2(v, l, s);
-    Race3(v, l, s);
-    Race4(v, l, s);
+        Race1(v, l, s, rawData, results[0]);
+        Race2(v, l, s, results[0]);
+        Race3(v, l, s, results[0]);
+        Race4(v, l, s, results[0]);
+
+        for (int operation = 0; operation < NUM_OPERATIONS; operation++) {
+            for (int cont = 0; cont < NUM_CONTAINERS; cont++) {
+                results[1][operation][cont] += results[0][operation][cont];
+            }
+        }
+    }
 
     return 0;
 }
@@ -91,7 +100,7 @@ void Race2(vector<string> &v, list<string> &l, set<string> &s, long runResults[N
     runResults[1][1] = timer.stop();
     // Set (Already sorted)
     runResults[1][2] = -1;
-    cout << left << setw(15) << "Sorting (ns)" << setw(15) << runResults[1][0] << setw(15) << runResults[1][1] 
+    cout << left << setw(15) << "Sorting (ns)" << setw(15) << runResults[1][0] << setw(15) << runResults[1][1]
     << setw(15) << runResults[1][2] << endl;
 }
 void Race3(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
@@ -110,26 +119,27 @@ void Race3(vector<string> &v, list<string> &l, set<string> &s, long runResults[N
     timer.start();
     s.insert("TESTCODE");
     runResults[2][2] = timer.stop();
-    cout << left << setw(15) << "Inserting (ns)" << setw(15) << runResults[2][0] << setw(15) << runResults[2][1] << setw(15) << runResults[2][2] << endl;
+    cout << left << setw(15) << "Inserting (ns)" << setw(15) << runResults[2][0] << setw(15) << runResults[2][1]
+    << setw(15) << runResults[2][2] << endl;
 }
 void Race4(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
     Timer timer;
-    int time_v, time_l, time_s;
     // Vector
     timer.start();
     v.erase(v.begin() + v.size()/2);
-    time_v = timer.stop();
+    runResults[3][0] = timer.stop();
     // List
     timer.start();
     auto it = l.begin();
     advance(it, l.size()/2);
     l.erase(it);
-    time_l = timer.stop();
+    runResults[3][1] = timer.stop();
     // Set
     timer.start();
     auto itS = s.begin();
     advance(itS, s.size()/2);
     s.erase(itS);
-    time_s = timer.stop();
-    cout << left << setw(15) << "Deleting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
+    runResults[3][2] = timer.stop();
+    cout << left << setw(15) << "Deleting (ns)" << setw(15) << runResults[3][0] << setw(15) << runResults[3][1]
+    << setw(15) << runResults[3][2] << endl;
 }
