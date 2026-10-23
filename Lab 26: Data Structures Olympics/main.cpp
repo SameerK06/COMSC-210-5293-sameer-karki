@@ -10,10 +10,12 @@
 using namespace std;
 using namespace std::chrono;
 
-void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData); // Reading
-void Race2(vector<string> &v, list<string> &l, set<string> &s); // Sorting
-void Race3(vector<string> &v, list<string> &l, set<string> &s); // Inserting
-void Race4(vector<string> &v, list<string> &l, set<string> &s); //Deleting
+const int NUM_RUNS = 15, NUM_OPERATIONS = 4, NUM_CONTAINERS = 3, NUM_SLICES = 2;
+
+void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]); // Reading
+void Race2(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]); // Sorting
+void Race3(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]); // Inserting
+void Race4(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]); //Deleting
 
 struct Timer {
     time_point<high_resolution_clock> start_time;
@@ -53,65 +55,64 @@ int main() {
     return 0;
 }
 
-void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData) {
+void Race1(vector<string> &v, list<string> &l, set<string> &s, const vector<string> &rawData, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
     Timer timer;
-    int time_v, time_l, time_s;
     // Vector
     timer.start();
     for (const string& code : rawData) {
         v.push_back(code);
     }
-    time_v = timer.stop();
+    runResults[0][0] = timer.stop();
     // List
     timer.start();
     for (const string& code: rawData) {
         l.push_back(code);
     }
-    time_l = timer.stop();
+    runResults[0][1] = timer.stop();
     // Set
     timer.start();
     for (const string& code: rawData) {
         s.insert(code);
     }
-    time_s = timer.stop();
-    cout << left << setw(15) << "Reading (ns)" << setw(15) << time_v  << setw(15) << time_l << setw(15) << time_s << endl;
+    runResults[0][2] = timer.stop();
+    cout << left << setw(15) << "Reading (ns)" << setw(15) << runResults[0][0]  << setw(15) << runResults[0][1] 
+    << setw(15) << runResults[0][2] << endl;
 }
 
-void Race2(vector<string> &v, list<string> &l, set<string> &s) {
+void Race2(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
     Timer timer;
-    int time_v, time_l, time_s;
     // Vector
     timer.start();
     sort(v.begin(), v.end());
-    time_v = timer.stop();
+    runResults[1][0] = timer.stop();
     // List
     timer.start();
     l.sort();
-    time_l = timer.stop();
+    runResults[1][1] = timer.stop();
     // Set (Already sorted)
-    time_s = -1;
-    cout << left << setw(15) << "Sorting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
+    runResults[1][2] = -1;
+    cout << left << setw(15) << "Sorting (ns)" << setw(15) << runResults[1][0] << setw(15) << runResults[1][1] 
+    << setw(15) << runResults[1][2] << endl;
 }
-void Race3(vector<string> &v, list<string> &l, set<string> &s) {
+void Race3(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
     Timer timer;
-    int time_v, time_l, time_s;
     // Vector
     timer.start();
     v.insert(v.begin() + v.size() /2, "TESTCODE");
-    time_v = timer.stop();
+    runResults[2][0] = timer.stop();
     // List
     timer.start();
     auto it = l.begin();
     advance(it, l.size()/2);
     l.insert(it, "TESTCODE");
-    time_l = timer.stop();
+    runResults[2][1] = timer.stop();
     // Set
     timer.start();
     s.insert("TESTCODE");
-    time_s = timer.stop();
-    cout << left << setw(15) << "Inserting (ns)" << setw(15) << time_v << setw(15) << time_l << setw(15) << time_s << endl;
+    runResults[2][2] = timer.stop();
+    cout << left << setw(15) << "Inserting (ns)" << setw(15) << runResults[2][0] << setw(15) << runResults[2][1] << setw(15) << runResults[2][2] << endl;
 }
-void Race4(vector<string> &v, list<string> &l, set<string> &s) {
+void Race4(vector<string> &v, list<string> &l, set<string> &s, long runResults[NUM_OPERATIONS][NUM_CONTAINERS]) {
     Timer timer;
     int time_v, time_l, time_s;
     // Vector
