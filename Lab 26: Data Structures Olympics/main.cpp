@@ -61,6 +61,13 @@ int main() {
         }
     }
 
+    string operationNames[NUM_OPERATIONS] = {"Read", "Sort", "Insert", "Delete"};
+    cout << "Number of simulations: " << NUM_RUNS << endl;
+    cout << right << setw(11) << "Operation" << setw(11) << "Vector" << setw(11) << "List" << setw(11) << "Set" << endl;
+    for (int operation = 0; operation < NUM_OPERATIONS; operation++) {
+
+    }
+
     return 0;
 }
 
