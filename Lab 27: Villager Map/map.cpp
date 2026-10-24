@@ -17,8 +17,10 @@ int main() {
 
     // access the map using a range-based for loop
     cout << "Villager Details: " << endl;
-    for (const auto& [name, data] : villagers) {
-        cout << name << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
+    for (const auto& pair: villagers) {
+        const string& name = pair.first;
+        const auto& data = pair.second;
+        cout << "name" << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
     }
 
     // Driver Test
@@ -26,6 +28,7 @@ int main() {
     auto it = villagers.find(searchKey);
     if (it != villagers.end()) {
         auto& data = it->second;
+        cout << "\nFound " << searchKey << ": [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
     }
 
 
