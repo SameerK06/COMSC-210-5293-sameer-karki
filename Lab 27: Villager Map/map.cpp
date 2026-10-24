@@ -20,7 +20,7 @@ int main() {
         for (auto color : pair.second)
             cout << color << " ";
         cout << endl;
-    }
+    } 
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
