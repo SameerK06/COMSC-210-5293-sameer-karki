@@ -16,11 +16,11 @@ int main() {
     villagers.insert({"Marshal", make_tuple(8, "Hobbit", "Why me?")});
 
     // access the map using a range-based for loop
-    cout << "Villager Details: " << endl;
+    cout << "Villager Details:\nName [Friendship Level, Species, Catachphrase]" << endl;
     for (const auto& pair: villagers) {
         const string& name = pair.first;
         const auto& data = pair.second;
-        cout << "name" << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
+        cout << name << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
     }
 
     // Driver Test
