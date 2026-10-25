@@ -17,26 +17,14 @@ void displayMenu();
 int main() {
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    VillagerMap villagers;
+    VillagerMap villagers = {
+        {"Drago", {5, "Alligator", "Snap to It!"}},
+        {"Kyle", {10, "Wolf", "Hubba hubba!"}}
+    };
     villagers["Audie"] = make_tuple(5, "Human", "Lets gooo!");
     villagers["Raymond"] = make_tuple(10, "Elf", "Magic! Magic! Magic!");
     villagers.insert({"Marshal", make_tuple(8, "Hobbit", "Why me?")});
 
-    // access the map using a range-based for loop
-    cout << "Villager Details:\nName [Friendship Level, Species, Catachphrase]" << endl;
-    for (const auto& pair: villagers) {
-        const string& name = pair.first;
-        const auto& data = pair.second;
-        cout << name << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
-    }
-
-    // Driver Test
-    string searchKey = "Audie";
-    auto it = villagers.find(searchKey);
-    if (it != villagers.end()) {
-        auto& data = it->second;
-        cout << "\nFound " << searchKey << ": [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
-    }
 
     int choice = 0;
     while(choice != 4) {
@@ -66,10 +54,18 @@ int main() {
 }
 
 void displayMenu() {
-    cout << "1. Increase Friendship\n2. Decrease Friendship\n3.Search for Villager\n4. Exit\nEnter choice: ";
+    cout << "\n1. Increase Friendship\n2. Decrease Friendship\n3. Search for Villager\n4. Exit\nEnter choice: ";
 }
 
-
+void printVillagers(const VillagerMap& villagers) {
+    cout << "Villager Details:\nName [Friendship Level, Species, Catachphrase]" << endl;
+    for (const auto& pair: villagers) {
+        const string& name = pair.first;
+        const auto& data = pair.second;
+        cout << name << " [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
+    }
+    cout << endl;
+}
 
 void increaseFriendship(const VillagerMap& villagers) {
     string name;
