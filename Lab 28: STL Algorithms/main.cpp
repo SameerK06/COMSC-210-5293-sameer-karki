@@ -74,6 +74,7 @@ int main() {
                 milestone_5_min_max(trip);
                 break;
             case 9:
+                milestone_6_transform(trip);
                 break;
             case 10:
                 break;
@@ -249,6 +250,10 @@ void milestone_6_transform(const set<Goat> &trip) {
     transform(trip.begin(), trip.end(), goatNames.begin(), [](const Goat &g) {
         return g.get_name();
     });
-
-    cout << "\nExported Goat Names List:\n[ "
+    cout << "\nExported Goat Names List:\n[ ";
+    for (int i = 0; i < goatNames.size(); i++) {
+        cout << goatNames[i] << (i + 1 < goatNames.size() ? ", " : "");
+    }
+    cout << " ]\n";
 }
+
