@@ -18,15 +18,14 @@ void add_goat(set<Goat> &trip, string [], string []);
 void display_trip(const set<Goat> &trip);
 int main_menu();
 
-
-void milestone_1_find(const set<Goat> &trip);       // std::find_if
-void milestone_2_count(const set<Goat> &trip);      // std::count_if
-void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
-void milestone_4_accumulate(const set<Goat> &trip); // std::accumulate
-void milestone_5_min_max(const set<Goat> &trip);    // std::min_element and std::max_element
-void milestone_6_transform(const set<Goat> &trip);  // std::transform
-void milestone_7_copy_if(const set<Goat> &trip);    // std::copy_if
-void milestone_8(const set<Goat> &trip);            // std::
+void milestone_1_find(const set<Goat> &trip);           // std::find_if
+void milestone_2_count(const set<Goat> &trip);          // std::count_if
+void milestone_3_for_each(const set<Goat> &trip);       // std::for_reach
+void milestone_4_accumulate(const set<Goat> &trip);     // std::accumulate
+void milestone_5_min_max(const set<Goat> &trip);        // std::min_element and std::max_element
+void milestone_6_transform(const set<Goat> &trip);      // std::transform
+void milestone_7_copy_if(const set<Goat> &trip);        // std::copy_if
+void milestone_8_all_any_none(const set<Goat> &trip);   // std::all_of and std::any_of and std::none_of
 
 int main() {
     srand(time(0));
@@ -80,6 +79,7 @@ int main() {
                 milestone_7_copy_if(trip);
                 break;
             case 11:
+                milestone_8_all_any_none(trip);
                 break;
             case 12:
                 cout << "Exiting Goat Manager 3001. Goodbye!\n";
@@ -102,7 +102,7 @@ int main_menu() {
     cout << "[8] Find youngest and oldest goats\n";
     cout << "[9] Export goat names list\n";
     cout << "[10] Filter goats by color\n";
-    cout << "[11] \n";
+    cout << "[11] Check trip condition rules\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     while (!(cin >> choice) || choice < 1 || choice > 12) {
@@ -270,9 +270,28 @@ void milestone_7_copy_if(const set<Goat> &trip) {
     copy_if(trip.begin(), trip.end(), back_inserter(filteredGoats), [&targetColor](const Goat &g) {
         return g.get_color() == targetColor;
     });
-
     cout << "\nFound " << filteredGoats.size() << " goats(s) with color \"" << targetColor << "\":\n";
     for (const Goat &g : filteredGoats) {
         cout << " - " << g.get_name() << " (" << g.get_age() << " years)\n";
     }
+}
+
+void milestone_8_all_any_none(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    bool allAdults = all_of(trip.begin(), trip.end(), [](const Goat &g) {
+        return g.get_age() >= 2;
+    });
+    bool anySeniors = any_of(trip.begin(), trip.end(), [](const Goat &g) {
+        return g.get_age() >= 15;
+    });
+    bool noBabies = none_of(trip.begin(), trip.end(), [](const Goat &g) {
+        return g.get_age() == 0;
+    });
+    cout << "\n--- Trip Rule Assessment ---\n";
+    cout << "Are all goats adults (>= 2 years)?         " << (allAdults ? "YES" : "NO") << "\n";
+    cout << "Are there any senior goats (>= 15 years)?  " << (anySeniors ? "YES" : "NO") << "\n";
+    cout << "Are there zero newborns (age 0)?           " << (noBabies ? "YES" : "NO") << "\n";
 }
