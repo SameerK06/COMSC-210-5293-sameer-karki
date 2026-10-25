@@ -69,4 +69,48 @@ void displayMenu() {
     cout << "1. Increase Friendship\n2. Decrease Friendship\n3.Search for Villager\n4. Exit\nEnter choice: ";
 }
 
-void increaseFriendship(C)
+
+
+void increaseFriendship(const VillagerMap& villagers) {
+    string name;
+    cout << "Enter villager name: ";
+    cin >> name;
+
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        int lvl = get<0>(it->second);
+        lvl = min(10, lvl+1);
+        cout << name << "'s friendship level is now " << lvl << ".\n";
+    } else {
+        cout << "Villager " << name << " not found.\n";
+    }
+}
+
+void decreaseFriendship(const VillagerMap& villagers) {
+    string name;
+    cout << "Enter villager name: ";
+    cin >> name;
+
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        int lvl = get<0>(it->second);
+        lvl = max(0, lvl-1);
+        cout << name << "'s friendship level is now " << lvl << ".\n";
+    } else {
+        cout << "Villager " << name << " not found.\n";
+    }
+}
+
+void searchVillager(const VillagerMap& villagers) {
+    string name;
+    cout << "Enter villager name: ";
+    cin >> name;
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        auto& data = it->second;
+        cout << "\nFound " << name << ": [" << get<0>(data) << ", " << get<1>(data) << ", " << get<2>(data) << "]\n";
+    } else {
+        cout << "Villager " << name << " not found.\n";
+    }
+}
+
