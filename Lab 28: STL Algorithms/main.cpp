@@ -39,7 +39,7 @@ int main() {
 
     set<Goat> trip;
     int choice = 0;
-    while (choice != 5) {
+    while (choice != 12) {
         choice = main_menu();
         switch (choice) {
             case 1:
@@ -55,6 +55,20 @@ int main() {
                 milestone_1_find(trip);
                 break;
             case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
                 cout << "Exiting Goat Manager 3001. Goodbye!\n";
                 break;
         }
@@ -69,12 +83,19 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] Find goat by name\n";
-    cout << "[5] Quit\n";
+    cout << "[5] Count goats older than age\n";
+    cout << "[6] \n";
+    cout << "[7] \n";
+    cout << "[8] \n";
+    cout << "[9] \n";
+    cout << "[10] \n";
+    cout << "[11] \n";
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
-    while (!(cin >> choice) || choice < 1 || choice > 5) {
+    while (!(cin >> choice) || choice < 1 || choice > 12) {
         cin.clear();
         cin.ignore(10000, '\n');
-        cout << "Invalid choice. Please enter a number between 1 and 5.\nChoice --> ";
+        cout << "Invalid choice. Please enter a number between 1 and 12.\nChoice --> ";
     }
     return choice;
 }
