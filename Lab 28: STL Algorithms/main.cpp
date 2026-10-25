@@ -19,14 +19,14 @@ void display_trip(const set<Goat> &trip);
 int main_menu();
 
 
-void milestone_1_find(const set<Goat> &trip);   // std::find_if
-void milestone_2_count(const set<Goat> &trip);  // std::count_if
-void milestone_3(const set<Goat> &trip);        // std::
-void milestone_4(const set<Goat> &trip);        // std::
-void milestone_5(const set<Goat> &trip);        // std::
-void milestone_6(const set<Goat> &trip);        // std::
-void milestone_7(const set<Goat> &trip);        // std::
-void milestone_8(const set<Goat> &trip);        // std::
+void milestone_1_find(const set<Goat> &trip);       // std::find_if
+void milestone_2_count(const set<Goat> &trip);      // std::count_if
+void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
+void milestone_4(const set<Goat> &trip);            // std::
+void milestone_5(const set<Goat> &trip);            // std::
+void milestone_6(const set<Goat> &trip);            // std::
+void milestone_7(const set<Goat> &trip);            // std::
+void milestone_8(const set<Goat> &trip);            // std::
 
 int main() {
     srand(time(0));
@@ -65,6 +65,7 @@ int main() {
                 milestone_2_count(trip);
                 break;
             case 6:
+                milestone_3_for_each(trip);
                 break;
             case 7:
                 break;
@@ -92,7 +93,7 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Find goat by name\n";
     cout << "[5] Count goats older than age\n";
-    cout << "[6] \n";
+    cout << "[6] Display formatted goat badges\n";
     cout << "[7] \n";
     cout << "[8] \n";
     cout << "[9] \n";
@@ -185,10 +186,23 @@ void milestone_2_count(const set<Goat> &trip) {
         cin.ignore(10000, '\n');
         cout << "Invalid input. Enter an integer: ";
     }
-
     int count = count_if(trip.begin(), trip.end(), [minAge](const Goat &g) {
         return g.get_age() > minAge;
     });
-
     cout << "Number of goats older than " << minAge << ": " << count << endl;
+}
+
+void milestone_3_for_each(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    cout << "\n--- Goat Badges ---\n";
+    for_each(trip.begin(), trip.end(), [](const Goat &g) {
+        cout << "+---------------------------------------+\n";
+        cout << "| Name:  "<< left << setw(30) << g.get_name() << "|\n";
+        cout << "| Age:   "<< left << setw(30) << g.get_age() << "|\n";
+        cout << "| Color: "<< left << setw(30) << g.get_color() << "|\n";
+        cout << "+---------------------------------------+\n";
+    });
 }
