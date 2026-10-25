@@ -23,7 +23,7 @@ void milestone_1_find(const set<Goat> &trip);       // std::find_if
 void milestone_2_count(const set<Goat> &trip);      // std::count_if
 void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
 void milestone_4_accumulate(const set<Goat> &trip); // std::accumulate
-void milestone_5(const set<Goat> &trip);            // std::
+void milestone_5_min_max(const set<Goat> &trip);    // std::min_element and std::max_element
 void milestone_6(const set<Goat> &trip);            // std::
 void milestone_7(const set<Goat> &trip);            // std::
 void milestone_8(const set<Goat> &trip);            // std::
@@ -71,6 +71,7 @@ int main() {
                 milestone_4_accumulate(trip);
                 break;
             case 8:
+                milestone_5_min_max(trip);
                 break;
             case 9:
                 break;
@@ -96,7 +97,7 @@ int main_menu() {
     cout << "[5] Count goats older than age\n";
     cout << "[6] Display formatted goat badges\n";
     cout << "[7] Calculate total and average age\n";
-    cout << "[8] \n";
+    cout << "[8] Find youngest and oldest goats\n";
     cout << "[9] \n";
     cout << "[10] \n";
     cout << "[11] \n";
@@ -220,4 +221,21 @@ void milestone_4_accumulate(const set<Goat> &trip) {
     cout << fixed << setprecision(2);
     cout << "\nTotal Age of All Goats: " << totalAge << " years\n";
     cout << "Average Goat Age:       " << avgAge << " years\n";
+}
+
+void milestone_5_min_max(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    auto minIt = min_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
+        return a.get_age() < b.get_age();
+    });
+    auto maxIt = max_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
+        return a.get_age() < b.get_age();
+    });
+    cout << "\nYoungest Goat: " << minIt->get_name() << " (" << minIt->get_age() << " years, " 
+    << minIt->get_color() << ")\n";
+    cout << "\nOldest Goat: " << maxIt->get_name() << " (" << maxIt->get_age() << " years, " 
+    << maxIt->get_color() << ")\n";
 }
