@@ -18,8 +18,15 @@ void add_goat(set<Goat> &trip, string [], string []);
 void display_trip(const set<Goat> &trip);
 int main_menu();
 
-// std::find_if
-void milestone_1_find(const set<Goat> &trip);
+
+void milestone_1_find(const set<Goat> &trip);   // std::find_if
+void milestone_2_count(const set<Goat> &trip);  // std::count_if
+void milestone_3(const set<Goat> &trip);        // std::
+void milestone_4(const set<Goat> &trip);        // std::
+void milestone_5(const set<Goat> &trip);        // std::
+void milestone_6(const set<Goat> &trip);        // std::
+void milestone_7(const set<Goat> &trip);        // std::
+void milestone_8(const set<Goat> &trip);        // std::
 
 int main() {
     srand(time(0));
@@ -55,6 +62,7 @@ int main() {
                 milestone_1_find(trip);
                 break;
             case 5:
+                milestone_2_count(trip);
                 break;
             case 6:
                 break;
@@ -154,16 +162,33 @@ void milestone_1_find(const set<Goat> &trip) {
     string targetName;
     cout << "\nEnter exact name to search for: ";
     cin >> targetName;
-
     auto it = find_if(trip.begin(), trip.end(), [&targetName](const Goat &g) {
         return g.get_name() == targetName;
     });
-
     if (it != trip.end()) {
         cout << "Found Goat! Name: " << it->get_name() << ", Age: " << it->get_age() << ", Color: " << it->get_color()
         << endl;
     } else {
         cout << "No goat named \"" << targetName << "\" was found in the trip.\n";
-
     }
+}
+
+void milestone_2_count(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    int minAge;
+    cout << "\nEnter threshold age: ";
+    while(!(cin >> minAge)) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Enter an integer: ";
+    }
+
+    int count = count_if(trip.begin(), trip.end(), [minAge](const Goat &g) {
+        return g.get_age() > minAge;
+    });
+
+    cout << "Number of goats older than " << minAge << ": " << count << endl;
 }
