@@ -68,7 +68,7 @@ void displayMenu() {
 }
 
 void printVillagers(const VillagerMap& villagers) {
-    cout << "Villager Details:\nName [Friendship Level, Species, Catachphrase]" << endl;
+    cout << "\nVillager Details:" << endl;
     for (const auto& pair: villagers) {
         const string& name = pair.first;
         const auto& data = pair.second;
@@ -84,7 +84,7 @@ void increaseFriendship(VillagerMap& villagers) {
 
     auto it = villagers.find(name);
     if (it != villagers.end()) {
-        int lvl = get<0>(it->second);
+        int& lvl = get<0>(it->second);
         lvl = min(10, lvl+1);
         cout << name << "'s friendship level is now " << lvl << ".\n";
     } else {
@@ -99,7 +99,7 @@ void decreaseFriendship(VillagerMap& villagers) {
 
     auto it = villagers.find(name);
     if (it != villagers.end()) {
-        int lvl = get<0>(it->second);
+        int& lvl = get<0>(it->second);
         lvl = max(0, lvl-1);
         cout << name << "'s friendship level is now " << lvl << ".\n";
     } else {
@@ -135,5 +135,16 @@ void addVillager(VillagerMap& villagers) {
     level = max(0, min(10, level));
     villagers[name] = make_tuple(level, species, catchphrase);
     cout << name << " added.\n";
+}
 
+void deleteVillager(VillagerMap& villagers) {
+    string name;
+    cout << "Villager name to delete: ";
+    cin >> name;
+
+    if (villagers.erase(name) > 0) {
+        cout << name << " deleted\n";
+    } else {
+        cout << "Villager " << name << " not found.\n";
+    }
 }
