@@ -24,7 +24,7 @@ void milestone_2_count(const set<Goat> &trip);      // std::count_if
 void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
 void milestone_4_accumulate(const set<Goat> &trip); // std::accumulate
 void milestone_5_min_max(const set<Goat> &trip);    // std::min_element and std::max_element
-void milestone_6(const set<Goat> &trip);            // std::
+void milestone_6_transform(const set<Goat> &trip);  // std::transform
 void milestone_7(const set<Goat> &trip);            // std::
 void milestone_8(const set<Goat> &trip);            // std::
 
@@ -98,7 +98,7 @@ int main_menu() {
     cout << "[6] Display formatted goat badges\n";
     cout << "[7] Calculate total and average age\n";
     cout << "[8] Find youngest and oldest goats\n";
-    cout << "[9] \n";
+    cout << "[9] Export goat names list\n";
     cout << "[10] \n";
     cout << "[11] \n";
     cout << "[12] Quit\n";
@@ -238,4 +238,17 @@ void milestone_5_min_max(const set<Goat> &trip) {
     << minIt->get_color() << ")\n";
     cout << "\nOldest Goat: " << maxIt->get_name() << " (" << maxIt->get_age() << " years, " 
     << maxIt->get_color() << ")\n";
+}
+
+void milestone_6_transform(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    vector<string> goatNames(trip.size());
+    transform(trip.begin(), trip.end(), goatNames.begin(), [](const Goat &g) {
+        return g.get_name();
+    });
+
+    cout << "\nExported Goat Names List:\n[ "
 }
