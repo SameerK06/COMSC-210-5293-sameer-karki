@@ -71,10 +71,10 @@ int main_menu() {
     cout << "[4] Find goat by name\n";
     cout << "[5] Quit\n";
     cout << "Choice --> ";
-    while (!(cin >> choice) || choice < 1 || choice > 4) {
+    while (!(cin >> choice) || choice < 1 || choice > 5) {
         cin.clear();
         cin.ignore(10000, '\n');
-        cout << "Invalid choice. Please enter a number between 1 and 4.\nChoice --> ";
+        cout << "Invalid choice. Please enter a number between 1 and 5.\nChoice --> ";
     }
     return choice;
 }
