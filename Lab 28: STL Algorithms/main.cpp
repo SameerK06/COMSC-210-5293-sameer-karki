@@ -25,7 +25,7 @@ void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
 void milestone_4_accumulate(const set<Goat> &trip); // std::accumulate
 void milestone_5_min_max(const set<Goat> &trip);    // std::min_element and std::max_element
 void milestone_6_transform(const set<Goat> &trip);  // std::transform
-void milestone_7(const set<Goat> &trip);            // std::
+void milestone_7_copy_if(const set<Goat> &trip);    // std::copy_if
 void milestone_8(const set<Goat> &trip);            // std::
 
 int main() {
@@ -77,6 +77,7 @@ int main() {
                 milestone_6_transform(trip);
                 break;
             case 10:
+                milestone_7_copy_if(trip);
                 break;
             case 11:
                 break;
@@ -100,7 +101,7 @@ int main_menu() {
     cout << "[7] Calculate total and average age\n";
     cout << "[8] Find youngest and oldest goats\n";
     cout << "[9] Export goat names list\n";
-    cout << "[10] \n";
+    cout << "[10] Filter goats by color\n";
     cout << "[11] \n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
@@ -257,3 +258,21 @@ void milestone_6_transform(const set<Goat> &trip) {
     cout << " ]\n";
 }
 
+void milestone_7_copy_if(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    string targetColor;
+    cout << "\nEnter color filter (example: Red, Green, Blue, Green): ";
+    cin >> targetColor;
+    vector<Goat> filteredGoats;
+    copy_if(trip.begin(), trip.end(), back_inserter(filteredGoats), [&targetColor](const Goat &g) {
+        return g.get_color() == targetColor;
+    });
+
+    cout << "\nFound " << filteredGoats.size() << " goats(s) with color \"" << targetColor << "\":\n";
+    for (const Goat &g : filteredGoats) {
+        cout << " - " << g.get_name() << " (" << g.get_age() << " years)\n";
+    }
+}
