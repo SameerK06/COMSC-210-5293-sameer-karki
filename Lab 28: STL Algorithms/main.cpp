@@ -3,6 +3,11 @@
 #include <iomanip>
 #include <set>
 #include "Goat.h"
+#include <vector>
+#include <algorithm>
+#include <numeric>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
@@ -12,6 +17,9 @@ void delete_goat(set<Goat> &trip);
 void add_goat(set<Goat> &trip, string [], string []);
 void display_trip(const set<Goat> &trip);
 int main_menu();
+
+// std::find_if
+void milestone_1_find(const set<Goat> &trip);
 
 int main() {
     srand(time(0));
@@ -31,7 +39,7 @@ int main() {
 
     set<Goat> trip;
     int choice = 0;
-    while (choice != 4) {
+    while (choice != 5) {
         choice = main_menu();
         switch (choice) {
             case 1:
@@ -44,6 +52,9 @@ int main() {
                 display_trip(trip);
                 break;
             case 4:
+                milestone_1_find(trip);
+                break;
+            case 5:
                 cout << "Exiting Goat Manager 3001. Goodbye!\n";
                 break;
         }
@@ -54,7 +65,11 @@ int main() {
 int main_menu() {
     int choice;
     cout << "\n*** GOAT MANAGER 3001 ***\n";
-    cout << "[1] Add a goat\n[2] Delete a goat\n[3] List goats\n[4] Quit\n";
+    cout << "[1] Add a goat\n";
+    cout << "[2] Delete a goat\n";
+    cout << "[3] List goats\n";
+    cout << "[4] Find goat by name\n";
+    cout << "[5] Quit\n";
     cout << "Choice --> ";
     while (!(cin >> choice) || choice < 1 || choice > 4) {
         cin.clear();
@@ -108,4 +123,26 @@ void delete_goat(set<Goat> &trip) {
     advance(it, choice - 1);
     cout << "\nDeleting goat: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
     trip.erase(it);
+}
+
+void milestone_1_find(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    string targetName;
+    cout << "\nEnter exact name to search for: ";
+    cin >> targetName;
+
+    auto it = find_if(trip.begin(), trip.end(), [&targetName](const Goat &g) {
+        return g.get_name() == targetName;
+    });
+
+    if (it != trip.end()) {
+        cout << "Found Goat! Name: " << it->get_name() << ", Age: " << it->get_age() << ", Color: " << it->get_color()
+        << endl;
+    } else {
+        cout << "No goat named \"" << targetName << "\" was found in the trip.\n";
+
+    }
 }
