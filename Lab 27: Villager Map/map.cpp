@@ -54,6 +54,9 @@ int main() {
             case 6:
                 cout << "Exiting program...\n";
                 break;
+            case 7:
+                printVillagers(villagers);
+                break;
             default:
                 cout << "Invalid choice. Please try again.\n\n";
                 break;
@@ -64,7 +67,7 @@ int main() {
 
 void displayMenu() {
     cout << "1. Add Villager\n2. Delete Villager\n3. Increase Friendship\n"
-    << "4. Decrease Friendship\n5. Search for Villager\n6. Exit\nEnter choice: ";
+    << "4. Decrease Friendship\n5. Search for Villager\n6. Exit\n7. Display All Villagers\nEnter choice: ";
 }
 
 void printVillagers(const VillagerMap& villagers) {
