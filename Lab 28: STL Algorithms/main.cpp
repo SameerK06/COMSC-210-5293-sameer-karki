@@ -22,7 +22,7 @@ int main_menu();
 void milestone_1_find(const set<Goat> &trip);       // std::find_if
 void milestone_2_count(const set<Goat> &trip);      // std::count_if
 void milestone_3_for_each(const set<Goat> &trip);   // std::for_reach
-void milestone_4(const set<Goat> &trip);            // std::
+void milestone_4_accumulate(const set<Goat> &trip); // std::accumulate
 void milestone_5(const set<Goat> &trip);            // std::
 void milestone_6(const set<Goat> &trip);            // std::
 void milestone_7(const set<Goat> &trip);            // std::
@@ -68,6 +68,7 @@ int main() {
                 milestone_3_for_each(trip);
                 break;
             case 7:
+                milestone_4_accumulate(trip);
                 break;
             case 8:
                 break;
@@ -94,7 +95,7 @@ int main_menu() {
     cout << "[4] Find goat by name\n";
     cout << "[5] Count goats older than age\n";
     cout << "[6] Display formatted goat badges\n";
-    cout << "[7] \n";
+    cout << "[7] Calculate total and average age\n";
     cout << "[8] \n";
     cout << "[9] \n";
     cout << "[10] \n";
@@ -205,4 +206,18 @@ void milestone_3_for_each(const set<Goat> &trip) {
         cout << "| Color: "<< left << setw(30) << g.get_color() << "|\n";
         cout << "+---------------------------------------+\n";
     });
+}
+
+void milestone_4_accumulate(const set<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "\nTrip is empty.\n";
+        return;
+    }
+    int totalAge = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat &g) {
+        return sum + g.get_age();
+    });
+    double avgAge = static_cast<double>(totalAge)/trip.size();
+    cout << fixed << setprecision(2);
+    cout << "\nTotal Age of All Goats: " << totalAge << " years\n";
+    cout << "Average Goat Age:       " << avgAge << " years\n";
 }
