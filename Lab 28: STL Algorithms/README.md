@@ -5,7 +5,9 @@
 This lab updates the goat manager with new functionality through the STL algorithm library and expands with 8 different menu options.
 
 ## User Input
+This took way to long, and 8 milestone felt so long.
 
+Also I tried out ternary operators and lambda function and they made life a lot eaiser. I don't even want to think about how long it would have taken without them.
 
 ## Layout
 .\
