@@ -9,10 +9,12 @@ using namespace std;
 using VillagerMap = map<string, tuple<int, string, string>>;
 
 void printVillagers(const VillagerMap& villagers);
-void increaseFriendship(const VillagerMap& villagers);
-void decreaseFriendship(const VillagerMap& villagers);
+void increaseFriendship(VillagerMap& villagers);
+void decreaseFriendship(VillagerMap& villagers);
 void searchVillager(const VillagerMap& villagers);
 void displayMenu();
+void addVillager(VillagerMap& villagers);
+void deleteVillager(VillagerMap& villagers);
 
 int main() {
     // insert elements into the map
@@ -27,22 +29,29 @@ int main() {
 
 
     int choice = 0;
-    while(choice != 4) {
+    while(choice != 6) {
         displayMenu();
         cin >> choice;
         switch (choice) {
             case 1:
-                increaseFriendship(villagers);
+                addVillager(villagers);
                 printVillagers(villagers);
                 break;
             case 2:
+                deleteVillager(villagers);
+                printVillagers(villagers);
+            case 3:
+                increaseFriendship(villagers);
+                printVillagers(villagers);
+                break;
+            case 4:
                 decreaseFriendship(villagers);
                 printVillagers(villagers);
                 break;
-            case 3:
+            case 5:
                 searchVillager(villagers);
                 break;
-            case 4:
+            case 6:
                 cout << "Exiting program...\n";
                 break;
             default:
@@ -54,7 +63,8 @@ int main() {
 }
 
 void displayMenu() {
-    cout << "\n1. Increase Friendship\n2. Decrease Friendship\n3. Search for Villager\n4. Exit\nEnter choice: ";
+    cout << "1. Add Villager\n2. Delete Villager\n3. Increase Friendship\n"
+    << "4. Decrease Friendship\n5. Search for Villager\n6. Exit\nEnter choice: ";
 }
 
 void printVillagers(const VillagerMap& villagers) {
@@ -67,7 +77,7 @@ void printVillagers(const VillagerMap& villagers) {
     cout << endl;
 }
 
-void increaseFriendship(const VillagerMap& villagers) {
+void increaseFriendship(VillagerMap& villagers) {
     string name;
     cout << "Enter villager name: ";
     cin >> name;
@@ -82,7 +92,7 @@ void increaseFriendship(const VillagerMap& villagers) {
     }
 }
 
-void decreaseFriendship(const VillagerMap& villagers) {
+void decreaseFriendship(VillagerMap& villagers) {
     string name;
     cout << "Enter villager name: ";
     cin >> name;
@@ -110,3 +120,20 @@ void searchVillager(const VillagerMap& villagers) {
     }
 }
 
+void addVillager(VillagerMap& villagers) {
+    string name, species, catchphrase;
+    int level;
+    cout << "Villager name: ";
+    cin >> name;
+    cout << "Friendship Level: ";
+    cin >> level;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Species: ";
+    getline(cin, species);
+    cout << "Catchphrase: ";
+    getline(cin, catchphrase);
+    level = max(0, min(10, level));
+    villagers[name] = make_tuple(level, species, catchphrase);
+    cout << name << " added.\n";
+
+}
