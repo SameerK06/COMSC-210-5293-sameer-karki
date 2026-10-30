@@ -46,7 +46,11 @@ int main() {
     displayCellState(eukaryoticCell);
 
     int timeSteps = 30;
-    cout << "[]"
+    cout << "\n[SYSTEM] Commencing simulation for " << timeSteps << " milliseconds...\n";
+    runSimulation(eukaryoticCell, timeSteps);
+
+    cout << "[SYSTEM] Final State\n";
+    displayCellState(eukaryoticCell);
 
     return 0;
 }
