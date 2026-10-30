@@ -47,6 +47,18 @@ bool loadCellData(const std::string& filename, CellEnvironment& cell) {
     // while reading, take organelle, catergory index and molecular name
     // insert moleule to cellular map (MAP[organelle][catergoy_index])
     // return true
+
+    // WIREFRAME
+    cell["Mitochondria"][0].push_back("Ca2+");
+    cell["Mitochondria"][2].push_back("ATP");
+    cell["Mitochondria"][2].push_back("NADH");
+
+    cell["Mitochondria"][0].push_back("Ca2+");
+    cell["Mitochondria"][0].push_back("Ca2+");
+
+    cell["Mitochondria"][0].push_back("Ca2+");
+    cell["Mitochondria"][0].push_back("Ca2+");
+    cell["Mitochondria"][0].push_back("Ca2+");
 }
 
 void displauCellState(const CellEnvironment& cell) {
