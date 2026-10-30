@@ -43,7 +43,24 @@ int main() {
 bool loadCellData(const std::string& filename, CellEnvironment& cell) {
     // PSEUDO:
     // open cell_data.txt
-    // if file not open, thrown error
+    // if file not open, return false
     // while reading, take organelle, catergory index and molecular name
     // insert moleule to cellular map (MAP[organelle][catergoy_index])
+    // return true
+}
+
+void displauCellState(const CellEnvironment& cell) {
+    // PSEUDO:
+    // for each key-value pair in map:
+    //  print key, values: ion list (index 0), protein list (index 1) and metabolites list (index 2)
+}
+
+void runSimulation(CellEnvironment& cell, int timePeriods) {
+    // PSEUDO:
+    // for t time at 1 to timePeriods
+    //  Iterate through map
+    //  Apply events
+    //   - Transport: pop_front() and pop_back from one list to another
+    //   - Synthesis: push_back() a new molecule at random chance
+    //   - Environmntal Stress: push_back() random number of moleucles to a specific list.
 }
