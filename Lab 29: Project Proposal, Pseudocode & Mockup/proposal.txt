@@ -1,2 +1,17 @@
 Project Overview:
-This project is a cellular simulation that models the transport and synthesis of molecules across different cellular organelles
+This project is a cellular simulation that models the transport and synthesis of 
+molecules across different cellular organelles over 30 discrete time period 
+(representing 30 milliseconds) to showcase cellular activity such as 
+concentration gradients, membrane transport mechansims, and phtotlysis/hydrolysis 
+and their affects to the biochemical balance within a cell.
+
+Implementation:
+Using std::map<std::string, std::array<std::list<std::string>, 3>> act as data structure to store and manage 
+cellular data
+
+The key (std::string) represents a specific cellular region or organelle. ex. (Nucleus, Cell Memebrane, etc.)
+The value is a 3 element std::array of std::lists that represet distinct molecular categories:
+ - Index 0: Ions (K+, Na+, etc.)
+ - Index 1: Proteins/Enzymes (Cas9, ATP_Synthase, etc.)
+ - Index 2: Metabolites (ATP, Glucose, Lipids)
+ 
