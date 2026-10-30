@@ -17,5 +17,6 @@ The value is a 3 element std::array of std::lists that represet distinct molecul
 
 Simulated Events:
 The process simulated changes over 30 discrete time periods. At each time period, three events may/can occur:
- - Event 1: Active/Passive Transport (Ions or molecules migrate between the Cell Membrane/ internal organelles)
- - Event 2: Synthesis/Degradation: 
+ - Event 1: Active/Passive Transport: Ions or molecules migrate between the Cell Membrane/ internal organelles.
+ - Event 2: Synthesis/Degradation: Proteins are added to the Endoplasmic Reticulum, or ATP is converted to ADP.
+ - Event 3: Environmental Stress: Large and sudden influx of external ions trigger rapid transport response.
