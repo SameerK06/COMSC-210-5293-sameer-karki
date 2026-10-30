@@ -14,4 +14,8 @@ The value is a 3 element std::array of std::lists that represet distinct molecul
  - Index 0: Ions (K+, Na+, etc.)
  - Index 1: Proteins/Enzymes (Cas9, ATP_Synthase, etc.)
  - Index 2: Metabolites (ATP, Glucose, Lipids)
- 
+
+Simulated Events:
+The process simulated changes over 30 discrete time periods. At each time period, three events may/can occur:
+ - Event 1: Active/Passive Transport (Ions or molecules migrate between the Cell Membrane/ internal organelles)
+ - Event 2: Synthesis/Degradation: 
