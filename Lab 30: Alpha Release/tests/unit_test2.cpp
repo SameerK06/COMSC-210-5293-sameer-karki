@@ -6,9 +6,6 @@
 #include <array>
 #include <list>
 
-// cout << "[Unit Test 2]
-
-
 using namespace std;
 using CellEnvironment = map<string, array<list<string>, 3>>;
 

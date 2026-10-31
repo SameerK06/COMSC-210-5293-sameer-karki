@@ -22,3 +22,14 @@ Due to the fact that the function returns void and outputs directly to the scree
 3. The function correctly restores the `cout` buffer without crashing the console.
 
 Unit Test Driver Program (tests/unit_test2.cpp)
+
+---- runSimulation() ----
+
+Ensure that the core simulation loop successfully executes all discrete events and correctly mutates the nested data structure. 
+A test driver will be described to isolate the `runSimulation()` function.
+It will pre-load dummy map with necessary inital data, run the simulation for 30 time steps, and verify:
+1. Verifies that the fuction successfully removes an ion from the Cell_Membrane list and adds it to the Mitochondria list.
+2. Verifies that "ATP" is successful appeneded to the Mitochondria's metabolites list.
+3. Verifies that exactly two "Na+" molecules are added to the Cell_Membrane's ion list.
+
+Unit Test Driver Program (tests/unit_test3.cpp)
