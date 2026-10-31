@@ -50,6 +50,12 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cell["Mitochondria"][2].push_back("ATP");
             cout << " > [t=15] SYNTHESIS: ATP created in Mitochondria.\n";
         }
+        if (t == 20) {
+            string messenger = cell["Nucleus"][1].front();
+            cell["Nucleus"][1].pop_front();
+            cell["Ribosome"][2].push_back("Protein");
+            cout << " > [t=20] TRANSLATION: Protein created in Ribosome.\n";
+        }
         if (t == 25) {
             cell["Cell_Membrane"][0].push_back("Na+");
             cell["Cell_Membrane"][0].push_back("Na+");
