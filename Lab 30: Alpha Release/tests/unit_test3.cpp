@@ -30,7 +30,12 @@ int main() {
         cout << "[Unit Test 2] (FAIL) Verify Synthesis.\n";
     }
     cout << "[Unit Test 2] Verify Stress...\n";
-    
+    if (testCell["Cell_Membrane"][0].size() == 2 && testCell["Cell_Membrane"][0].front() == "Na+") {
+        cout << "[Unit Test 2] (PASS) Verify Stress.\n";
+    } else {
+        cout << "[Unit Test 2] (FAIL) Verify Stress.\n";
+    }
+    return 0;
 }
 
 void runSimulation(CellEnvironment& cell, int timePeriods) {
