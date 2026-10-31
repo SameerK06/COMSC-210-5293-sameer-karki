@@ -1,0 +1,12 @@
+Unit Test Details:
+
+---- loadCellData() ----
+
+Ensure successful data inport process, test `loadCellData()` function.
+A test driver will be described below to isolate the function, where it will generate a temp dummy file to verify:
+1. The function returns `true` (successfully handles an existing file)
+2. The function correctes deliminates and routes the specific molecule to the correct organelle key
+   and inner array index
+3. The function successfully handels non-existant files by returing `false`.
+
+Unit Test Driver Program (unit_test1.cpp):
