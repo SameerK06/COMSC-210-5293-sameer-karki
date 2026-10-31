@@ -92,29 +92,21 @@ void displayCellState(const CellEnvironment& cell) {
 }
 
 void runSimulation(CellEnvironment& cell, int timePeriods) {
-    // PSEUDO:
-    // for t time at 1 to timePeriods
-    //  Iterate through map
-    //  Apply events
-    //   - Transport: pop_front() and pop_back from one list to another
-    //   - Synthesis: push_back() a new molecule at random chance
-    //   - Environmntal Stress: push_back() random number of moleucles to a specific list.
-
-    // WIREFRAME
     for (int t = 1; t <= timePeriods; t++) {
         if (t == 10) {
-            cout << "[t=10] Event 1 (Transport): Ca2+ actively transported to Mitochondria.\n";
-            cell["Mitochondria"][0].push_back("Ca2+");
+            string ion = cell["Cell_Membrane"][0].front();
+            cell["Cell_Membrane"][0].pop_front();
+            cell["Mitochondria"][0].push_back(ion);
+            cout << " > [t=10] Transport: " << ion << " moved from Cell_Membrane to Mitochondria.\n";
         }
         if (t == 15) {
-            cout << "[t=15] Event 2 (Synthesis): ATP synthesized in Mitochondria.\n";
             cell["Mitochondria"][2].push_back("ATP");
+            cout << " > [t=15] SYNTHESIS: ATP created in Mitochondria.\n";
         }
         if (t == 25) {
-            cout << "[t=25] Event 3 (Environmental Stress): Sudden influx of Na+ into Cell_Membrane.\n";
             cell["Cell_Membrane"][0].push_back("Na+");
             cell["Cell_Membrane"][0].push_back("Na+");
-            cell["Cell_Membrane"][0].push_back("Na+");
+            cout << " > [t=25] STESS: Sudden influc of Na+ at the Cell_Membrane.\n";
         }
     }
     cout << "[SYSTEM] Simulation complete.\n";
