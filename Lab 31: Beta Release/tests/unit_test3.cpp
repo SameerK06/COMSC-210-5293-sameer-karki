@@ -13,27 +13,27 @@ using CellEnvironment = map<string, array<list<string>, 3>>;
 void runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
-    cout << "[Unit Test 2] Starting runSimulation Unit Test...\n";
+    cout << "[Unit Test 3] Starting runSimulation Unit Test...\n";
     CellEnvironment testCell;
     testCell["Cell_Membrane"][0].push_back("Calcium_Ion");
     runSimulation(testCell, 30);
-    cout << "[Unit Test 2] Verify Transport...\n";
+    cout << "[Unit Test 3] Verify Transport...\n";
     if (testCell["Mitochondria"][0].front() == "Calcium_Ion") {
-        cout << "[Unit Test 2] (PASS) Verify Transport.\n";
+        cout << "[Unit Test 3] (PASS) Verify Transport.\n";
     } else {
-        cout << "[Unit Test 2] (FAIL) Verify Transport.\n";
+        cout << "[Unit Test 3] (FAIL) Verify Transport.\n";
     }
-    cout << "[Unit Test 2] Verify Synthesis...\n";
+    cout << "[Unit Test 3] Verify Synthesis...\n";
     if (testCell["Mitochondria"][2].back() == "ATP") {
-        cout << "[Unit Test 2] (PASS) Verify Synthesis.\n";
+        cout << "[Unit Test 3] (PASS) Verify Synthesis.\n";
     } else {
-        cout << "[Unit Test 2] (FAIL) Verify Synthesis.\n";
+        cout << "[Unit Test 3] (FAIL) Verify Synthesis.\n";
     }
-    cout << "[Unit Test 2] Verify Stress...\n";
+    cout << "[Unit Test 3] Verify Stress...\n";
     if (testCell["Cell_Membrane"][0].size() == 2 && testCell["Cell_Membrane"][0].front() == "Na+") {
-        cout << "[Unit Test 2] (PASS) Verify Stress.\n";
+        cout << "[Unit Test 3] (PASS) Verify Stress.\n";
     } else {
-        cout << "[Unit Test 2] (FAIL) Verify Stress.\n";
+        cout << "[Unit Test 3] (FAIL) Verify Stress.\n";
     }
     return 0;
 }
@@ -66,9 +66,7 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cout << " > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
         }
         if (t == 28) {
-            for (int i = 0; i <= cell["Lysosome"][0].size(); i++) {
-                cell["Lysosome"][0].pop_front();
-            }
+            cell["Lysosome"][0].clear();
             cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
         }
     }

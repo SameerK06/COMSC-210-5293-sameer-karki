@@ -19,3 +19,16 @@ The trace trap or segmentation fault occured at t=20 in the runSimulation loop b
 .front() and .pop_front() on an empty list.
 Fix:
 Add a check to see if the list is empty before attempting to remove or access its first element.
+
+-- Error 3:
+[Unit Test 2] Starting runSimulation Unit Test...
+ > [t=10] Transport: Calcium_Ion moved from Cell_Membrane to Mitochondria.
+ > [t=15] SYNTHESIS: ATP created in Mitochondria.
+ > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.
+zsh: trace trap  ./unit_test3.exe
+Problem 1:
+There is no Lysosome populated therefore it will cause it to fail when we call pop_front
+Problem 2:
+If list had items then size() would dynamically change as we continue to drop values
+Fix:
+use the .clear() method to empty the list.

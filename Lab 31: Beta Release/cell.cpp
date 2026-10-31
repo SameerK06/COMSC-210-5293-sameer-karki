@@ -103,9 +103,7 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cout << " > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
         }
         if (t == 28) {
-            for (int i = 0; i <= cell["Lysosome"][0].size(); i++) {
-                cell["Lysosome"][0].pop_front();
-            }
+            cell["Lysosome"][0].clear();
             cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
         }
     }
