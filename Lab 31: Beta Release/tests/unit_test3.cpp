@@ -41,25 +41,29 @@ int main() {
 void runSimulation(CellEnvironment& cell, int timePeriods) {
     for (int t = 1; t <= timePeriods; t++) {
         if (t == 10) {
-            string ion = cell["Cell_Membrane"][0].front();
-            cell["Cell_Membrane"][0].pop_front();
-            cell["Mitochondria"][0].push_back(ion);
-            cout << " > [t=10] Transport: " << ion << " moved from Cell_Membrane to Mitochondria.\n";
+            if (!cell["Cell_Membrane"][0].empty()) {
+                string ion = cell["Cell_Membrane"][0].front();
+                cell["Cell_Membrane"][0].pop_front();
+                cell["Mitochondria"][0].push_back(ion);
+                cout << " > [t=10] Transport: " << ion << " moved from Cell_Membrane to Mitochondria.\n";
+            }
         }
         if (t == 15) {
             cell["Mitochondria"][2].push_back("ATP");
             cout << " > [t=15] SYNTHESIS: ATP created in Mitochondria.\n";
         }
         if (t == 20) {
-            string messenger = cell["Nucleus"][1].front();
-            cell["Nucleus"][1].pop_front();
-            cell["Ribosome"][2].push_back("Protein");
-            cout << " > [t=20] TRANSLATION: Protein created in Ribosome.\n";
+            if (!cell["Nucleus"][1].empty()) {
+                string messenger = cell["Nucleus"][1].front();
+                cell["Nucleus"][1].pop_front();
+                cell["Ribosome"][2].push_back("Protein");
+                cout << " > [t=20] TRANSLATION: Protein created in Ribosome from " << messenger << ".\n";
+            }
         }
         if (t == 25) {
             cell["Cell_Membrane"][0].push_back("Na+");
             cell["Cell_Membrane"][0].push_back("Na+");
-            cout << " > [t=25] STESS: Sudden influc of Na+ at the Cell_Membrane.\n";
+            cout << " > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
         }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
