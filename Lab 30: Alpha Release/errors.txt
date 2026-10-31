@@ -1,0 +1,12 @@
+Gonna start this early because I want to
+
+-- Error 1: 
+Error Message:
+./cell.exe 
+[SYSTEM] Error loading data. Please correct data or try again!
+Problem:
+Forgot to include the cell_data.txt in the file system
+Fix:
+Added cell_data.txt from Lab 29 to Lab 30 directory.
+
+-- Error 2:
