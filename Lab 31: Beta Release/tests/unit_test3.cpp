@@ -65,6 +65,12 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cell["Cell_Membrane"][0].push_back("Na+");
             cout << " > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
         }
+        if (t == 28) {
+            for (int i = 0; i <= cell["Lysosome"][0].size(); i++) {
+                cell["Lysosome"][0].pop_front();
+            }
+            cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
+        }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
 }
