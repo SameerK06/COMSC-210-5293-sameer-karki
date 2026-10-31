@@ -74,11 +74,6 @@ bool loadCellData(const std::string& filename, CellEnvironment& cell) {
 }
 
 void displayCellState(const CellEnvironment& cell) {
-    // PSEUDO:
-    // for each key-value pair in map:
-    //  print key, values: ion list (index 0), protein list (index 1) and metabolites list (index 2)
-    
-    // WIREFRAME
     for (const auto& pair: cell) {
         cout << "Organelle: " << pair.first << "\n [0] Ions:    ";
         for (const auto& item : pair.second[0]) {
