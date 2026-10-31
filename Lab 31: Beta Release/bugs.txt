@@ -8,3 +8,14 @@ Fix:
 Added cell_data.txt from Lab 29 to Lab 30 directory.
 
 -- Error 2:
+Error:
+./unit_test3.exe 
+[Unit Test 2] Starting runSimulation Unit Test...
+ > [t=10] Transport: Calcium_Ion moved from Cell_Membrane to Mitochondria.
+ > [t=15] SYNTHESIS: ATP created in Mitochondria.
+zsh: trace trap  ./unit_test3.exe
+Problem: 
+The trace trap or segmentation fault occured at t=20 in the runSimulation loop because the code attempts to call 
+.front() and .pop_front() on an empty list.
+Fix:
+Add a check to see if the list is empty before attempting to remove or access its first element.
