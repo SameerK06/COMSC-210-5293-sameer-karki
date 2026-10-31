@@ -1,4 +1,4 @@
-// Pseudocode + Wireframe
+// Alpha Version
 #include <iostream>
 #include <fstream>
 #include <string>

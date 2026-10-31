@@ -9,4 +9,16 @@ A test driver will be described below to isolate the function, where it will gen
    and inner array index
 3. The function successfully handels non-existant files by returing `false`.
 
-Unit Test Driver Program (unit_test1.cpp):
+Unit Test Driver Program (tests/unit_test1.cpp)
+
+---- displayCellState() ----
+
+Ensure that the nested data structure is formateed and displayed correctly to the console.
+A test driver will be described below to isolate the `displayCellState()` function.
+Due to the fact that the function returns void and outputs directly to the screen, the unit test will use
+`stringstream` to capture the console output in memory to verify:
+1. The function successful reads the key (organelle) and all three array lists.
+2. The function output has the exact whitespace, line breaks and brakes matching the expected string layout.
+3. The function correctly restores the `cout` buffer without crashing the console.
+
+Unit Test Driver Program (tests/unit_test2.cpp)
