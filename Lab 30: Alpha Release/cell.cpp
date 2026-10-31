@@ -19,23 +19,7 @@ void displayCellState(const CellEnvironment& cell);
 void runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
-    // Initialize cellular map
     
-    // Open external file and load at minimum 100 lines of molecular data
-    // PSEUDO
-    // if loadCellData returns true good else throw error
-
-    // Display Inital State
-    // cout << "inital state\n" << displayCellState(cell) << endl;
-
-    // Run time-based event simulation
-    // PSEUDO:
-    // Time periods to 30
-    // Call runSimulation passing map and number of periods
-
-    // Display final state of the event after the simulation
-
-    // WIREFRAME
     CellEnvironment eukaryoticCell;
     if (!loadCellData("cell_data.txt", eukaryoticCell)) {
         cout << "[SYSTEM] Error loading data. Please correct data or try again!\n";
