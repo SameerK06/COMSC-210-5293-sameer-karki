@@ -58,25 +58,18 @@ int main() {
 // Function Implementations
 
 bool loadCellData(const std::string& filename, CellEnvironment& cell) {
-    // PSEUDO:
-    // open cell_data.txt
-    // if file not open, return false
-    // while reading, take organelle, catergory index and molecular name
-    // insert moleule to cellular map (MAP[organelle][catergoy_index])
-    // return true
+    ifstream file(filename);
+    if(!file.is_open()) {
+        return false;
+    }
+    string organelle;
+    int catergoryIndex;
+    string molecule;
 
-    // WIREFRAME
-    cell["Mitochondria"][0].push_back("Ca2+");
-    cell["Mitochondria"][2].push_back("ATP");
-    cell["Mitochondria"][2].push_back("NADH");
-
-    cell["Nucleus"][1].push_back("Cas9_Endonuclease");
-    cell["Nucleus"][1].push_back("RNA_Polymerase");
-
-    cell["Cell_Membrane"][0].push_back("Na+");
-    cell["Cell_Membrane"][0].push_back("K+");
-    cell["Cell_Membrane"][2].push_back("Phospholipid");
-
+    while (file >> organelle >> catergoryIndex >> molecule) {
+        cell[organelle][catergoryIndex].push_back(molecule);
+    }
+    file.close();
     return true; 
 }
 
