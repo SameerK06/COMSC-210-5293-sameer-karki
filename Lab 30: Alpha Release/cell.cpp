@@ -19,7 +19,7 @@ void displayCellState(const CellEnvironment& cell);
 void runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
-    
+
     CellEnvironment eukaryoticCell;
     if (!loadCellData("cell_data.txt", eukaryoticCell)) {
         cout << "[SYSTEM] Error loading data. Please correct data or try again!\n";
@@ -93,5 +93,5 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cout << " > [t=25] STESS: Sudden influc of Na+ at the Cell_Membrane.\n";
         }
     }
-    cout << "[SYSTEM] Simulation complete.\n";
+    cout << "[SYSTEM] Simulation complete.\n\n";
 }
