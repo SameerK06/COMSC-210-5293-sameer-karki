@@ -88,3 +88,10 @@ It still keeps dying
 Fix: 
 going to display results if death occurs and set a condition to check for cell_death to
 know if results were already displayed.
+
+-- Error 5:
+
+Problem:
+The array has a size limit of 3 elements, I was stupid because I pointed to the 3rd index (I blame matlab)
+Fix: 
+Change it so that it points to the 2nd index.
