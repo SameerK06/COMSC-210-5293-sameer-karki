@@ -10,6 +10,8 @@
 
 using namespace std;
 
+const int CELL_EVENTS = 2;
+
 using CellEnvironment = map<string, array<list<string>, 3>>;
 
 // Function Prototypes
@@ -31,7 +33,7 @@ int main() {
     cout << "[SYSTEM] Inital State\n";
     displayCellState(eukaryoticCell);
 
-    int timeSteps = 100;
+    int timeSteps = 30;
     cout << "\n[SYSTEM] Commencing simulation for " << timeSteps << " milliseconds...\n";
     runSimulation(eukaryoticCell, timeSteps);
 
@@ -78,9 +80,9 @@ void displayCellState(const CellEnvironment& cell) {
 }
 
 void runSimulation(CellEnvironment& cell, int timePeriods) {
+    srand(time(0));
     for (int t = 1; t <= timePeriods; t++) {
-        for (int eventCount = 1; eventCount <= 30; eventCount++) {
-            srand(time(0));
+        for (int eventCount = 1; eventCount <= CELL_EVENTS; eventCount++) {
             int chance = (rand() % 100) + 1;
             if (chance <= 20) {
                 cell["Mitochondria"][2].push_back("ATP");

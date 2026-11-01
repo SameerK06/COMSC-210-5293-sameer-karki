@@ -67,3 +67,18 @@ Problem 3: In the apoptosis block, we modify the map while we loop through it wh
 Fix: We should just clear the entire map instead of doing it one at a time
 Problem 4: I forgot that auto const& [organelleName, data] is a c++17 feature
 Fix: Follow the fix for problem 3.
+
+-- Error 4:
+
+Not really a problem but something I noticed with the functionality is that if you repeatly run the cell program
+quickly the outputs is the same. 
+
+Problem:
+srand(time(0)) is in the loop
+Fix:
+move it outside the loops because then it will only generate one send at the begining.
+
+Problem:
+Time span was too big so cell had a higher percentage for apoptosis leading to no final state
+Fix:
+decrease the timeperiod.
