@@ -29,7 +29,7 @@ int main() {
     cout << "[SYSTEM] Inital State\n";
     displayCellState(eukaryoticCell);
 
-    int timeSteps = 30;
+    int timeSteps = 100;
     cout << "\n[SYSTEM] Commencing simulation for " << timeSteps << " milliseconds...\n";
     runSimulation(eukaryoticCell, timeSteps);
 
@@ -105,6 +105,18 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
         if (t == 28) {
             cell["Lysosome"][0].clear();
             cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
+        }
+        if (t == 35) {
+            if(!cell["Mitochondria"][2].empty() && cell["Mitochondria"][2].back() == "ATP") {
+                cell["Mitochondria"][2].pop_back();
+            }
+            for (auto it = cell["Cell_Membrane"][0].begin(); it != cell["Cell_Membrane"][0].end(), it++) {
+                if (*it == "Na+") {
+                    cell["Cell_Membrane"][0].erase(it);
+                    cell["Cell_Membrane"][0].push_back("K+");
+                }
+            }
+            cout << " > [t=35] ACTIVE TRANSPORT: Na+ exchanged for K+ using ATP.\n";
         }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
