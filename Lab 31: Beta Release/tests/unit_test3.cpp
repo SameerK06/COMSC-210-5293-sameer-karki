@@ -10,7 +10,7 @@
 using namespace std;
 const int CELL_EVENTS = 5;
 using CellEnvironment = map<string, array<list<string>, 3>>;
-
+ 
 void displayCellState(const CellEnvironment& cell);
 bool runSimulation(CellEnvironment& cell, int timePeriods);
 
