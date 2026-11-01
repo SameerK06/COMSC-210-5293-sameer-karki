@@ -4,11 +4,15 @@
 #include <map>
 #include <array>
 #include <list>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
+const int CELL_EVENTS = 5;
 using CellEnvironment = map<string, array<list<string>, 3>>;
 
-void runSimulation(CellEnvironment& cell, int timePeriods);
+void displayCellState(const CellEnvironment& cell);
+bool runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
     cout << "[Unit Test 3] Starting runSimulation Unit Test...\n";
@@ -36,10 +40,28 @@ int main() {
     return 0;
 }
 
-void runSimulation(CellEnvironment& cell, int timePeriods) {
+void displayCellState(const CellEnvironment& cell) {
+    for (const auto& pair: cell) {
+        cout << "Organelle: " << pair.first << "\n [0] Ions:    ";
+        for (const auto& item : pair.second[0]) {
+            cout << item << " ";
+        }
+        cout << "\n [1] Proteins:   ";
+        for (const auto& item : pair.second[1]) {
+            cout << item << " ";
+        }
+        cout << "\n [2] Metabolites:   ";
+        for (const auto& item : pair.second[2]) {
+            cout << item << " ";
+        }
+        cout << "\n\n";
+    }
+}
+
+bool runSimulation(CellEnvironment& cell, int timePeriods) {
+    srand(time(0));
     for (int t = 1; t <= timePeriods; t++) {
-        for (int eventCount = 1; eventCount <= 30; eventCount++) {
-            srand(time(0));
+        for (int eventCount = 1; eventCount <= CELL_EVENTS; eventCount++) {
             int chance = (rand() % 100) + 1;
             if (chance <= 20) {
                 cell["Mitochondria"][2].push_back("ATP");
@@ -87,13 +109,27 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             }
             else if (chance >= 99) {
                 if (cell["Cell_Membrane"][0].size() > 5) {
-                    cell.clear();
                     cout << " > [t=" << t << "] APOPTOSIS: Cell self-destructed due to stress.\n";
                     cout << "[SYSTEM] Simulation complete.\n\n";
-                    return;
+                    cout << "[SYSTEM] Final State\n";
+                    displayCellState(cell);
+                    cell.clear();
+                    return true;
+                }
+            }
+            if (chance >= 90 && chance <= 95) {
+                cell["Nucleus"][2].push_back("Replicated_DNA");
+                cout << " > DNA REPLICATION: Copied genetic material.\n";
+            }
+            if (chance == 70) { 
+                if (!cell["Golgi_Appartus"][0].empty()) {
+                    cell["Golgi_Appartus"][0].pop_front();
+                    cell["Vesicle"][0].push_back("Packaged_Protein");
+                    cout << " > PACKAGING: Protein prepped for transport.\n";
                 }
             }
         }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
+    return false;
 }
