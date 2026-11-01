@@ -67,6 +67,26 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             cell["Lysosome"][0].clear();
             cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
         }
+        if (t == 35) {
+            if(!cell["Mitochondria"][2].empty() && cell["Mitochondria"][2].back() == "ATP") {
+                cell["Mitochondria"][2].pop_back();
+                for (auto it = cell["Cell_Membrane"][0].begin(); it != cell["Cell_Membrane"][0].end(); it++) {
+                    if (*it == "Na+") {
+                        cell["Cell_Membrane"][0].erase(it);
+                        cell["Cell_Membrane"][0].push_back("K+");
+                    }
+                }
+                cout << " > [t=35] ACTIVE TRANSPORT: Na+ exchanged for K+ using ATP.\n";
+            }
+        }
+        if (t == 50) {
+            if (cell["Cell_Membrane"][0].size() > 5) {
+                for (auto const& [organelleName, data] : cell) {
+                    cell.erase(organelleName);
+                }
+                cout << " > [t=50] APOPTOSIS: Cell self-destructed due to stress.\n";
+            }
+        }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
 }

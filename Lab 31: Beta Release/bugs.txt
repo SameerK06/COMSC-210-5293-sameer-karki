@@ -32,3 +32,38 @@ Problem 2:
 If list had items then size() would dynamically change as we continue to drop values
 Fix:
 use the .clear() method to empty the list.
+
+-- Error 4:
+unit_test3.cpp:73:69: warning: inequality
+      comparison result unused [-Wunused-comparison]
+   73 |   ...it != cell["Cell_Membrane"][0].end(), it++) {
+      |      ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+unit_test3.cpp:73:69: note: use '|=' to
+      turn this inequality comparison into an or-assignment
+   73 |   ...(auto it = cell["Cell_Membrane"][0].begin(); it !=cell[...
+      |                                                      ^~
+      |                                                      |=
+unit_test3.cpp:73:66: error: value of type
+      '__list_iterator<std::string, void *>' is not contextually
+      convertible to 'bool'
+   73 |   ...it != cell["Cell_Membrane"][0].end(), it++) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+unit_test3.cpp:73:108: error: expected ';'
+      in 'for' statement specifier
+   73 |   ...it != cell["Cell_Membrane"][0].end(), it++) {
+      |                                                ^
+unit_test3.cpp:84:34: warning: 
+      decomposition declarations are a C++17 extension
+      [-Wc++17-extensions]
+   84 |                 for (auto const& [organelleName, data] : cell) {
+      |                                  ^~~~~~~~~~~~~~~~~~~~~
+2 warnings and 2 errors generated.
+
+Problem 1: used a comma instead of a semicolon in a for loop
+Fix: used my chaning the comma to a semicolon.
+Problem 2: Accidently deleted iterator instead of element
+Fix: update the value of it to the next element.
+Problem 3: In the apoptosis block, we modify the map while we loop through it which is bad
+Fix: We should just clear the entire map instead of doing it one at a time
+Problem 4: I forgot that auto const& [organelleName, data] is a c++17 feature
+Fix: Follow the fix for problem 3.
