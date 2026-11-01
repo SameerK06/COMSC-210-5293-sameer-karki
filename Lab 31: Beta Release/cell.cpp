@@ -5,6 +5,8 @@
 #include <map>
 #include <array>
 #include <list>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -77,54 +79,60 @@ void displayCellState(const CellEnvironment& cell) {
 
 void runSimulation(CellEnvironment& cell, int timePeriods) {
     for (int t = 1; t <= timePeriods; t++) {
-        if (t == 10) {
-            if (!cell["Cell_Membrane"][0].empty()) {
-                string ion = cell["Cell_Membrane"][0].front();
-                cell["Cell_Membrane"][0].pop_front();
-                cell["Mitochondria"][0].push_back(ion);
-                cout << " > [t=10] Transport: " << ion << " moved from Cell_Membrane to Mitochondria.\n";
-            }
-        }
-        if (t == 15) {
-            cell["Mitochondria"][2].push_back("ATP");
-            cout << " > [t=15] SYNTHESIS: ATP created in Mitochondria.\n";
-        }
-        if (t == 20) {
-            if (!cell["Nucleus"][1].empty()) {
-                string messenger = cell["Nucleus"][1].front();
-                cell["Nucleus"][1].pop_front();
-                cell["Ribosome"][2].push_back("Protein");
-                cout << " > [t=20] TRANSLATION: Protein created in Ribosome from " << messenger << ".\n";
-            }
-        }
-        if (t == 25) {
-            cell["Cell_Membrane"][0].push_back("Na+");
-            cell["Cell_Membrane"][0].push_back("Na+");
-            cout << " > [t=25] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
-        }
-        if (t == 28) {
-            cell["Lysosome"][0].clear();
-            cout << " > [t=28] EXOCYTOSIS: Waste removed from Lysosome.\n";
-        }
-        if (t == 35) {
-            if(!cell["Mitochondria"][2].empty() && cell["Mitochondria"][2].back() == "ATP") {
-                cell["Mitochondria"][2].pop_back();
-                auto it = cell["Cell_Membrane"][0].begin();
-                while (it != cell["Cell_Membrane"][0].end()) {
-                    if (*it == "Na+") {
-                        it = cell["Cell_Membrane"][0].erase(it);
-                        cell["Cell_Membrane"][0].push_back("K+");
-                    } else {
-                        ++it;
-                    }
+        for (int eventCount = 1; eventCount <= 30; eventCount++) {
+            srand(time(0));
+            int chance = (rand() % 100) + 1;
+            if (chance <= 20) {
+                cell["Mitochondria"][2].push_back("ATP");
+                cout << " > [t=" << t << "] SYNTHESIS: ATP created in Mitochondria.\n";
+            } 
+            else if (chance <= 40) {
+                cell["Cell_Membrane"][0].push_back("Na+");
+                cell["Cell_Membrane"][0].push_back("Na+");
+                cout << " > [t=" << t << "] STRESS: Sudden influx of Na+ at the Cell_Membrane.\n";
+            } 
+            else if (chance <= 55) {
+                if (!cell["Cell_Membrane"][0].empty()) {
+                    string ion = cell["Cell_Membrane"][0].front();
+                    cell["Cell_Membrane"][0].pop_front();
+                    cell["Mitochondria"][0].push_back(ion);
+                    cout << " > [t=" << t << "] Transport: " << ion << " moved from Cell_Membrane to Mitochondria.\n";
                 }
-                cout << " > [t=35] ACTIVE TRANSPORT: Na+ exchanged for K+ using ATP.\n";
             }
-        }
-        if (t == 50) {
-            if (cell["Cell_Membrane"][0].size() > 5) {
-                cell.clear();
-                cout << " > [t=50] APOPTOSIS: Cell self-destructed due to stress.\n";
+            else if (chance <= 65) {
+                if (!cell["Nucleus"][1].empty()) {
+                    string messenger = cell["Nucleus"][1].front();
+                    cell["Nucleus"][1].pop_front();
+                    cell["Ribosome"][2].push_back("Protein");
+                    cout << " > [t=" << t << "] TRANSLATION: Protein created in Ribosome from " << messenger << ".\n";
+                }
+            }
+            else if (chance <= 70) {
+                cell["Lysosome"][0].clear();
+                cout << " > [t=" << t << "] EXOCYTOSIS: Waste removed from Lysosome.\n";
+            }
+            else if (chance <= 85) {
+                if(!cell["Mitochondria"][2].empty() && cell["Mitochondria"][2].back() == "ATP") {
+                    cell["Mitochondria"][2].pop_back();
+                    auto it = cell["Cell_Membrane"][0].begin();
+                    while (it != cell["Cell_Membrane"][0].end()) {
+                        if (*it == "Na+") {
+                            it = cell["Cell_Membrane"][0].erase(it);
+                            cell["Cell_Membrane"][0].push_back("K+");
+                        } else {
+                            ++it;
+                        }
+                    }
+                    cout << " > [t=" << t << "] ACTIVE TRANSPORT: Na+ exchanged for K+ using ATP.\n";
+                }
+            }
+            else if (chance >= 99) {
+                if (cell["Cell_Membrane"][0].size() > 5) {
+                    cell.clear();
+                    cout << " > [t=" << t << "] APOPTOSIS: Cell self-destructed due to stress.\n";
+                    cout << "[SYSTEM] Simulation complete.\n\n";
+                    return;
+                }
             }
         }
     }
