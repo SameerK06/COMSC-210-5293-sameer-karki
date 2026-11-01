@@ -1,0 +1,2 @@
+Nucleus 1 Test_Protein
+Mitochondria 2 Test_Metabolite
