@@ -82,3 +82,7 @@ Problem:
 Time span was too big so cell had a higher percentage for apoptosis leading to no final state
 Fix:
 decrease the timeperiod.
+
+Problem:
+It still keeps dying so going to display results if death occurs and set a condition to check for cell_death to
+know if results were already displayed.

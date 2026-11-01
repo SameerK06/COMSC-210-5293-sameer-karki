@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int CELL_EVENTS = 2;
+const int CELL_EVENTS = 5;
 
 using CellEnvironment = map<string, array<list<string>, 3>>;
 
@@ -20,7 +20,7 @@ bool loadCellData(const string& filename, CellEnvironment& cell);
 // Prints/Display map data to show state of cellular environment
 void displayCellState(const CellEnvironment& cell);
 // Simulate molecular events over discrete time steps
-void runSimulation(CellEnvironment& cell, int timePeriods);
+bool runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
 
@@ -35,10 +35,10 @@ int main() {
 
     int timeSteps = 30;
     cout << "\n[SYSTEM] Commencing simulation for " << timeSteps << " milliseconds...\n";
-    runSimulation(eukaryoticCell, timeSteps);
-
-    cout << "[SYSTEM] Final State\n";
-    displayCellState(eukaryoticCell);
+    if (!runSimulation(eukaryoticCell, timeSteps)) {
+        cout << "[SYSTEM] Final State\n";
+        displayCellState(eukaryoticCell);
+    }
 
     return 0;
 }
@@ -79,7 +79,7 @@ void displayCellState(const CellEnvironment& cell) {
     }
 }
 
-void runSimulation(CellEnvironment& cell, int timePeriods) {
+bool runSimulation(CellEnvironment& cell, int timePeriods) {
     srand(time(0));
     for (int t = 1; t <= timePeriods; t++) {
         for (int eventCount = 1; eventCount <= CELL_EVENTS; eventCount++) {
@@ -130,13 +130,16 @@ void runSimulation(CellEnvironment& cell, int timePeriods) {
             }
             else if (chance >= 99) {
                 if (cell["Cell_Membrane"][0].size() > 5) {
-                    cell.clear();
                     cout << " > [t=" << t << "] APOPTOSIS: Cell self-destructed due to stress.\n";
                     cout << "[SYSTEM] Simulation complete.\n\n";
-                    return;
+                    cout << "[SYSTEM] Final State\n";
+                    displayCellState(cell);
+                    cell.clear();
+                    return true;
                 }
             }
         }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
+    return false;
 }
