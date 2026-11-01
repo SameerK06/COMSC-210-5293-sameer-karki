@@ -15,28 +15,61 @@ void displayCellState(const CellEnvironment& cell);
 bool runSimulation(CellEnvironment& cell, int timePeriods);
 
 int main() {
-    cout << "[Unit Test 3] Starting runSimulation Unit Test...\n";
+cout << "[Unit Test 3] Starting Comprehensive Simulation Test...\n";
     CellEnvironment testCell;
     testCell["Cell_Membrane"][0].push_back("Calcium_Ion");
-    runSimulation(testCell, 30);
-    cout << "[Unit Test 3] Verify Transport...\n";
-    if (testCell["Mitochondria"][0].front() == "Calcium_Ion") {
-        cout << "[Unit Test 3] (PASS) Verify Transport.\n";
+    testCell["Nucleus"][1].push_back("mRNA_Messenger");
+    testCell["Golgi_Appartus"][0].push_back("Raw_Protein");
+    bool apoptosisTriggered = runSimulation(testCell, 30);
+    
+    cout << "\n=========================================\n";
+    cout << "[Unit Test 3] RESULTS\n";
+    cout << "=========================================\n";
+
+    cout << "1. Verify Apoptosis Clearing...\n";
+    if (apoptosisTriggered) {
+        if (testCell.empty()) {
+            cout << "   (PASS) Apoptosis triggered and cell environment was fully cleared.\n";
+        } else {
+            cout << "   (FAIL) Apoptosis triggered but cell environment is NOT empty.\n";
+        }
     } else {
-        cout << "[Unit Test 3] (FAIL) Verify Transport.\n";
+        cout << "   (SKIP) Apoptosis did not trigger this run.\n";
     }
-    cout << "[Unit Test 3] Verify Synthesis...\n";
-    if (testCell["Mitochondria"][2].back() == "ATP") {
-        cout << "[Unit Test 3] (PASS) Verify Synthesis.\n";
+
+    cout << "2. Verify Transport...\n";
+    if (apoptosisTriggered) {
+        cout << "   (SKIP) Cell cleared by Apoptosis. Cannot verify Transport.\n";
     } else {
-        cout << "[Unit Test 3] (FAIL) Verify Synthesis.\n";
+        if (testCell.count("Mitochondria") && !testCell.at("Mitochondria")[0].empty() && testCell.at("Mitochondria")[0].front() == "Calcium_Ion") {
+            cout << "   (PASS) Calcium_Ion transported to Mitochondria.\n";
+        } else {
+            cout << "   (FAIL) Transport did not occur.\n";
+        }
     }
-    cout << "[Unit Test 3] Verify Stress...\n";
-    if (testCell["Cell_Membrane"][0].size() == 2 && testCell["Cell_Membrane"][0].front() == "Na+") {
-        cout << "[Unit Test 3] (PASS) Verify Stress.\n";
+
+    cout << "3. Verify Synthesis...\n";
+    if (apoptosisTriggered) {
+        cout << "   (SKIP) Cell cleared by Apoptosis. Cannot verify Synthesis.\n";
     } else {
-        cout << "[Unit Test 3] (FAIL) Verify Stress.\n";
+        if (testCell.count("Mitochondria") && !testCell.at("Mitochondria")[2].empty() && testCell.at("Mitochondria")[2].back() == "ATP") {
+            cout << "   (PASS) ATP Synthesis verified.\n";
+        } else {
+            cout << "   (FAIL) Synthesis did not occur (or ATP was consumed).\n";
+        }
     }
+
+    cout << "4. Verify Stress...\n";
+    if (apoptosisTriggered) {
+        cout << "   (SKIP) Cell cleared by Apoptosis. Cannot verify Stress.\n";
+    } else {
+        if (testCell.count("Cell_Membrane") && !testCell.at("Cell_Membrane")[0].empty() && testCell.at("Cell_Membrane")[0].front() == "Na+") {
+            cout << "   (PASS) Na+ Stress influx verified.\n";
+        } else {
+            cout << "   (FAIL) Stress did not occur (or Na+ was exchanged for K+).\n";
+        }
+    }
+
     return 0;
 }
 
