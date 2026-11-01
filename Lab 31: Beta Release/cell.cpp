@@ -138,10 +138,16 @@ bool runSimulation(CellEnvironment& cell, int timePeriods) {
                     return true;
                 }
             }
-
             if (chance >= 90 && chance <= 95) {
                 cell["Nucleus"][2].push_back("Replicated_DNA");
                 cout << " > DNA REPLICATION: Copied genetic material.\n";
+            }
+            if (chance == 70) { 
+                if (!cell["Golgi_Appartus"][0].empty()) {
+                    cell["Golgi_Appartus"][0].pop_front();
+                    cell["Vesicle"][0].push_back("Packaged_Protein");
+                    cout << " > PACKAGING: Protein prepped for transport.\n";
+                }
             }
         }
     }
