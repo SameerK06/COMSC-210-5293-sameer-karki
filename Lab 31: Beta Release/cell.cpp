@@ -138,6 +138,11 @@ bool runSimulation(CellEnvironment& cell, int timePeriods) {
                     return true;
                 }
             }
+
+            if (chance >= 90 && chance <= 95) {
+                cell["Nucleus"][3].push_back("Replicated_DNA");
+                cout << " > DNA REPLICATION: Copied genetic material.\n";
+            }
         }
     }
     cout << "[SYSTEM] Simulation complete.\n\n";
