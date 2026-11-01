@@ -17,6 +17,13 @@ The value is a 3 element std::array of std::lists that represet distinct molecul
 
 Simulated Events:
 The process simulated changes over 30 discrete time periods. At each time period, three events may/can occur:
- - Event 1: Active/Passive Transport: Ions or molecules migrate between the Cell Membrane/ internal organelles.
+ - Event 1: Passive Transport: Ions or molecules migrate between the Cell Membrane/internal organelles passively.
  - Event 2: Synthesis/Degradation: Proteins are added to the Endoplasmic Reticulum, or ATP is converted to ADP.
  - Event 3: Environmental Stress: Large and sudden influx of external ions trigger rapid transport response.
+ - Event 4: Translation: Messengers in the Nucleus are used to synthesize Proteins in the Ribosome.
+ - Event 5: Exocytosis: Accumulated waste is cleared out from the Lysosome.
+ - Event 6: Active Transport: The cell consumes ATP to pump out Na+ and exchange it for K+.
+ - Event 7: Packaging: The Golgi Apparatus prepares and packages proteins into Vesicles.
+ - Event 8: DNA Replication: Genetic material is copied within the Nucleus.
+ - Event 9: Apoptosis: If environmental stress is critically high (too much Na+ at the membrane), 
+                       the cell self-destructs, clearing all organelles and ending the simulation.
