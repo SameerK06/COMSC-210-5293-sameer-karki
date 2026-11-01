@@ -95,3 +95,5 @@ Problem:
 The array has a size limit of 3 elements, I was stupid because I pointed to the 3rd index (I blame matlab)
 Fix: 
 Change it so that it points to the 2nd index.
+
+Done!
