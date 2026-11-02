@@ -9,10 +9,10 @@ int main() {
         Car car;
         tollBooth.push_back(car);
     }
-    cout << "Inital Queue:\n";
+    cout << "Inital Queue:\n\t";
     for (Car toll : tollBooth) {
         toll.print();
-        cout << "\n\t";
+        cout << "\t";
     }
     cout << "\n\n";
     return 0;
