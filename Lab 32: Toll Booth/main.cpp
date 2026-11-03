@@ -1,12 +1,15 @@
 #include "Car.h"
+#include <iostream>
 #include <deque>
 #include <cstdlib>
+#include <ctime>
 
 const int INITIAL_CAPACITY = 2;
 
 void printToll(deque<Car>& tollBooth);
 
 int main() {
+    srand(time(0));
     deque<Car> tollBooth;
     for (int i=0; i < INITIAL_CAPACITY; i++) {
         Car car;
