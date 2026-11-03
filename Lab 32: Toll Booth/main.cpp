@@ -10,12 +10,6 @@ int main() {
         tollBooth.push_back(car);
     }
     cout << "Inital Queue:\n\t";
-    // Iterator Loop
-    for (auto it = tollBooth.begin(); it != tollBooth.end(); it++) {
-        it->print();
-        cout << "\t";
-    }
-    // range-based For Loop
     for (Car& toll : tollBooth) {
         toll.print();
         cout << "\t";
