@@ -8,6 +8,7 @@ using namespace std;
 
 const int INITIAL_CAPACITY = 2;
 
+
 void printToll(deque<Car>& tollBooth);
 
 int main() {
