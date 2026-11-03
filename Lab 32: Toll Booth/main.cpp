@@ -4,7 +4,7 @@
 
 const int INITIAL_CAPACITY = 2;
 
-void printToll(const deque<Car>& tollBooth);
+void printToll(deque<Car>& tollBooth);
 
 int main() {
     deque<Car> tollBooth;
@@ -14,13 +14,12 @@ int main() {
     }
     cout << "Inital Queue:\n";
     printToll(tollBooth);
-    cout << "\n\n";
     int time = 1;
     while(!tollBooth.empty()) {
         int prob = rand() & 100;
         if (prob < 55) {
-            cout << "Time: " << time << " Operation: Car Paid: "
-            << tollBooth.front().print() << endl;
+            cout << "Time: " << time << " Operation: Car Paid: ";
+            tollBooth.front().print();
             tollBooth.pop_front();
             printToll(tollBooth);
         } else {
@@ -30,10 +29,11 @@ int main() {
     return 0;
 }
 
-void printToll(const deque<Car>& tollBooth) {
+void printToll(deque<Car>& tollBooth) {
     for (Car& toll : tollBooth) {
-        cout << "\t"
+        cout << "\t";
         toll.print();
     }
-    cout << "\n\n";
+    cout << "\n";
+    return;
 }
