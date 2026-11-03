@@ -12,7 +12,7 @@ int main() {
         Car car;
         tollBooth.push_back(car);
     }
-    cout << "Inital Queue:\n";
+    cout << "Inital ";
     printToll(tollBooth);
     int time = 1;
     while(!tollBooth.empty()) {
@@ -21,22 +21,27 @@ int main() {
             cout << "Time: " << time << " Operation: Car Paid: ";
             tollBooth.front().print();
             tollBooth.pop_front();
-            printToll(tollBooth);
         } else {
             Car newCar;
             cout << "Time: " << time << " Operation: Joined lane: ";
             tollBooth.push_back(newCar);
             tollBooth.back().print();
-            printToll(tollBooth);
         }
+        printToll(tollBooth);
+        time++;
     }
     return 0;
 }
 
 void printToll(deque<Car>& tollBooth) {
-    for (Car& toll : tollBooth) {
-        cout << "\t";
-        toll.print();
+    cout << "Queue:\n";
+    if (tollBooth.empty()) {
+        cout << "\tEmpty";
+    } else {
+        for (Car& toll : tollBooth) {
+            cout << "\t";
+            toll.print();
+        }
     }
     cout << "\n";
     return;
