@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 const int INITIAL_CAPACITY = 2;
 
 void printToll(deque<Car>& tollBooth);
@@ -15,11 +17,11 @@ int main() {
         Car car;
         tollBooth.push_back(car);
     }
-    cout << "Inital ";
+    cout << "Initial ";
     printToll(tollBooth);
     int time = 1;
     while(!tollBooth.empty()) {
-        int prob = rand() & 100;
+        int prob = rand() % 100;
         if (prob < 55) {
             cout << "Time: " << time << " Operation: Car Paid: ";
             tollBooth.front().print();
