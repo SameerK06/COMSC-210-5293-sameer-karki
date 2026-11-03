@@ -23,7 +23,11 @@ int main() {
             tollBooth.pop_front();
             printToll(tollBooth);
         } else {
-
+            Car newCar;
+            cout << "Time: " << time << " Operation: Joined lane: ";
+            tollBooth.push_back(newCar);
+            tollBooth.back().print();
+            printToll(tollBooth);
         }
     }
     return 0;
