@@ -1,5 +1,6 @@
 #include "Car.h"
 #include <deque>
+#include <cstdlib>
 
 const int INITIAL_CAPACITY = 2;
 
@@ -15,5 +16,14 @@ int main() {
         cout << "\t";
     }
     cout << "\n\n";
+    int time = 1;
+    while(!tollBooth.empty()) {
+        int prob = rand() & 100;
+        if (prob < 55) {
+            
+        } else {
+
+        }
+    }
     return 0;
 }
