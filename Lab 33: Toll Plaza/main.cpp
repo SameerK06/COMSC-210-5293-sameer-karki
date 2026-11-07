@@ -9,6 +9,10 @@ using namespace std;
 const int INITIAL_CAPACITY = 2;
 const int NUM_LANES = 4;
 const int SIM_TIME = 20;
+const int PROB_EMPTY_JOIN = 50;
+const int PROB_PAY = 46;
+const int PROB_JOIN = 39;
+const int PROB_SWITCH = 15;
 
 void printToll(deque<Car> plaza[]);
 
@@ -24,22 +28,27 @@ int main() {
     }
     cout << "Intial Queue:" << endl;
     printToll(plaza);
-    int time = 1;
-    while(!tollBooth.empty() ) {
-        int prob = rand() % 100;
-        if (prob < 55) {
-            cout << "Time: " << time << " Operation: Car Paid: ";
-            tollBooth.front().print();
-            tollBooth.pop_front();
-        } else {
-            Car newCar;
-            cout << "Time: " << time << " Operation: Joined lane: ";
-            tollBooth.push_back(newCar);
-            tollBooth.back().print();
-        }
-        printToll(tollBooth);
-        time++;
+    for (int time = 1; time <= SIM_TIME; time++) {
+        cout << "Time: " << time << endl;
+        for ()
     }
+    
+    
+    // while(!tollBooth.empty() ) {
+    //     int prob = rand() % 100;
+    //     if (prob < 55) {
+    //         cout << "Time: " << time << " Operation: Car Paid: ";
+    //         tollBooth.front().print();
+    //         tollBooth.pop_front();
+    //     } else {
+    //         Car newCar;
+    //         cout << "Time: " << time << " Operation: Joined lane: ";
+    //         tollBooth.push_back(newCar);
+    //         tollBooth.back().print();
+    //     }
+    //     printToll(tollBooth);
+    //     time++;
+    // }
     return 0;
 }
 
