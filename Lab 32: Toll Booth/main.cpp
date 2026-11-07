@@ -7,15 +7,19 @@
 using namespace std;
 
 const int INITIAL_CAPACITY = 2;
+const int NUM_LANES = 4;
 
 void printToll(deque<Car>& tollBooth);
 
 int main() {
     srand(time(0));
+    deque<Car> plaza[NUM_LANES];
     deque<Car> tollBooth;
-    for (int i=0; i < INITIAL_CAPACITY; i++) {
-        Car car;
-        tollBooth.push_back(car);
+    for (int i = 0; i < NUM_LANES; i++) {
+        for (int j = 0; j < INITIAL_CAPACITY; j++) {
+            Car car;
+            plaza[i].push_back(car);
+        }
     }
     cout << "Initial ";
     printToll(tollBooth);
