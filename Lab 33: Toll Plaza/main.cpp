@@ -31,6 +31,12 @@ int main() {
     plaza[0].push_front(car9);
     plaza[2].push_front(car10);
 
-    cout << "Lane 1"
+    for (int i = 0; i < NUM_LANES; i++) {
+        if (!plaza[i].empty()) {
+            cout << "Lane " << i+1 << "'s size: " << plaza[i].size() << " cars" << endl;
+        } else {
+            cout << "Lane " << i+1 << " is empty!" << endl;
+        }
+    }
     return 0;
 }
