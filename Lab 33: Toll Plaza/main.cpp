@@ -30,7 +30,7 @@ int main() {
     }
     cout << "Inital queue:" << endl;
     for (int i = 0; i < NUM_LANES; i++) {
-        cout << "Lane 1:" << endl;
+        cout << "Lane " << i+1 << ":" << endl;
         for (Car& car : plaza[i]) {
             cout << "   ";
             car.print();
