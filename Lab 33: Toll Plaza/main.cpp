@@ -29,6 +29,11 @@ int main() {
         }
     }
     cout << "Inital queue:" << endl;
+    printToll(plaza);
+    return 0;
+}
+
+void printToll(deque<Car> plaza[]) {
     for (int i = 0; i < NUM_LANES; i++) {
         cout << "Lane " << i+1 << ":" << endl;
         for (Car& car : plaza[i]) {
@@ -36,10 +41,6 @@ int main() {
             car.print();
         }
     }
-
-
-
-    return 0;
 }
 
 void functionTesting() {
