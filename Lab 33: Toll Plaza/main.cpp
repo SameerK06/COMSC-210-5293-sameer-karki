@@ -30,7 +30,6 @@ int main() {
     printToll(plaza);
     for (int time = 1; time <= SIM_TIME; time++) {
         cout << "Time: " << time << endl;
-        for ()
     }
     
     
