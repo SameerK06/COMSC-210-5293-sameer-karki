@@ -22,14 +22,11 @@ int main() {
     Car car1, car2, car3, car4, car5, car6, car7, car8, car9, car10;
     plaza[0].push_back(car1);
     plaza[1].push_back(car2);
-    plaza[2].push_back(car3);
     plaza[3].push_back(car4);
     plaza[0].push_back(car5);
     plaza[1].push_back(car6);
-    plaza[2].push_back(car7);
     plaza[3].push_back(car8);
     plaza[0].push_front(car9);
-    plaza[2].push_front(car10);
 
     for (int i = 0; i < NUM_LANES; i++) {
         if (!plaza[i].empty()) {
