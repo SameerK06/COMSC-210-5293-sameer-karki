@@ -19,7 +19,18 @@ void printToll(deque<Car> plaza[]);
 
 int main() {
     srand(time(0));
-    functionTesting();
+    // Testing structure
+    // functionTesting();
+    deque<Car> plaza[NUM_LANES];
+    for (int i = 0; i < NUM_LANES; i++) {
+        for (int j = 0; j < INITIAL_CAPACITY; j++) {
+            Car car;
+            plaza[i].push_back(car);
+        }
+    }
+
+
+
     return 0;
 }
 
