@@ -30,6 +30,10 @@ int main() {
     }
     cout << "Inital queue:" << endl;
     printToll(plaza);
+    for (int time = 1; time <= SIM_TIME; time++) {
+        cout << "Time: " << time << endl;
+    }
+
     return 0;
 }
 
