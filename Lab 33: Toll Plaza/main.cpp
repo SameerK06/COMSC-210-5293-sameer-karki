@@ -8,6 +8,7 @@ using namespace std;
 
 const int INITIAL_CAPACITY = 2;
 const int NUM_LANES = 4;
+const int SIM_TIME = 20;
 
 void printToll(deque<Car> plaza[]);
 
@@ -23,29 +24,22 @@ int main() {
     }
     cout << "Intial Queue:" << endl;
     printToll(plaza);
-
-
-
-
-
-    // cout << "Initial ";
-    // printToll(tollBooth);
-    // int time = 1;
-    // while(!tollBooth.empty()) {
-    //     int prob = rand() % 100;
-    //     if (prob < 55) {
-    //         cout << "Time: " << time << " Operation: Car Paid: ";
-    //         tollBooth.front().print();
-    //         tollBooth.pop_front();
-    //     } else {
-    //         Car newCar;
-    //         cout << "Time: " << time << " Operation: Joined lane: ";
-    //         tollBooth.push_back(newCar);
-    //         tollBooth.back().print();
-    //     }
-    //     printToll(tollBooth);
-    //     time++;
-    // }
+    int time = 1;
+    while(!tollBooth.empty() ) {
+        int prob = rand() % 100;
+        if (prob < 55) {
+            cout << "Time: " << time << " Operation: Car Paid: ";
+            tollBooth.front().print();
+            tollBooth.pop_front();
+        } else {
+            Car newCar;
+            cout << "Time: " << time << " Operation: Joined lane: ";
+            tollBooth.push_back(newCar);
+            tollBooth.back().print();
+        }
+        printToll(tollBooth);
+        time++;
+    }
     return 0;
 }
 
