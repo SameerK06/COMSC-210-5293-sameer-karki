@@ -14,10 +14,16 @@ const int PROB_PAY = 46;
 const int PROB_JOIN = 39;
 const int PROB_SWITCH = 15;
 
+void functionTesting();
 void printToll(deque<Car> plaza[]);
 
 int main() {
     srand(time(0));
+    functionTesting();
+    return 0;
+}
+
+void functionTesting() {
     deque<Car> plaza[NUM_LANES];
     Car car1, car2, car3, car4, car5, car6, car7, car8, car9, car10;
     plaza[0].push_back(car1);
@@ -27,7 +33,6 @@ int main() {
     plaza[1].push_back(car6);
     plaza[3].push_back(car8);
     plaza[0].push_front(car9);
-
     for (int i = 0; i < NUM_LANES; i++) {
         if (!plaza[i].empty()) {
             cout << "Lane " << i+1 << "'s size: " << plaza[i].size() << " cars" << endl;
@@ -43,5 +48,4 @@ int main() {
             cout << "Lane " << i+1 << " is empty!" << endl;
         }
     }
-    return 0;
 }
