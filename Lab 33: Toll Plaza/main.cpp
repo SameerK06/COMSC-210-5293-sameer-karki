@@ -18,6 +18,5 @@ void printToll(deque<Car> plaza[]);
 
 int main() {
     srand(time(0));
-    deque<Car> plaza[NUM_LANES];
     return 0;
 }
