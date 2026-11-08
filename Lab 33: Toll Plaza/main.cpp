@@ -57,6 +57,12 @@ int main() {
                     plaza[i].back().print();
                 // Range 85-99: 15%
                 } else {
+                    int newLane = rand() % NUM_LANES;
+                    while (newLane == i) {
+                        newLane = rand() % NUM_LANES;
+                    }
+                    cout << "Lane " << i+1 << " to "
+                    plaza[newLane].push_back(plaza[i].back());
 
                 }
             }
