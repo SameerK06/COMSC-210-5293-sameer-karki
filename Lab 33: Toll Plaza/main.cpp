@@ -35,8 +35,13 @@ int main() {
         for (int i = 0; i < NUM_LANES; i++) {
             if (plaza[i].empty()) {
                 if (rand() % 100 < 50) {
-                    
+                    Car newCar;
+                    plaza[i].push_back(newCar);
+                    cout << "Lane " << i+1 << " Joined: ";
+                    plaza[i].back().print();
                 }
+            } else {
+                
             }
         }
     }
