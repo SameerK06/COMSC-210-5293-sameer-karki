@@ -15,6 +15,9 @@ const int PROB_JOIN = 39;
 
 void functionTesting();
 void printToll(deque<Car> plaza[]);
+void joinToll(deque<Car> plaza[], int index);
+void payToll(deque<Car> plaza[], int index);
+void switchToll(deque<Car> plaza[], int index);
 
 int main() {
     srand(time(0));
@@ -27,7 +30,7 @@ int main() {
             plaza[i].push_back(car);
         }
     }
-    cout << "Inital queue:" << endl;
+    cout << "Initial queue:" << endl;
     printToll(plaza);
     for (int time = 1; time <= SIM_TIME; time++) {
         cout << "Time: " << time << endl;
@@ -47,7 +50,7 @@ int main() {
                     cout << "Lane: " << i+1 << " Paid: ";
                     plaza[i].front().print();
                     plaza[i].pop_front();
-                // Range 46-84: 37%
+                // Range 46-84: 39%
                 } else if (prob < (PROB_PAY+PROB_JOIN)) {
                     Car newCar;
                     plaza[i].push_back(newCar);
@@ -87,6 +90,12 @@ void printToll(deque<Car> plaza[]) {
         }
     }
 }
+
+void joinToll(deque<Car> plaza[], int index) {
+    
+}
+void payToll(deque<Car> plaza[], int index);
+void switchToll(deque<Car> plaza[], int index);
 
 void functionTesting() {
     deque<Car> plaza[NUM_LANES];
