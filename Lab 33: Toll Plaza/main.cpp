@@ -41,9 +41,20 @@ int main() {
                     plaza[i].back().print();
                 }
             } else {
-                
+                int prob = rand() % 100;
+                if (prob < 50) {
+                    cout << "Lane: " << i+1 << " Paid: ";
+                    plaza[i].front().print();
+                    plaza[i].pop_front();
+                } else {
+                    Car newCar;
+                    plaza[i].push_back(newCar);
+                    cout << "Lane: " << i+1 << " Joined: ";
+                    plaza[i].back().print();
+                }
             }
         }
+        for ()
     }
 
     return 0;
