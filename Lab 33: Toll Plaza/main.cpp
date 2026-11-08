@@ -32,6 +32,13 @@ int main() {
     printToll(plaza);
     for (int time = 1; time <= SIM_TIME; time++) {
         cout << "Time: " << time << endl;
+        for (int i = 0; i < NUM_LANES; i++) {
+            if (plaza[i].empty()) {
+                if (rand() % 100 < 50) {
+                    
+                }
+            }
+        }
     }
 
     return 0;
