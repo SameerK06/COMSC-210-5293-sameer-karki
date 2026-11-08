@@ -38,34 +38,19 @@ int main() {
             if (plaza[i].empty()) {
                 // Range 0-49: 50%
                 if (rand() % 100 < PROB_EMPTY_JOIN) {
-                    Car newCar;
-                    plaza[i].push_back(newCar);
-                    cout << "Lane " << i+1 << " Joined: ";
-                    plaza[i].back().print();
+                    joinToll(plaza, i);
                 }
             } else {
                 int prob = rand() % 100;
                 // Range 0-45: 46%
                 if (prob < PROB_PAY) {
-                    cout << "Lane: " << i+1 << " Paid: ";
-                    plaza[i].front().print();
-                    plaza[i].pop_front();
+                    payToll(plaza, i);
                 // Range 46-84: 39%
                 } else if (prob < (PROB_PAY+PROB_JOIN)) {
-                    Car newCar;
-                    plaza[i].push_back(newCar);
-                    cout << "Lane: " << i+1 << " Joined: ";
-                    plaza[i].back().print();
+                    joinToll(plaza, i);
                 // Range 85-99: 15%
                 } else {
-                    int newLane = rand() % NUM_LANES;
-                    while (newLane == i) {
-                        newLane = rand() % NUM_LANES;
-                    }
-                    cout << "Lane: " << i+1 << " Switched: ";
-                    plaza[newLane].push_back(plaza[i].back());
-                    plaza[i].pop_back();
-                    plaza[newLane].back().print();
+                    switchToll(plaza, i);
                 }
             }
         }
@@ -92,10 +77,27 @@ void printToll(deque<Car> plaza[]) {
 }
 
 void joinToll(deque<Car> plaza[], int index) {
-    
+    Car newCar;
+    plaza[index].push_back(newCar);
+    cout << "Lane " << index+1 << " Joined: ";
+    plaza[index].back().print();
 }
-void payToll(deque<Car> plaza[], int index);
-void switchToll(deque<Car> plaza[], int index);
+
+void payToll(deque<Car> plaza[], int index) {
+    cout << "Lane: " << index+1 << " Paid: ";
+    plaza[index].front().print();
+    plaza[index].pop_front();
+}
+void switchToll(deque<Car> plaza[], int index) {
+    int newLane = rand() % NUM_LANES;
+    while (newLane == index) {
+        newLane = rand() % NUM_LANES;
+    }
+    cout << "Lane: " << index+1 << " Switched: ";
+    plaza[newLane].push_back(plaza[index].back());
+    plaza[index].pop_back();
+    plaza[newLane].back().print();
+}
 
 void functionTesting() {
     deque<Car> plaza[NUM_LANES];
