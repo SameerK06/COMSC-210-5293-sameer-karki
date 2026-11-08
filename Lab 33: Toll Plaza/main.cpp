@@ -34,7 +34,7 @@ int main() {
         cout << "Time: " << time << endl;
         for (int i = 0; i < NUM_LANES; i++) {
             if (plaza[i].empty()) {
-                if (rand() % 100 < 50) {
+                if (rand() % 100 < PROB_EMPTY_JOIN) {
                     Car newCar;
                     plaza[i].push_back(newCar);
                     cout << "Lane " << i+1 << " Joined: ";
@@ -42,7 +42,7 @@ int main() {
                 }
             } else {
                 int prob = rand() % 100;
-                if (prob < 50) {
+                if (prob < PROB_PAY) {
                     cout << "Lane: " << i+1 << " Paid: ";
                     plaza[i].front().print();
                     plaza[i].pop_front();
