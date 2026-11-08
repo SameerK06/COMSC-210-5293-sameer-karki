@@ -12,7 +12,6 @@ const int SIM_TIME = 20;
 const int PROB_EMPTY_JOIN = 50;
 const int PROB_PAY = 46;
 const int PROB_JOIN = 39;
-const int PROB_SWITCH = 15;
 
 void functionTesting();
 void printToll(deque<Car> plaza[]);
@@ -45,7 +44,6 @@ int main() {
                 int prob = rand() % 100;
                 // Range 0-45: 46%
                 if (prob < PROB_PAY) {
-
                     cout << "Lane: " << i+1 << " Paid: ";
                     plaza[i].front().print();
                     plaza[i].pop_front();
@@ -61,9 +59,10 @@ int main() {
                     while (newLane == i) {
                         newLane = rand() % NUM_LANES;
                     }
-                    cout << "Lane " << i+1 << " to "
+                    cout << "Lane: " << i+1 << " Switched: ";
                     plaza[newLane].push_back(plaza[i].back());
-
+                    plaza[i].pop_back();
+                    plaza[newLane].back().print();
                 }
             }
         }
