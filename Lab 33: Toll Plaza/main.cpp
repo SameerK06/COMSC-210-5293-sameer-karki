@@ -34,6 +34,7 @@ int main() {
         cout << "Time: " << time << endl;
         for (int i = 0; i < NUM_LANES; i++) {
             if (plaza[i].empty()) {
+                // Range 0-49: 50%
                 if (rand() % 100 < PROB_EMPTY_JOIN) {
                     Car newCar;
                     plaza[i].push_back(newCar);
@@ -42,15 +43,21 @@ int main() {
                 }
             } else {
                 int prob = rand() % 100;
+                // Range 0-45: 46%
                 if (prob < PROB_PAY) {
+
                     cout << "Lane: " << i+1 << " Paid: ";
                     plaza[i].front().print();
                     plaza[i].pop_front();
-                } else {
+                // Range 46-84: 37%
+                } else if (prob < (PROB_PAY+PROB_JOIN)) {
                     Car newCar;
                     plaza[i].push_back(newCar);
                     cout << "Lane: " << i+1 << " Joined: ";
                     plaza[i].back().print();
+                // Range 85-99: 15%
+                } else {
+
                 }
             }
         }
