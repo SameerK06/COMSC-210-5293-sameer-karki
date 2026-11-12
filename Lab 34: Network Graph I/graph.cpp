@@ -54,9 +54,11 @@ public:
     // DFS heper
     void dfsHelper(int vertex, vector<bool>& visited) {
         visited[vertex] = true;
-        cout << vertex << " ";
+        cout << "Inspecting Station " << vertex << " (" << stationNames[vertex] << ")" << endl;
         for (Pair& neighbor : adjList[vertex]) {
             if (!visited[neighbor.first]) {
+                cout << " -> Maintance track leads to station " << neighbor.first << " ("
+                << " (" << stationNames[neighbor.first] << ") - Time: " << neighbor.second << "minutes" << endl;
                 dfsHelper(neighbor.first, visited);
             }
         }
@@ -64,7 +66,7 @@ public:
 
     // Depth-First Search
     void DFS(int start) {
-        cout << "DFS starting from vertex " << start << ":" << endl;
+        cout << "DFS starting from vertex " << start << "(" << stationNames[start] << "):" << endl;
         vector<bool> visited(SIZE, false);
         dfsHelper(start, visited);
         cout << endl;
