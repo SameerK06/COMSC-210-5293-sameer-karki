@@ -46,7 +46,7 @@ public:
             cout << "Station " << i << "(" << stationNames[i] << ") connects to: " << endl;
             for (Pair v : adjList[i])
                 cout << " -> Station " << v.first << " (" << stationNames[v.first] << ") - Travel Time: "
-                << v.second << "minutes" << endl;
+                << v.second << " minutes" << endl;
             cout << endl;
         }
     }
@@ -58,7 +58,7 @@ public:
         for (Pair& neighbor : adjList[vertex]) {
             if (!visited[neighbor.first]) {
                 cout << " -> Maintance track leads to station " << neighbor.first << " ("
-                << " (" << stationNames[neighbor.first] << ") - Time: " << neighbor.second << "minutes" << endl;
+                << " (" << stationNames[neighbor.first] << ") - Time: " << neighbor.second << " minutes" << endl;
                 dfsHelper(neighbor.first, visited);
             }
         }
@@ -90,7 +90,7 @@ public:
                 if (!visited[neighbor.first]) {
                     visited[neighbor.first] = true;
                     cout << " -> Deplay spreads to next zone: Station " << neighbor.first << " (" 
-                    << stationNames[neighbor.first] << ") - Connection: " << neighbor.second << "minutes" << endl;
+                    << stationNames[neighbor.first] << ") - Connection: " << neighbor.second << " minutes" << endl;
                     q.push(neighbor.first);
                 }
             }
@@ -101,6 +101,11 @@ public:
 };
 
 int main() {
+    vector<string> stationNames = {
+        "Central Hub", "North Park", "University Campus", "Tech District", "Waterfront", "Historical Center",
+        "Financial Hub", "Airport Terminal", "Sports Arena"
+    };
+
     // Creates a vector of graph edges/weights
     vector<Edge> edges = {
         // (x, y, w) —> edge from x to y having weight w
@@ -109,16 +114,12 @@ int main() {
     };
 
     // Creates graph
-    Graph graph(edges);
+    Graph subwayNetwork(edges, stationNames);
 
     // Prints adjacency list representation of graph
-    graph.printNetwork();
-
-    cout << "DFS Test Driver" << endl;
-    graph.DFS(0);
-    cout << "BFS Test Driver" << endl;
-    graph.BFS(0);
-    
+    subwayNetwork.printNetwork();
+    subwayNetwork.DFS(0);
+    subwayNetwork.BFS(0);
 
     return 0;
 }
