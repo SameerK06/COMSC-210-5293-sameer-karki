@@ -47,9 +47,16 @@ public:
         }
     }
 
+    // DFS heper
+    void dfsHelper(int vertex, vector<bool>& visited) {
+        
+    }
+
     // Depth-First Search
     void DFS(int start) {
-        cout << "DFS starting from "
+        cout << "DFS starting from vertex " << start << ":" << endl;
+        vector<bool> visited(SIZE, false);
+
     }
 };
 
