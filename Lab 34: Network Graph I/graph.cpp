@@ -65,6 +65,28 @@ public:
         dfsHelper(start, visited);
         cout << endl;
     }
+
+    // Breadth-First Search
+    void BFS(int start) {
+        cout << "BFS starting from vertex " << start << ":" << endl;
+        vector<bool> visited(SIZE, false);
+        queue<int> q;
+        q.push(start);
+        visited[start] = true;
+        while (!q.empty()) {
+            int curr = q.front();
+            q.pop();
+            cout << curr << " ";
+            for (Pair& neighbor : adjList[curr]) {
+                if (!visited[neighbor.first]) {
+                    visited[neighbor.first] = true;
+                    q.push(neighbor.first);
+                }
+            }
+        }
+        cout << endl;
+    }
+
 };
 
 int main() {
