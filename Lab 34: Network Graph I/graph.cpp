@@ -65,16 +65,19 @@ public:
     }
 
     // Depth-First Search
+    // Purpose: Tracing contiguous rail lines for emergency maintenance inspection
     void DFS(int start) {
-        cout << "DFS starting from vertex " << start << "(" << stationNames[start] << "):" << endl;
+        cout << "Network Track Trace (DFS) starting from station " << start << "(" << stationNames[start] << "):" << endl;
         vector<bool> visited(SIZE, false);
         dfsHelper(start, visited);
         cout << endl;
     }
 
     // Breadth-First Search
+    // Purpose: Analyzing passenger impact zones expanding outward from a central delay
     void BFS(int start) {
-        cout << "BFS starting from vertex " << start << ":" << endl;
+        cout << "Layer-by-Layer Service Inspection (BFS) starting from station " << start << " (" 
+        << stationNames[start] << "):" << endl;
         vector<bool> visited(SIZE, false);
         queue<int> q;
         q.push(start);
@@ -82,10 +85,12 @@ public:
         while (!q.empty()) {
             int curr = q.front();
             q.pop();
-            cout << curr << " ";
+            cout << "Checking Station " << curr << " (" << stationNames[curr]  << ")" << endl;
             for (Pair& neighbor : adjList[curr]) {
                 if (!visited[neighbor.first]) {
                     visited[neighbor.first] = true;
+                    cout << " -> Deplay spreads to next zone: Station " << neighbor.first << " (" 
+                    << stationNames[neighbor.first] << ") - Connection: " << neighbor.second << "minutes" << endl;
                     q.push(neighbor.first);
                 }
             }
