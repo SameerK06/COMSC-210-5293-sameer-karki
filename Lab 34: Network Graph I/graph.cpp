@@ -7,6 +7,7 @@
 using namespace std;
 
 const int SIZE = 9;
+const int INF = 1e9;
 
 struct Edge {
     int src, dest, weight;
@@ -96,6 +97,22 @@ public:
             }
         }
         cout << endl;
+    }
+
+    void shortestPathDijkstra(int start) {
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+        vector<int> dist(SIZE, INF);
+        pq.push(make_pair(0, start));
+        dist[start] = 0;
+        while (!pq.empty()) {
+            int u = pq.top().second;
+            pq.pop();
+            for (auto& neighbor : adjList[u]) {
+                int v = neighbor.first;
+                int weight = neighbor.second;
+                
+            }
+        }
     }
 
 };
