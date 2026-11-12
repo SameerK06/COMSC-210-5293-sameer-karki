@@ -40,12 +40,13 @@ public:
     }
 
     // Print the graph's adjacency list
-    void printGraph() {
-        cout << "Graph's adjacency list:" << endl;
+    void printNetwork() {
+        cout << "Subway Transit Network Topology" << endl;
         for (int i = 0; i < adjList.size(); i++) {
-            cout << i << " --> ";
+            cout << "Station " << i << "(" << stationNames[i] << ") connects to: " << endl;
             for (Pair v : adjList[i])
-                cout << "(" << v.first << ", " << v.second << ") ";
+                cout << " -> Station " << v.first << " (" << stationNames[v.first] << ") - Travel Time: "
+                << v.second << "minutes" << endl;
             cout << endl;
         }
     }
@@ -104,7 +105,7 @@ int main() {
     Graph graph(edges);
 
     // Prints adjacency list representation of graph
-    graph.printGraph();
+    graph.printNetwork();
 
     cout << "DFS Test Driver" << endl;
     graph.DFS(0);
