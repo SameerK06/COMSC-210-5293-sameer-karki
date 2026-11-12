@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <stack>
+
 using namespace std;
 
 const int SIZE = 7;
@@ -42,6 +45,11 @@ public:
                 cout << "(" << v.first << ", " << v.second << ") ";
             cout << endl;
         }
+    }
+
+    // Depth-First Search
+    void DFS(int start) {
+        cout << "DFS starting from "
     }
 };
 
