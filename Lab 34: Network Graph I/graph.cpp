@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <string>
 
 using namespace std;
 
@@ -17,11 +18,13 @@ class Graph {
 public:
     // a vector of vectors of Pairs to represent an adjacency list
     vector<vector<Pair>> adjList;
+    vector<string> stationNames;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges) {
+    Graph(vector<Edge> const &edges, vector<string> const &name) {
         // resize the vector to hold SIZE elements of type vector<Edge>
         adjList.resize(SIZE);
+        stationNames = name;
 
         // add edges to the directed graph
         for (auto &edge: edges) {
