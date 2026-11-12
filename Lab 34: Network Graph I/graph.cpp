@@ -49,14 +49,21 @@ public:
 
     // DFS heper
     void dfsHelper(int vertex, vector<bool>& visited) {
-        
+        visited[vertex] = true;
+        cout << vertex << " ";
+        for (Pair& neighbor : adjList[vertex]) {
+            if (!visited[neighbor.first]) {
+                dfsHelper(neighbor.first, visited);
+            }
+        }
     }
 
     // Depth-First Search
     void DFS(int start) {
         cout << "DFS starting from vertex " << start << ":" << endl;
         vector<bool> visited(SIZE, false);
-
+        dfsHelper(start, visited);
+        cout << endl;
     }
 };
 
