@@ -102,5 +102,11 @@ int main() {
     // Prints adjacency list representation of graph
     graph.printGraph();
 
+    cout << "DFS Test Driver" << endl;
+    graph.DFS(0);
+    cout << "BFS Test Driver" << endl;
+    graph.BFS(0);
+    
+
     return 0;
 }
