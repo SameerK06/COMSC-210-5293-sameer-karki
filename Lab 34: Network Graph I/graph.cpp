@@ -58,7 +58,7 @@ public:
         cout << "Inspecting Station " << vertex << " (" << stationNames[vertex] << ")" << endl;
         for (Pair& neighbor : adjList[vertex]) {
             if (!visited[neighbor.first]) {
-                cout << " -> Maintance track leads to station " << neighbor.first << " ("
+                cout << " -> Maintenance track leads to station " << neighbor.first << " ("
                 << " (" << stationNames[neighbor.first] << ") - Time: " << neighbor.second << " minutes" << endl;
                 dfsHelper(neighbor.first, visited);
             }
@@ -90,7 +90,7 @@ public:
             for (Pair& neighbor : adjList[curr]) {
                 if (!visited[neighbor.first]) {
                     visited[neighbor.first] = true;
-                    cout << " -> Deplay spreads to next zone: Station " << neighbor.first << " (" 
+                    cout << " -> Delay spreads to next zone: Station " << neighbor.first << " (" 
                     << stationNames[neighbor.first] << ") - Connection: " << neighbor.second << " minutes" << endl;
                     q.push(neighbor.first);
                 }
@@ -160,7 +160,7 @@ public:
     }
 };
 
-void gameMenu(Graph subwayNetwork);
+void gameMenu(Graph& subwayNetwork);
 
 int main() {
     vector<string> stationNames = {
@@ -183,7 +183,7 @@ int main() {
     return 0;
 }
 
-void gameMenu(Graph subwayNetwork) {
+void gameMenu(Graph& subwayNetwork) {
     int choice = -1;
     while (choice != 0) {
         cout << "Subway Transit Network Menu:\n[1] Display subway transit network"
