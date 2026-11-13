@@ -126,7 +126,6 @@ public:
         }
         cout << endl;
     }
-
 };
 
 int main() {
@@ -138,7 +137,7 @@ int main() {
     // Creates a vector of graph edges/weights
     vector<Edge> edges = {
         // (x, y, w) —> edge from x to y having weight w
-        {0,1,8}, {0,2,21}, {1,2,6}, {1,3,5}, {1,4,4}, {2,7,11}, {2,8,8}, {3,4,9}, {5,6,10}, {5,7,15}, {5,8,5},
+        {0,1,8}, {0,2,10}, {1,2,7}, {1,3,5}, {1,4,4}, {2,7,11}, {2,8,7}, {3,4,9}, {5,6,5}, {5,7,10}, {5,8,8},
         {6,7,3}, {6,8,7}
     };
 
@@ -149,6 +148,7 @@ int main() {
     subwayNetwork.printNetwork();
     subwayNetwork.DFS(0);
     subwayNetwork.BFS(0);
+    subwayNetwork.shortestPathDijkstra(0);
 
     return 0;
 }
