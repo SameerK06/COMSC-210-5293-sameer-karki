@@ -110,9 +110,21 @@ public:
             for (auto& neighbor : adjList[u]) {
                 int v = neighbor.first;
                 int weight = neighbor.second;
-                if (dist[v])
+                if (dist[v] > dist[u] + weight) {
+                    dist[v] = dist[u] + weight;
+                    pq.push(make_pair(dist[v], v));
+                }
             }
         }
+        cout << "Shortest Path from node " << start << " (" << stationNames[start] << "):" << endl;
+        for (int i = 0; i < SIZE; i++) {
+            if (dist[i] == INF) {
+                cout << start << " -> " << i << " : Unreachable" << endl;
+            } else {
+                cout << start << " -> " << i << " : " << dist[i] << " minutes" << endl;
+            }
+        }
+        cout << endl;
     }
 
 };
