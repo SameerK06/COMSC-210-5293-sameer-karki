@@ -110,7 +110,7 @@ public:
             for (auto& neighbor : adjList[u]) {
                 int v = neighbor.first;
                 int weight = neighbor.second;
-                
+                if (dist[v])
             }
         }
     }
