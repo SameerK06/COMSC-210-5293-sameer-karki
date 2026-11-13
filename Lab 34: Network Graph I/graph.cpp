@@ -126,6 +126,37 @@ public:
         }
         cout << endl;
     }
+
+    void MST(int start) {
+        priority_queue<Pair , vector<Pair>, greater<Pair>> pq;
+        vector<int> key(SIZE, INF);
+        vector<int> parent(SIZE, -1);
+        vector<bool> inMST(SIZE, false);
+
+        pq.push(make_pair(0, start));
+        key[start] = 0;
+        while (!pq.empty()) {
+            int u = pq.top().second;
+            pq.pop();
+            inMST[u] = true;
+            for (auto& neighbor : adjList[u]) {
+                int v = neighbor.first;
+                int weight = neighbor.second;
+                if (!inMST[v] && weight < key[v]) {
+                    key[v] = weight;
+                    pq.push(make_pair(key[v], v));
+                    parent[v] = u;
+                }
+            }
+        }
+        cout << "Minimum Spanning Tree Edges:" << endl;
+        for (int i = 0; i < SIZE; i++) {
+            if (i != start && parent[i] != -1) {
+                cout << "Edge from " << parent[i] << " to " << i << " with capacity " << key[i] << " units("
+                << stationNames[parent[i]] << " <-> " << stationNames[i] << ")" << endl; 
+            }
+        }
+    }
 };
 
 int main() {
