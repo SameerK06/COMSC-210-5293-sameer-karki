@@ -152,10 +152,11 @@ public:
         cout << "Minimum Spanning Tree Edges:" << endl;
         for (int i = 0; i < SIZE; i++) {
             if (i != start && parent[i] != -1) {
-                cout << "Edge from " << parent[i] << " to " << i << " with capacity " << key[i] << " units("
+                cout << "Edge from " << parent[i] << " to " << i << " with capacity " << key[i] << " units ("
                 << stationNames[parent[i]] << " <-> " << stationNames[i] << ")" << endl; 
             }
         }
+        cout << endl;
     }
 };
 
@@ -180,6 +181,7 @@ int main() {
     subwayNetwork.DFS(0);
     subwayNetwork.BFS(0);
     subwayNetwork.shortestPathDijkstra(0);
+    subwayNetwork.MST(0);
 
     return 0;
 }
