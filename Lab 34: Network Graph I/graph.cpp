@@ -160,6 +160,8 @@ public:
     }
 };
 
+void gameMenu(Graph subwayNetwork);
+
 int main() {
     vector<string> stationNames = {
         "Central Hub", "North Park", "University Campus", "Tech District", "Waterfront", "Historical Center",
@@ -176,12 +178,46 @@ int main() {
     // Creates graph
     Graph subwayNetwork(edges, stationNames);
 
-    // Prints adjacency list representation of graph
-    subwayNetwork.printNetwork();
-    subwayNetwork.DFS(0);
-    subwayNetwork.BFS(0);
-    subwayNetwork.shortestPathDijkstra(0);
-    subwayNetwork.MST(0);
+    gameMenu(subwayNetwork);
 
     return 0;
+}
+
+void gameMenu(Graph subwayNetwork) {
+    int choice = -1;
+    while (choice != 0) {
+        cout << "Subway Transit Network Menu:\n[1] Display subway transit network"
+        << "\n[2] Check service area spread (BFS)\n[3] Plan track inspection route (DFS)"
+        << "\n[4] Calculate shortest paths\n[5] Find Minimum Spanning Tree\n[0] Exit\n";
+        cout << "Enter your choice: ";
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "\nInvalid input. Please enter a number from from 0-5.\n\n";
+            continue;
+        }
+        switch(choice) {
+            case 1:
+                subwayNetwork.printNetwork();
+                break;
+            case 2:
+                subwayNetwork.BFS(0);
+                break;
+            case 3:
+                subwayNetwork.DFS(0);
+                break;
+            case 4:
+                subwayNetwork.shortestPathDijkstra(0);
+                break;
+            case 5:
+                subwayNetwork.MST(0);
+                break;
+            case 0:
+                cout << "\nExiting system..." << endl;
+                break;
+            default:
+                cout << "\nInvalid choice. Please try again.\n\n";
+                break;
+        }
+    }
 }
