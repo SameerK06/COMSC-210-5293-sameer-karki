@@ -149,7 +149,7 @@ void testCodeDriver() {
 void displayMenu() {
     cout << "-- BST Menu --" << endl;
     cout << "1. Insert a node" << endl;
-    cout << "2. Derlete a node" << endl;
+    cout << "2. Delete a node" << endl;
     cout << "3. Search for a node" << endl;
     cout << "4. Change a node" << endl;
     cout << "5. Display all nodes" << endl;

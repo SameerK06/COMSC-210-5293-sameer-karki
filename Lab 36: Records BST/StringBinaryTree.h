@@ -39,6 +39,7 @@ public:
    void insertNode(string);
    bool searchNode(string);
    void remove(string);
+   bool modifyNode(string oldStr, string newStr); // Added by Sameer Karki
 
    // Public wrappers for tree traversal functions.
    void displayInOrder() const     {  displayInOrder(root); }
@@ -114,14 +115,19 @@ void StringBinaryTree::remove(string str) {
 // deleteNode deletes the node whose value 
 // member is the same as str.              
 void StringBinaryTree::deleteNode(string str, TreeNode *&nodePtr) {
+   if (!nodePtr) {
+      cout << "Record \"" << str << "\" not found" << endl;
+      return;
+   }
    if (str < nodePtr->value)
       deleteNode(str, nodePtr->left);
    else if (str > nodePtr->value)
       deleteNode(str, nodePtr->right);
-   else
+   else {
       makeDeletion(nodePtr);
+      cout << "Record \"" << str << "\" deleted" << endl;
+   } 
 }
-
 
 // makeDeletion takes a reference to a pointer to the node 
 // that is to be deleted. The node is removed and the      
@@ -156,6 +162,17 @@ void StringBinaryTree::makeDeletion(TreeNode *&nodePtr) {
       nodePtr = nodePtr->right;
       delete tempNodePtr;
    }
+}
+
+// Modified by Sameer Karki
+// Modify a record while preserving BST ordering
+bool StringBinaryTree::modifyNode(string oldStr, string newStr) {
+   if (!searchNode(oldStr)) {
+      return false;
+   }
+   remove(oldStr);
+   insertNode(newStr);
+   return true;
 }
 
 // The displayInOrder member function displays the values       
