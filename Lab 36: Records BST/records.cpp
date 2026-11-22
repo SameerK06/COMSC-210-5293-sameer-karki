@@ -4,6 +4,8 @@
 #include "StringBinaryTree.h"
 using namespace std;
 
+void displayMenu();
+
 int main() {
     StringBinaryTree tree;
     ifstream inputFile("codes.txt");
@@ -18,14 +20,38 @@ int main() {
         count++;
     }
     inputFile.close();
-
     cout << "Inserted " << count << " records into the BST" << endl;
-    cout << "-- In Order Traversal --" << endl;
-    tree.displayInOrder();
-    cout << "-- Pre Order Traversal --" << endl;
-    tree.displayPreOrder();
-    cout << "-- Post Order Traversal --" << endl;
-    tree.displayPostOrder();
+
+    int choice;
+    string target;
+    
+    do {
+        displayMenu();
+        while (!(cin >> choice)) {
+            cout << "-- Invalid input. Please enter a number between 1 and 6: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        switch (choice) {
+            case 1:
+                cout << "-- Enter code to add: ";
+                getline(cin, target);
+                if (tree.searchNode(target)) {
+                    cout << "-- Code already exists in the BST" << endl;
+                } else {
+                    tree.insertNode(target);
+                    cout << "-- Code \"" << target << "\" added to the BST" << endl;
+                }
+                break;
+            case 2:
+                cout << "-- Enter code to delete: ";
+                getline(cin, target);
+                
+
+        }
+    } while (choice != 6);
+
     return 0;
 }
 
@@ -62,4 +88,15 @@ void testCodeDriver() {
     tree.displayInOrder();
 
     return;
+}
+
+void displayMenu() {
+    cout << "-- BST Menu --" << endl;
+    cout << "1. Insert a node" << endl;
+    cout << "2. Derlete a node" << endl;
+    cout << "3. Search for a node" << endl;
+    cout << "4. Change a node" << endl;
+    cout << "5. Display all nodes" << endl;
+    cout << "6. Exit" << endl;
+    cout << "Select an option: ";
 }
