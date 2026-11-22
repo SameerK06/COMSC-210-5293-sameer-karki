@@ -47,7 +47,66 @@ int main() {
             case 2:
                 cout << "-- Enter code to delete: ";
                 getline(cin, target);
-                
+                if (tree.searchNode(target)) {
+                    tree.remove(target);
+                    cout << "-- Code \"" << target << "\" deleted from the BST" << endl;
+                } else {
+                    cout << "-- Code not found in the BST" << endl;
+                }
+                break;
+            case 3:
+                cout << "-- Enter code to search: ";
+                getline(cin, target);
+                if (tree.searchNode(target)) {
+                    cout << "-- Code \"" << target << "\" found in the BST" << endl;
+                } else {
+                    cout << "-- Code not found in the BST" << endl;
+                }
+                break;
+            case 4:
+                cout << "-- Enter code to change: ";
+                getline(cin, target);
+                if (tree.searchNode(target)) {
+                    cout << "-- Enter new code: ";
+                    string newCode;
+                    getline(cin, newCode);
+                    if (tree.searchNode(newCode)) {
+                        cout << "-- New code already exists in the BST" << endl;
+                    } else {
+                        tree.remove(target);
+                        tree.insertNode(newCode);
+                        cout << "-- Code \"" << target << "\" changed to \"" << newCode << "\" in the BST" << endl;
+                    }
+                } else {
+                    cout << "-- Code not found in the BST" << endl;
+                }
+                break;
+            case 5:
+                cout << "-- How would you like to display the records? --" << endl;
+                cout << "1. In Order" << endl;
+                cout << "2. Pre Order" << endl;
+                cout << "3. Post Order" << endl;
+                cout << "Select an option: ";
+                int displayChoice;
+                while (!(cin >> displayChoice) || (displayChoice < 1 || displayChoice > 3)) {
+                    cout << "-- Invalid input. Please enter a number between 1 and 3: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                if (displayChoice == 1) {
+                    cout << "-- In Order Traversal" << endl;
+                    tree.displayInOrder();
+                } else if (displayChoice == 2) {
+                    cout << "-- Pre Order Traversal" << endl;
+                    tree.displayPreOrder();
+                } else {
+                    cout << "-- Post Order Traversal" << endl;
+                    tree.displayPostOrder();
+                }
+                break;
+            case 6:
+            
 
         }
     } while (choice != 6);
