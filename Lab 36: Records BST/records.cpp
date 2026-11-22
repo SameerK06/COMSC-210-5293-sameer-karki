@@ -1,32 +1,38 @@
 #include <iostream>
-#include "IntBinaryTree.h"
+#include <string>
+#include "StringBinaryTree.h"
 using namespace std;
 
 int main() {
-    IntBinaryTree tree;
-    cout << "Inserting nodes" << endl;
-    tree.insertNode(5);
-    tree.insertNode(3);
-    tree.insertNode(9);
-    tree.insertNode(12);
+    StringBinaryTree tree;
+    cout << "-- Inserting nodes" << endl;
+    tree.insertNode("Apples");
+    tree.insertNode("Bananas");
+    tree.insertNode("Balloons");
+    tree.insertNode("Cherries");
+    tree.insertNode("Dates");
+    tree.insertNode("Elderberries");
+    tree.insertNode("Figs");
+    tree.insertNode("Grapes");
+    tree.insertNode("Guavas");
 
-    cout << "in order traversal" << endl;
+    cout << "-- in order traversal" << endl;
     tree.displayInOrder();
-    cout << "pre order traversal" << endl;
+    cout << "-- pre order traversal" << endl;
     tree.displayPreOrder();
-    cout << "post order traversal" << endl;
+    cout << "-- post order traversal" << endl;
     tree.displayPostOrder();
 
-    cout << "Search for number 3" << endl;
-    if (tree.searchNode(3)) {
-        cout << "Found 3" << endl;
+    cout << "-- Search for Figs" << endl;
+    if (tree.searchNode("Figs")) {
+        cout << "--* Found Figs" << endl;
     } else {
-        cout << "3 not found" << endl;
+        cout << "--* Figs not found" << endl;
     }
 
-    cout << "Delete node 9" << endl;
-    tree.remove(9);
-    cout << "in order traversal" << endl;
+    cout << "-- Delete node Dates" << endl;
+    tree.remove("Dates");
+    cout << "-- in order traversal" << endl;
     tree.displayInOrder();
 
     return 0;
