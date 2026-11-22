@@ -106,11 +106,12 @@ int main() {
                 }
                 break;
             case 6:
-            
-
+                cout << "-- Exiting program" << endl;
+                break;
+            default:
+                cout << "-- Invalid choice. Please select a number between 1 and 6" << endl;
         }
     } while (choice != 6);
-
     return 0;
 }
 
@@ -126,26 +127,22 @@ void testCodeDriver() {
     tree.insertNode("Figs");
     tree.insertNode("Grapes");
     tree.insertNode("Guavas");
-
     cout << "-- in order traversal" << endl;
     tree.displayInOrder();
     cout << "-- pre order traversal" << endl;
     tree.displayPreOrder();
     cout << "-- post order traversal" << endl;
     tree.displayPostOrder();
-
     cout << "-- Search for Figs" << endl;
     if (tree.searchNode("Figs")) {
         cout << "--* Found Figs" << endl;
     } else {
         cout << "--* Figs not found" << endl;
     }
-
     cout << "-- Delete node Dates" << endl;
     tree.remove("Dates");
     cout << "-- in order traversal" << endl;
     tree.displayInOrder();
-
     return;
 }
 
