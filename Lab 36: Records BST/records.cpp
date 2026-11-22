@@ -17,5 +17,17 @@ int main() {
     cout << "post order traversal" << endl;
     tree.displayPostOrder();
 
+    cout << "Search for number 3" << endl;
+    if (tree.searchNode(3)) {
+        cout << "Found 3" << endl;
+    } else {
+        cout << "3 not found" << endl;
+    }
+
+    cout << "Delete node 9" << endl;
+    tree.remove(9);
+    cout << "in order traversal" << endl;
+    tree.displayInOrder();
+
     return 0;
 }
